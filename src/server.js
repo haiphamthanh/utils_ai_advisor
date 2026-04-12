@@ -4,8 +4,8 @@ const { createApp } = require("./app");
 async function bootstrap() {
   const app = await createApp();
 
-  app.listen(env.port, () => {
-    console.log(`Insight Companion is running at http://localhost:${env.port}`);
+  app.listen(env.port, env.host, () => {
+    console.log(`Insight Companion is running at http://${env.host}:${env.port}`);
   });
 }
 

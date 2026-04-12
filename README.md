@@ -28,7 +28,7 @@ npm install
 npm run dev
 ```
 
-Mo trinh duyet tai `http://localhost:3000`.
+Mo trinh duyet tai `http://127.0.0.1:3456`.
 
 Neu muon nap bien tu file `.env`, co the chay:
 
@@ -37,11 +37,18 @@ cp .env.example .env
 node --env-file=.env src/server.js
 ```
 
+Hoac chay nhanh bang script:
+
+```bash
+./start.sh
+```
+
 ## 2. Cau hinh
 
 Bien moi truong ho tro:
 
 - `PORT`: cong chay web.
+- `HOST`: mac dinh la `127.0.0.1` de chi dung local.
 - `OPENAI_API_KEY`: neu co, app se goi OpenAI Responses API; neu bo trong, app dung local knowledge base.
 - `OPENAI_MODEL`: model dung cho Responses API. Mac dinh la `gpt-5`.
 
