@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insight Companion</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Hackday MVP</p>
+          <h1>Insight Companion</h1>
+          <p class="hero-copy">
+            Tro ly hoc tap ca nhan hoa giup tra loi ngan gon, kiem tra muc do
+            hieu va goi y cau hoi tiep theo ngay trong mot flow lien mach.
+          </p>
+        </div>
+        <div class="hero-card">
+          <p class="hero-card-label">MVP focus</p>
+          <ul>
+            <li>Answer + reflection</li>
+            <li>Knowledge gap capture</li>
+            <li>Personal learning profile</li>
+          </ul>
+        </div>
+      </header>
+
+      <main class="main-grid">
+        <section class="panel conversation-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-label">Learning Loop</p>
+              <h2>Hoi dap va dao sau</h2>
+            </div>
+            <div id="sessionBadge" class="session-badge">Dang tao session...</div>
+          </div>
+
+          <div id="conversationRoot" class="conversation-root"></div>
+
+          <div class="composer-shell">
+            <div id="quickPrompts" class="quick-prompts"></div>
+            <div id="composerRoot"></div>
+          </div>
+        </section>
+
+        <aside class="panel profile-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-label">Personalization</p>
+              <h2>Knowledge profile</h2>
+            </div>
+          </div>
+
+          <div id="profileRoot"></div>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

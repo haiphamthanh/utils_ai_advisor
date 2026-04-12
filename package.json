@@ -1,0 +1,22 @@
+{
+  "name": "insight-companion",
+  "version": "1.0.0",
+  "description": "Insight Companion MVP built with Node.js and Express.",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "express",
+    "education",
+    "ai",
+    "hackday"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
