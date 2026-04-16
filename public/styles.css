@@ -154,6 +154,87 @@ body {
   gap: 14px;
 }
 
+.stage-shell {
+  display: grid;
+  gap: 14px;
+  min-height: 420px;
+  align-content: start;
+}
+
+.spotlight-card {
+  border-radius: 24px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.7));
+  animation: rise-in 260ms ease;
+}
+
+.intro-card {
+  background:
+    linear-gradient(135deg, rgba(29, 143, 135, 0.16), rgba(255, 255, 255, 0.82));
+}
+
+.reflection-card,
+.next-step-card {
+  background:
+    linear-gradient(135deg, rgba(33, 48, 68, 0.06), rgba(255, 255, 255, 0.82));
+}
+
+.question-card {
+  border-style: dashed;
+}
+
+.compact-card {
+  padding-bottom: 16px;
+}
+
+.spotlight-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: start;
+}
+
+.spotlight-label {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.spotlight-card h3 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.spotlight-copy,
+.followup-copy {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.followup-copy {
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+.action-grid {
+  margin-top: 18px;
+}
+
+.status-pill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.84rem;
+}
+
 .message {
   border-radius: 22px;
   padding: 16px 18px;
@@ -260,6 +341,12 @@ body {
   background: var(--warm-soft);
   color: #954126;
   border-color: rgba(239, 127, 95, 0.2);
+}
+
+.chip.muted-chip {
+  cursor: default;
+  background: rgba(97, 112, 132, 0.08);
+  color: var(--muted);
 }
 
 .action-button:hover,

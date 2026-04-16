@@ -41,6 +41,8 @@ test("askQuestion creates an answer flow and updates profile summary", async () 
   assert.equal(result.session.messages.length, 4);
   assert.equal(result.session.currentTopicLabel, "RAG");
   assert.equal(result.session.messages.at(-1).kind, "reflection");
+  assert.equal(result.session.interactive.stage, "awaiting_reflection");
+  assert.equal(result.session.interactive.question, "RAG la gi?");
 });
 
 test("submitReflection adds clarification when user is still confused", async () => {
@@ -63,4 +65,7 @@ test("submitReflection adds clarification when user is still confused", async ()
   assert.equal(result.profile.summary.clarificationCount, 1);
   assert.equal(result.session.messages.at(-2).kind, "clarification");
   assert.equal(result.session.messages.at(-1).kind, "recommendations");
+  assert.equal(result.session.interactive.stage, "guided_next_step");
+  assert.equal(result.session.interactive.confirmation.status, "partial");
+  assert.equal(result.session.interactive.suggestions.length, 3);
 });

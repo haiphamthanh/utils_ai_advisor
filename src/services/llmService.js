@@ -27,6 +27,7 @@ class LlmService {
       `User question: ${question}`,
       `Detected topic: ${topic.label}`,
       `Preferred style: ${profile.preferredStyle}`,
+      `Known weak areas: ${Object.keys(profile.topics || {}).join(", ") || "none"}`,
       "knowledgeGaps must contain 1 or 2 short concepts.",
       "followUpSuggestions must contain exactly 3 short learning questions.",
     ].join("\n");
@@ -51,15 +52,28 @@ class LlmService {
     };
   }
 
-  async generateReflectionInsight({ topic, understandingStatus, profile }) {
+  async generateReflectionInsight({
+    topic,
+    understandingStatus,
+    profile,
+    question,
+    answer,
+    knowledgeGaps,
+  }) {
     const fallback = {
-      clarification:
+      coachMessage:
         understandingStatus === "understood"
-          ? "Tot. Minh se goi y mot vai huong tiep theo de ban dao sau chu de nay."
+          ? "Tot. Minh se day nhanh hon sang phan lien quan de mo rong chu de nay."
           : topic.simplerAnswer,
+      nextQuestion:
+        understandingStatus === "understood"
+          ? `Ban muon dao sau tiep phan nao cua ${topic.label}?`
+          : "Trong 3 huong nay, ban muon go ro phan nao truoc?",
       followUpSuggestions: topic.followUpSuggestions,
       knowledgeGaps:
-        understandingStatus === "understood" ? [] : topic.knowledgeGaps.slice(0, 2),
+        understandingStatus === "understood"
+          ? []
+          : (knowledgeGaps || topic.knowledgeGaps).slice(0, 2),
       source: "local-knowledge-base",
     };
 
@@ -69,13 +83,17 @@ class LlmService {
 
     const prompt = [
       "You are Insight Companion, an AI learning assistant.",
-      "Return strict JSON with keys: clarification, followUpSuggestions, knowledgeGaps.",
+      "Return strict JSON with keys: coachMessage, nextQuestion, followUpSuggestions, knowledgeGaps.",
       `Topic: ${topic.label}`,
       `Understanding status: ${understandingStatus}`,
+      `Original user question: ${question}`,
+      `Previous short answer: ${answer}`,
+      `Detected knowledge gaps so far: ${(knowledgeGaps || []).join(", ") || "none"}`,
       `Preferred style: ${profile.preferredStyle}`,
       understandingStatus === "understood"
-        ? "The clarification should be a short transition sentence."
-        : "Explain in Vietnamese with a simpler analogy and one concrete example.",
+        ? "coachMessage should briefly acknowledge the user understood and shift to a deeper learning direction."
+        : "coachMessage should explain in Vietnamese with a simpler analogy and one concrete example.",
+      "nextQuestion should be one short question that naturally guides the next step based on the confirmation.",
       "followUpSuggestions must contain exactly 3 short next questions.",
       "knowledgeGaps should be empty if understood, otherwise 1 or 2 concepts.",
     ].join("\n");
@@ -87,7 +105,8 @@ class LlmService {
     }
 
     return {
-      clarification: modelResult.clarification || fallback.clarification,
+      coachMessage: modelResult.coachMessage || fallback.coachMessage,
+      nextQuestion: modelResult.nextQuestion || fallback.nextQuestion,
       followUpSuggestions: uniqueItems(
         modelResult.followUpSuggestions || fallback.followUpSuggestions
       ).slice(0, 3),

@@ -6,6 +6,12 @@ export class ChatComposer {
   }
 
   render(state) {
+    const stage = state.snapshot?.session?.interactive?.stage;
+    const placeholder =
+      stage === "guided_next_step"
+        ? "Nhap cau hoi moi hoac chon mot de xuat de hoc tiep..."
+        : "Vi du: RAG la gi? Hoac hoi ve prompt engineering, embedding, vector database...";
+
     this.rootElement.innerHTML = `
       <div class="status-bar ${state.error ? "error" : ""}">
         ${state.error || (state.isLoading ? "Dang xu ly..." : "")}
@@ -13,12 +19,12 @@ export class ChatComposer {
       <form class="composer-form" id="composerForm">
         <textarea
           id="questionInput"
-          placeholder="Vi du: RAG la gi? Hoac hoi ve prompt engineering, embedding, vector database..."
+          placeholder="${placeholder}"
           ${state.isLoading ? "disabled" : ""}
         ></textarea>
         <div class="composer-footer">
           <p class="composer-note">
-            Tra loi se duoc luu vao knowledge profile de goi y hoc tiep.
+            Confirm cua ban se duoc luu de AI dieu chinh buoc hoc tiep theo.
           </p>
           <button type="submit" ${state.isLoading ? "disabled" : ""}>
             Gui cau hoi

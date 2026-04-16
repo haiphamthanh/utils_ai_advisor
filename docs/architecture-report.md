@@ -98,11 +98,25 @@ Frontend khong can build step. Tat ca nam trong `public/`:
 - `app.js`: bootstrap app, wiring component.
 - `services/apiClient.js`: goi backend.
 - `state/appState.js`: state store nho cho UI.
-- `components/conversationView.js`: render message, action reflect, suggestion chip.
+- `components/conversationView.js`: render `current interactive step` thay vi do toan bo history.
 - `components/profilePanel.js`: render learning profile.
 - `components/chatComposer.js`: submit cau hoi.
 
 Kieu tach nay giu UI de thay doi sau nay, vi state, API va rendering da tach.
+
+## 6.1 Interactive step view
+
+Backend van luu day du `session.messages`, nhung frontend khong render toan bo timeline nua. Thay vao do, `InsightService` build them `session.interactive` gom:
+
+- `stage`: `idle`, `awaiting_reflection`, hoac `guided_next_step`
+- `question`: cau hoi hien tai
+- `primaryMessage`: phan giai thich dang co hieu luc
+- `reflectionPrompt`: cau hoi confirm neu dang cho xac nhan
+- `confirmation`: ket qua confirm moi nhat
+- `nextQuestion`: cau hoi AI de xuat sau confirm
+- `suggestions`: 3 huong hoc tiep theo
+
+Cach nay giu duoc persistence o backend, nhung UI van ngan, ro trong tam va dung voi trai nghiem hoc co dieu huong.
 
 ## 7. Data model tom tat
 

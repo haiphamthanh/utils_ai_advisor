@@ -9,6 +9,8 @@ Insight Companion la mot MVP cho y tuong tro ly hoc tap ca nhan hoa. Ung dung du
 - neu da hieu thi goi y hoc tiep,
 - cap nhat knowledge profile cho lan sau.
 
+UI hien tai duoc thiet ke theo kieu `interactive step view`: khong render toan bo lich su chat lien tuc, ma chi hien buoc hoc hien tai, ket qua confirm va cau hoi de xuat tiep theo.
+
 ## 1. Chay du an
 
 ### Yeu cau

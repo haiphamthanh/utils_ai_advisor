@@ -146,10 +146,14 @@ class InsightService {
 
     const topic = getTopicByKey(resolvedReflection.meta.topicKey);
     const profile = await this.dataStore.getOrCreateUserProfile(userId);
+    const session = await this.dataStore.getSession(sessionId);
     const reflection = await this.llmService.generateReflectionInsight({
       topic,
       understandingStatus,
       profile,
+      question: this.getLatestQuestionContent(session),
+      answer: this.getLatestAnswerContent(session),
+      knowledgeGaps: resolvedReflection.meta.knowledgeGaps || topic.knowledgeGaps,
     });
     const timestamp = new Date().toISOString();
 
@@ -171,7 +175,7 @@ class InsightService {
         id: createId("msg"),
         role: "assistant",
         kind: "clarification",
-        content: reflection.clarification,
+        content: reflection.coachMessage,
         createdAt: timestamp,
         meta: {
           topicKey: topic.key,
@@ -185,10 +189,7 @@ class InsightService {
       id: createId("msg"),
       role: "assistant",
       kind: "recommendations",
-      content:
-        understandingStatus === "understood"
-          ? "Tot. Day la 3 huong hoc tiep theo de mo rong chu de."
-          : "Ban co the hoc tiep theo tung buoc qua 3 cau hoi nay.",
+      content: reflection.nextQuestion,
       createdAt: timestamp,
       meta: {
         topicKey: topic.key,
@@ -196,6 +197,8 @@ class InsightService {
         responseSource: reflection.source,
         followUpSuggestions: reflection.followUpSuggestions,
         knowledgeGaps: reflection.knowledgeGaps,
+        coachMessage: reflection.coachMessage,
+        understandingStatus,
       },
     });
 
@@ -211,7 +214,7 @@ class InsightService {
       topicLabel: topic.label,
       understandingStatus,
       knowledgeGaps: reflection.knowledgeGaps,
-      clarification: reflection.clarification,
+      clarification: reflection.coachMessage,
       followUpSuggestions: reflection.followUpSuggestions,
       source: reflection.source,
     });
@@ -278,6 +281,7 @@ class InsightService {
         sessionId: session.sessionId,
         currentTopicLabel: session.currentTopicLabel,
         messages: session.messages || [],
+        interactive: this.buildInteractiveState(session.messages || [], session.currentTopicLabel),
       },
       profile: {
         preferredStyle: userProfile.preferredStyle,
@@ -287,6 +291,79 @@ class InsightService {
         recentTopics,
       },
     };
+  }
+
+  buildInteractiveState(messages, currentTopicLabel) {
+    const welcomeMessage = this.findLatestMessage(messages, "welcome");
+    const latestQuestion = this.findLatestMessage(messages, "question");
+    const latestAnswer = this.findLatestMessage(messages, "answer");
+    const pendingReflection = [...messages]
+      .reverse()
+      .find(
+        (message) =>
+          message.kind === "reflection" &&
+          message.meta &&
+          message.meta.actionState === "pending"
+      );
+    const latestFeedback = this.findLatestMessage(messages, "reflection-feedback");
+    const latestClarification = this.findLatestMessage(messages, "clarification");
+    const latestRecommendations = this.findLatestMessage(messages, "recommendations");
+
+    if (!latestQuestion || !latestAnswer) {
+      return {
+        stage: "idle",
+        topicLabel: currentTopicLabel,
+        quickPrompts: welcomeMessage?.meta?.suggestedPrompts || [],
+        introMessage: welcomeMessage?.content || "",
+      };
+    }
+
+    if (pendingReflection) {
+      return {
+        stage: "awaiting_reflection",
+        topicLabel: pendingReflection.meta?.topicLabel || currentTopicLabel,
+        question: latestQuestion.content,
+        primaryMessage: latestAnswer.content,
+        primarySource: latestAnswer.meta?.responseSource,
+        reflectionPrompt: pendingReflection.content,
+        quickPrompts: welcomeMessage?.meta?.suggestedPrompts || [],
+        suggestions: pendingReflection.meta?.followUpSuggestions || [],
+        knowledgeGaps: pendingReflection.meta?.knowledgeGaps || [],
+      };
+    }
+
+    return {
+      stage: "guided_next_step",
+      topicLabel:
+        latestRecommendations?.meta?.topicLabel ||
+        latestClarification?.meta?.topicLabel ||
+        currentTopicLabel,
+      question: latestQuestion.content,
+      primaryMessage: latestClarification?.content || latestAnswer.content,
+      primarySource:
+        latestClarification?.meta?.responseSource || latestAnswer.meta?.responseSource,
+      confirmation: {
+        status: latestFeedback?.meta?.understandingStatus || null,
+        label: latestFeedback?.content || null,
+      },
+      nextQuestion: latestRecommendations?.content || "",
+      coachMessage: latestRecommendations?.meta?.coachMessage || "",
+      suggestions: latestRecommendations?.meta?.followUpSuggestions || [],
+      knowledgeGaps: latestRecommendations?.meta?.knowledgeGaps || [],
+      quickPrompts: welcomeMessage?.meta?.suggestedPrompts || [],
+    };
+  }
+
+  findLatestMessage(messages, kind) {
+    return [...messages].reverse().find((message) => message.kind === kind) || null;
+  }
+
+  getLatestQuestionContent(session) {
+    return this.findLatestMessage(session?.messages || [], "question")?.content || "";
+  }
+
+  getLatestAnswerContent(session) {
+    return this.findLatestMessage(session?.messages || [], "answer")?.content || "";
   }
 }
 
