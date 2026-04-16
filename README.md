@@ -51,8 +51,9 @@ Bien moi truong ho tro:
 
 - `PORT`: cong chay web.
 - `HOST`: mac dinh la `127.0.0.1` de chi dung local.
-- `OPENAI_API_KEY`: neu co, app se goi OpenAI Responses API; neu bo trong, app dung local knowledge base.
-- `OPENAI_MODEL`: model dung cho Responses API. Mac dinh la `gpt-5`.
+- `LLM_PROVIDER`: mac dinh la `gemini`.
+- `GEMINI_API_KEY`: API key cua Gemini API. Bat buoc neu muon hoi dap.
+- `GEMINI_MODEL`: model Gemini dung de tu van. Mac dinh la `gemini-2.5-flash`.
 
 ## 3. Cau truc thu muc
 
@@ -60,11 +61,11 @@ Bien moi truong ho tro:
 src/
   config/        Bien moi truong va duong dan
   controllers/   Nhan HTTP request, tra HTTP response
-  data/          Knowledge base de demo
   middleware/    Error handling
   models/        Builder cho profile va session
   routes/        API routes
   services/      Orchestration nghiep vu va LLM integration
+    modelClients/  Provider client, hien tai la Gemini API
   stores/        Luu/nap JSON local
   utils/         Helper nho
 public/
@@ -87,7 +88,7 @@ tests/
 
 ## 5. Du lieu local
 
-App tao file `storage/learning-data.json` trong repo de luu session, profile va interaction history. File nay la runtime artifact, da duoc ignore trong git.
+App tao file `storage/learning-data.json` trong repo de luu session, profile va interaction history. File nay la runtime artifact, da duoc ignore trong git. Noi dung tu van khong con lay tu hardcode, ma duoc sinh truc tiep tu Gemini API.
 
 ## 6. Kiem thu
 

@@ -8,6 +8,50 @@ const { InsightService } = require("../src/services/insightService");
 const { LlmService } = require("../src/services/llmService");
 const { DataStore } = require("../src/stores/dataStore");
 
+class FakeModelClient {
+  async generateStructuredObject({ schema, userPrompt }) {
+    if (schema.required.includes("reflectionQuestion")) {
+      if (userPrompt.includes("RAG la gi?")) {
+        return {
+          topicLabel: "RAG",
+          shortAnswer: "RAG ket hop tim tai lieu lien quan va mo hinh de tra loi tot hon.",
+          reflectionQuestion: "Ban da hieu retrieval trong RAG chua?",
+          knowledgeGaps: ["retrieval", "embedding"],
+          followUpSuggestions: [
+            "Retrieval la gi?",
+            "Embedding la gi?",
+            "RAG khac fine-tuning the nao?",
+          ],
+        };
+      }
+
+      return {
+        topicLabel: "Embedding",
+        shortAnswer: "Embedding bien noi dung thanh vector de so sanh y nghia.",
+        reflectionQuestion: "Ban da hieu vi sao can vector hoa text chua?",
+        knowledgeGaps: ["vector space", "similarity search"],
+        followUpSuggestions: [
+          "Similarity search la gi?",
+          "Vector database la gi?",
+          "Embedding dung de lam gi?",
+        ],
+      };
+    }
+
+    return {
+      coachMessage:
+        "Hay hinh dung embedding la cach dat cac cau co y nghia giong nhau gan nhau tren mot ban do.",
+      nextQuestion: "Ban muon go ro phan nao truoc trong 3 huong nay?",
+      knowledgeGaps: ["vector space", "similarity search"],
+      followUpSuggestions: [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung de lam gi?",
+      ],
+    };
+  }
+}
+
 async function createTestService() {
   const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "insight-companion-"));
   const dataStore = new DataStore(path.join(tempDir, "learning-data.json"));
@@ -16,8 +60,7 @@ async function createTestService() {
   const insightService = new InsightService({
     dataStore,
     llmService: new LlmService({
-      openAiApiKey: "",
-      openAiModel: "gpt-5",
+      modelClient: new FakeModelClient(),
     }),
   });
 

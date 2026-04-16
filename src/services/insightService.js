@@ -1,4 +1,3 @@
-const { findTopicByQuestion, getTopicByKey } = require("../data/knowledgeBase");
 const { createId } = require("../utils/ids");
 const { uniqueItems } = require("../utils/json");
 
@@ -56,12 +55,12 @@ class InsightService {
     }
 
     const profile = await this.dataStore.getOrCreateUserProfile(userId);
-    const topic = findTopicByQuestion(question);
     const insight = await this.llmService.generateInitialInsight({
       question,
-      topic,
       profile,
     });
+    const topicLabel = insight.topicLabel;
+    const topicKey = this.createTopicKey(topicLabel);
     const timestamp = new Date().toISOString();
 
     const messages = [
@@ -80,8 +79,8 @@ class InsightService {
         content: insight.shortAnswer,
         createdAt: timestamp,
         meta: {
-          topicKey: topic.key,
-          topicLabel: topic.label,
+          topicKey,
+          topicLabel,
           responseSource: insight.source,
         },
       },
@@ -92,8 +91,8 @@ class InsightService {
         content: insight.reflectionQuestion,
         createdAt: timestamp,
         meta: {
-          topicKey: topic.key,
-          topicLabel: topic.label,
+          topicKey,
+          topicLabel,
           actionState: "pending",
           responseSource: insight.source,
           knowledgeGaps: insight.knowledgeGaps,
@@ -103,15 +102,15 @@ class InsightService {
     ];
 
     await this.dataStore.appendMessages(activeSessionId, messages, {
-      currentTopicKey: topic.key,
-      currentTopicLabel: topic.label,
+      currentTopicKey: topicKey,
+      currentTopicLabel: topicLabel,
     });
 
     await this.dataStore.recordInitialExchange({
       userId,
       sessionId: activeSessionId,
-      topicKey: topic.key,
-      topicLabel: topic.label,
+      topicKey,
+      topicLabel,
       question: question.trim(),
       answer: insight.shortAnswer,
       reflectionQuestion: insight.reflectionQuestion,
@@ -144,16 +143,17 @@ class InsightService {
       throw new Error("No pending reflection was found for this session.");
     }
 
-    const topic = getTopicByKey(resolvedReflection.meta.topicKey);
     const profile = await this.dataStore.getOrCreateUserProfile(userId);
     const session = await this.dataStore.getSession(sessionId);
+    const topicKey = resolvedReflection.meta.topicKey;
+    const topicLabel = resolvedReflection.meta.topicLabel;
     const reflection = await this.llmService.generateReflectionInsight({
-      topic,
+      topicLabel,
       understandingStatus,
       profile,
       question: this.getLatestQuestionContent(session),
       answer: this.getLatestAnswerContent(session),
-      knowledgeGaps: resolvedReflection.meta.knowledgeGaps || topic.knowledgeGaps,
+      knowledgeGaps: resolvedReflection.meta.knowledgeGaps || [],
     });
     const timestamp = new Date().toISOString();
 
@@ -178,8 +178,8 @@ class InsightService {
         content: reflection.coachMessage,
         createdAt: timestamp,
         meta: {
-          topicKey: topic.key,
-          topicLabel: topic.label,
+          topicKey,
+          topicLabel,
           responseSource: reflection.source,
         },
       });
@@ -192,8 +192,8 @@ class InsightService {
       content: reflection.nextQuestion,
       createdAt: timestamp,
       meta: {
-        topicKey: topic.key,
-        topicLabel: topic.label,
+        topicKey,
+        topicLabel,
         responseSource: reflection.source,
         followUpSuggestions: reflection.followUpSuggestions,
         knowledgeGaps: reflection.knowledgeGaps,
@@ -203,15 +203,15 @@ class InsightService {
     });
 
     await this.dataStore.appendMessages(sessionId, messages, {
-      currentTopicKey: topic.key,
-      currentTopicLabel: topic.label,
+      currentTopicKey: topicKey,
+      currentTopicLabel: topicLabel,
     });
 
     await this.dataStore.recordReflection({
       userId,
       sessionId,
-      topicKey: topic.key,
-      topicLabel: topic.label,
+      topicKey,
+      topicLabel,
       understandingStatus,
       knowledgeGaps: reflection.knowledgeGaps,
       clarification: reflection.coachMessage,
@@ -364,6 +364,14 @@ class InsightService {
 
   getLatestAnswerContent(session) {
     return this.findLatestMessage(session?.messages || [], "answer")?.content || "";
+  }
+
+  createTopicKey(topicLabel) {
+    return String(topicLabel || "learning-topic")
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "") || "learning-topic";
   }
 }
 

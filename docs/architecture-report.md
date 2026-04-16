@@ -19,8 +19,9 @@ flowchart LR
 UI[Browser UI] --> API[Express API]
 API --> IS[Insight Service]
 IS --> LLM[LLM Service]
+LLM --> MC[Model Client Factory]
 IS --> DS[JSON Data Store]
-LLM --> OAI[OpenAI Responses API]
+MC --> GEM[Gemini API]
 DS --> FILE[storage/learning-data.json]
 ```
 
@@ -35,7 +36,7 @@ DS --> FILE[storage/learning-data.json]
 ### De mo rong
 
 - `InsightService` la noi gom business flow, de sau nay doi sang database that hoac vector DB ma khong can sua UI.
-- `LlmService` tach rieng de sau nay co the doi OpenAI, model khac, hoac them structured output chuan hon.
+- `LlmService` chi lo prompt va workflow, con `modelClients/` lo vendor API, nen sau nay co the doi Gemini sang provider khac ma it anh huong nghiep vu.
 - `DataStore` tach rieng de doi tu JSON sang PostgreSQL/MongoDB.
 
 ### De maintain
@@ -50,8 +51,8 @@ DS --> FILE[storage/learning-data.json]
 
 1. Frontend goi `POST /api/insight/ask`.
 2. `InsightController` chuyen request vao `InsightService`.
-3. `InsightService` detect topic dua tren `knowledgeBase`.
-4. `LlmService` sinh cau tra loi + cau hoi kiem tra muc do hieu.
+3. `InsightService` truyen profile hoc tap hien tai vao `LlmService`.
+4. `LlmService` goi `GeminiApiClient` de sinh topic label, cau tra loi, cau hoi kiem tra muc do hieu va goi y tiep theo.
 5. `DataStore` luu message, interaction va cap nhat user profile.
 6. Snapshot moi duoc tra ve cho UI.
 
@@ -59,8 +60,8 @@ DS --> FILE[storage/learning-data.json]
 
 1. Frontend goi `POST /api/insight/reflect`.
 2. `InsightService` tim reflection dang pending.
-3. Neu `partial` hoac `confused`, `LlmService` sinh giai thich de hon.
-4. He thong them 3 cau hoi hoc tiep.
+3. `LlmService` goi Gemini dua tren ket qua confirm va ngu canh gan nhat.
+4. He thong nhan `coachMessage`, `nextQuestion` va 3 cau hoi hoc tiep moi.
 5. `DataStore` cap nhat knowledge gaps va thong ke hieu/chua hieu.
 
 ## 5. Cac module backend
@@ -83,8 +84,14 @@ DS --> FILE[storage/learning-data.json]
 
 ### `src/services/llmService.js`
 
-- Neu co `OPENAI_API_KEY`, goi OpenAI Responses API.
-- Neu khong, fallback sang local knowledge base de demo khong bi phu thuoc mang.
+- Chuyen business prompt thanh structured request.
+- Chuan hoa output de `InsightService` su dung.
+
+### `src/services/modelClients`
+
+- Chua layer goi vendor API.
+- Hien tai dung `GeminiApiClient`.
+- `createModelClient.js` dong vai tro factory de sau nay them provider khac.
 
 ### `src/stores/dataStore.js`
 
@@ -159,12 +166,12 @@ Cach nay giu duoc persistence o backend, nhung UI van ngan, ro trong tam va dung
 - Doi `DataStore` sang PostgreSQL/MongoDB.
 - Them vector DB cho semantic memory.
 - Them auth va nhieu user that.
-- Dung structured output schema chat che hon cho `LlmService`.
+- Them provider khac qua `modelClients/` neu can so sanh chat luong hoac cost.
 - Them analytics dashboard va spaced repetition.
 
 ## 9. Gioi han hien tai
 
-- Detect topic hien dang dua nhieu vao keyword va knowledge base mau.
+- Chat luong goi y phu thuoc vao prompt va output cua Gemini.
 - Persistence dang la JSON local, phu hop demo hon production.
 - Chua co auth.
 - Chua co streaming response.
