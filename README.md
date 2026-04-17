@@ -33,18 +33,13 @@ npm run dev
 
 Mo trinh duyet tai `http://127.0.0.1:3456`.
 
-Neu muon nap bien tu file `.env`, co the chay:
-
-```bash
-cp .env.example .env
-node --env-file=.env src/server.js
-```
-
 Hoac chay nhanh bang script:
 
 ```bash
 ./start.sh
 ```
+
+Neu file `.env` ton tai, `npm run dev`, `npm start` va `./start.sh` se tu dong nap bien moi truong tu file nay.
 
 ## 2. Cau hinh
 

@@ -8,4 +8,8 @@ cd "$ROOT_DIR"
 export HOST="${HOST:-127.0.0.1}"
 export PORT="${PORT:-3456}"
 
+if [ -f ".env" ]; then
+  exec node --env-file=.env src/server.js
+fi
+
 exec node src/server.js
