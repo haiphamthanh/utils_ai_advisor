@@ -77,11 +77,11 @@ class DataStore {
     return userProfile;
   }
 
-  async createSession(userId) {
+  async createSession(userId, provider) {
     const state = await this.load();
     const userProfile = this.ensureUser(state, userId);
     const sessionId = createId("session");
-    const session = createSession(userId, sessionId);
+    const session = createSession(userId, sessionId, provider);
 
     state.sessions[sessionId] = session;
     userProfile.currentSessionId = sessionId;
@@ -109,6 +109,10 @@ class DataStore {
     if (sessionMeta.currentTopicKey) {
       session.currentTopicKey = sessionMeta.currentTopicKey;
       session.currentTopicLabel = sessionMeta.currentTopicLabel;
+    }
+
+    if (sessionMeta.currentProvider) {
+      session.currentProvider = sessionMeta.currentProvider;
     }
 
     await this.persist(state);
@@ -157,6 +161,7 @@ class DataStore {
       followUpSuggestions,
       knowledgeGaps,
       source,
+      provider,
     } = payload;
 
     const state = await this.load();
@@ -183,6 +188,7 @@ class DataStore {
       followUpSuggestions,
       knowledgeGaps,
       source,
+      provider,
       createdAt: new Date().toISOString(),
     });
 
@@ -200,6 +206,7 @@ class DataStore {
       clarification,
       followUpSuggestions,
       source,
+      provider,
     } = payload;
 
     const state = await this.load();
@@ -230,6 +237,7 @@ class DataStore {
       clarification,
       followUpSuggestions,
       source,
+      provider,
       createdAt: new Date().toISOString(),
     });
 

@@ -15,6 +15,13 @@ function formatStatusLabel(status) {
   }[status] || "Dang tiep tuc";
 }
 
+function formatProviderLabel(provider) {
+  return {
+    gemini: "Gemini",
+    openai: "OpenAI",
+  }[provider] || provider || "";
+}
+
 function renderChips(items = [], className = "") {
   return items
     .map(
@@ -49,10 +56,11 @@ export class ConversationView {
     const interactive = snapshot?.session?.interactive;
     const sessionId = snapshot?.session?.sessionId;
     const currentTopicLabel = interactive?.topicLabel || snapshot?.session?.currentTopicLabel;
+    const providerLabel = formatProviderLabel(snapshot?.session?.provider);
     const quickPrompts = interactive?.quickPrompts || [];
 
     this.sessionBadgeElement.textContent = sessionId
-      ? `${currentTopicLabel || "Learning session"}`
+      ? `${providerLabel ? `${providerLabel} / ` : ""}${currentTopicLabel || "Learning session"}`
       : "Chua co session";
 
     this.quickPromptsElement.innerHTML =

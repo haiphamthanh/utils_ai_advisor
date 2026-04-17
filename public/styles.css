@@ -119,6 +119,74 @@ body {
   line-height: 1.9;
 }
 
+.provider-status-root {
+  margin-top: 20px;
+}
+
+.provider-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.provider-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.provider-select {
+  width: 100%;
+  border: 1px solid rgba(44, 56, 74, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--ink);
+}
+
+.provider-badges {
+  display: grid;
+  gap: 10px;
+}
+
+.provider-badge {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.provider-badge strong {
+  color: var(--ink);
+}
+
+.provider-badge.connected {
+  background: rgba(29, 143, 135, 0.1);
+  color: var(--accent-strong);
+}
+
+.provider-badge.missing_api_key {
+  background: rgba(239, 127, 95, 0.12);
+  color: #954126;
+}
+
+.provider-badge.selected {
+  box-shadow: inset 0 0 0 1px rgba(33, 48, 68, 0.12);
+}
+
+.provider-helper {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .main-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.9fr);

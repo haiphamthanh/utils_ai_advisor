@@ -17,11 +17,14 @@ He thong can lam duoc 5 viec:
 ```mermaid
 flowchart LR
 UI[Browser UI] --> API[Express API]
+UI --> CFG[Config Badge]
 API --> IS[Insight Service]
 IS --> LLM[LLM Service]
 LLM --> MC[Model Client Factory]
 IS --> DS[JSON Data Store]
 MC --> GEM[Gemini API]
+MC --> OAI[OpenAI Responses API]
+CFG --> API
 DS --> FILE[storage/learning-data.json]
 ```
 
@@ -36,7 +39,7 @@ DS --> FILE[storage/learning-data.json]
 ### De mo rong
 
 - `InsightService` la noi gom business flow, de sau nay doi sang database that hoac vector DB ma khong can sua UI.
-- `LlmService` chi lo prompt va workflow, con `modelClients/` lo vendor API, nen sau nay co the doi Gemini sang provider khac ma it anh huong nghiep vu.
+- `LlmService` chi lo prompt va workflow, con `modelClients/` lo vendor API, nen sau nay co the doi Gemini, OpenAI hoac them provider khac ma it anh huong nghiep vu.
 - `DataStore` tach rieng de doi tu JSON sang PostgreSQL/MongoDB.
 
 ### De maintain
@@ -52,7 +55,7 @@ DS --> FILE[storage/learning-data.json]
 1. Frontend goi `POST /api/insight/ask`.
 2. `InsightController` chuyen request vao `InsightService`.
 3. `InsightService` truyen profile hoc tap hien tai vao `LlmService`.
-4. `LlmService` goi `GeminiApiClient` de sinh topic label, cau tra loi, cau hoi kiem tra muc do hieu va goi y tiep theo.
+4. `LlmService` chon provider client theo session, roi goi `GeminiApiClient` hoac `OpenAiApiClient` de sinh topic label, cau tra loi, cau hoi kiem tra muc do hieu va goi y tiep theo.
 5. `DataStore` luu message, interaction va cap nhat user profile.
 6. Snapshot moi duoc tra ve cho UI.
 
@@ -60,9 +63,15 @@ DS --> FILE[storage/learning-data.json]
 
 1. Frontend goi `POST /api/insight/reflect`.
 2. `InsightService` tim reflection dang pending.
-3. `LlmService` goi Gemini dua tren ket qua confirm va ngu canh gan nhat.
+3. `LlmService` goi provider da chon dua tren ket qua confirm va ngu canh gan nhat.
 4. He thong nhan `coachMessage`, `nextQuestion` va 3 cau hoi hoc tiep moi.
 5. `DataStore` cap nhat knowledge gaps va thong ke hieu/chua hieu.
+
+### 4.3 UI config badge
+
+1. Frontend goi `GET /api/insight/config` ngay khi tai trang.
+2. Backend tra danh sach provider, model va trang thai `connected` hoac `missing_api_key`.
+3. UI render badge ngay lap tuc, khong can doi den luc nguoi dung gui cau hoi moi biet provider co san sang hay khong.
 
 ## 5. Cac module backend
 
@@ -90,8 +99,8 @@ DS --> FILE[storage/learning-data.json]
 ### `src/services/modelClients`
 
 - Chua layer goi vendor API.
-- Hien tai dung `GeminiApiClient`.
-- `createModelClient.js` dong vai tro factory de sau nay them provider khac.
+- Hien tai gom `GeminiApiClient` va `OpenAiApiClient`.
+- `createModelClient.js` dong vai tro factory/catalog de sau nay them provider khac.
 
 ### `src/stores/dataStore.js`
 
@@ -108,6 +117,7 @@ Frontend khong can build step. Tat ca nam trong `public/`:
 - `components/conversationView.js`: render `current interactive step` thay vi do toan bo history.
 - `components/profilePanel.js`: render learning profile.
 - `components/chatComposer.js`: submit cau hoi.
+- `components/providerStatus.js`: render provider selector va config badge.
 
 Kieu tach nay giu UI de thay doi sau nay, vi state, API va rendering da tach.
 
@@ -124,6 +134,14 @@ Backend van luu day du `session.messages`, nhung frontend khong render toan bo t
 - `suggestions`: 3 huong hoc tiep theo
 
 Cach nay giu duoc persistence o backend, nhung UI van ngan, ro trong tam va dung voi trai nghiem hoc co dieu huong.
+
+## 6.2 Provider selection
+
+Moi session luu `currentProvider`. Dieu nay dam bao:
+
+- mot conversation se tiep tuc dung dung provider da chon,
+- confirm va follow-up cung di qua cung client,
+- UI co the chuyen provider bang cach mo session moi ma khong lam roi business flow.
 
 ## 7. Data model tom tat
 
@@ -171,7 +189,7 @@ Cach nay giu duoc persistence o backend, nhung UI van ngan, ro trong tam va dung
 
 ## 9. Gioi han hien tai
 
-- Chat luong goi y phu thuoc vao prompt va output cua Gemini.
+- Chat luong goi y phu thuoc vao prompt va output cua provider duoc chon.
 - Persistence dang la JSON local, phu hop demo hon production.
 - Chua co auth.
 - Chua co streaming response.

@@ -1,6 +1,7 @@
 import { ChatComposer } from "./components/chatComposer.js";
 import { ConversationView } from "./components/conversationView.js";
 import { ProfilePanel } from "./components/profilePanel.js";
+import { ProviderStatus } from "./components/providerStatus.js";
 import { ApiClient } from "./services/apiClient.js";
 import { AppState } from "./state/appState.js";
 
@@ -26,18 +27,28 @@ const profilePanel = new ProfilePanel({
   rootElement: document.querySelector("#profileRoot"),
 });
 
+const providerStatus = new ProviderStatus({
+  rootElement: document.querySelector("#providerStatusRoot"),
+  onProviderChange: handleProviderChange,
+});
+
 appState.subscribe((state) => {
   composer.render(state);
   conversationView.render(state.snapshot);
   profilePanel.render(state.snapshot);
+  providerStatus.render(state);
 });
 
 async function bootstrap() {
   appState.set({ isLoading: true, error: "" });
 
   try {
-    const snapshot = await apiClient.createSession(USER_ID);
+    const config = await apiClient.getConfig();
+    const selectedProvider = pickInitialProvider(config);
+    const snapshot = await apiClient.createSession(USER_ID, selectedProvider);
     appState.set({
+      config,
+      selectedProvider,
       snapshot,
       isLoading: false,
       error: "",
@@ -53,6 +64,7 @@ async function bootstrap() {
 async function handleQuestionSubmit(question) {
   const state = appState.get();
   const sessionId = state.snapshot?.session?.sessionId;
+  const provider = state.selectedProvider;
 
   appState.set({ isLoading: true, error: "" });
 
@@ -61,6 +73,7 @@ async function handleQuestionSubmit(question) {
       userId: USER_ID,
       sessionId,
       question,
+      provider,
     });
     appState.set({
       snapshot,
@@ -107,6 +120,38 @@ async function handleReflect(understandingStatus) {
 async function handleSuggestionSelect(suggestion) {
   composer.setValue(suggestion);
   await handleQuestionSubmit(suggestion);
+}
+
+async function handleProviderChange(provider) {
+  appState.set({
+    isLoading: true,
+    error: "",
+    selectedProvider: provider,
+  });
+
+  try {
+    const snapshot = await apiClient.createSession(USER_ID, provider);
+    appState.set({
+      snapshot,
+      selectedProvider: provider,
+      isLoading: false,
+      error: "",
+    });
+  } catch (error) {
+    appState.set({
+      isLoading: false,
+      error: error.message,
+    });
+  }
+}
+
+function pickInitialProvider(config) {
+  return (
+    config.providers.find((provider) => provider.id === config.defaultProvider && provider.isConfigured)
+      ?.id ||
+    config.providers.find((provider) => provider.isConfigured)?.id ||
+    config.defaultProvider
+  );
 }
 
 bootstrap();

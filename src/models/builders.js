@@ -16,7 +16,7 @@ function createUserProfile(userId) {
   };
 }
 
-function createSession(userId, sessionId) {
+function createSession(userId, sessionId, provider) {
   const timestamp = new Date().toISOString();
 
   return {
@@ -24,6 +24,7 @@ function createSession(userId, sessionId) {
     userId,
     createdAt: timestamp,
     updatedAt: timestamp,
+    currentProvider: provider || null,
     currentTopicKey: null,
     currentTopicLabel: null,
     messages: [],

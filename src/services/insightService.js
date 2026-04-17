@@ -13,9 +13,10 @@ class InsightService {
     this.llmService = llmService;
   }
 
-  async createSession(userId = "demo-user") {
+  async createSession(userId = "demo-user", provider) {
     const userProfile = await this.dataStore.getOrCreateUserProfile(userId);
-    const session = await this.dataStore.createSession(userId);
+    const resolvedProvider = this.llmService.resolveProviderSelection(provider);
+    const session = await this.dataStore.createSession(userId, resolvedProvider);
 
     const welcomeMessage = {
       id: createId("msg"),
@@ -42,22 +43,34 @@ class InsightService {
     });
   }
 
-  async askQuestion({ userId = "demo-user", sessionId, question }) {
+  async askQuestion({ userId = "demo-user", sessionId, question, provider }) {
     if (!question || !String(question).trim()) {
       throw new Error("Question is required.");
     }
 
     let activeSessionId = sessionId;
+    let activeProvider = null;
 
     if (!activeSessionId) {
-      const session = await this.dataStore.createSession(userId);
+      const session = await this.dataStore.createSession(
+        userId,
+        this.llmService.resolveProviderSelection(provider)
+      );
       activeSessionId = session.sessionId;
+      activeProvider = session.currentProvider;
+    } else {
+      const activeSession = await this.dataStore.getSession(activeSessionId);
+      activeProvider =
+        provider ||
+        activeSession?.currentProvider ||
+        this.llmService.resolveProviderSelection();
     }
 
     const profile = await this.dataStore.getOrCreateUserProfile(userId);
     const insight = await this.llmService.generateInitialInsight({
       question,
       profile,
+      provider: activeProvider,
     });
     const topicLabel = insight.topicLabel;
     const topicKey = this.createTopicKey(topicLabel);
@@ -82,6 +95,7 @@ class InsightService {
           topicKey,
           topicLabel,
           responseSource: insight.source,
+          provider: activeProvider,
         },
       },
       {
@@ -95,6 +109,7 @@ class InsightService {
           topicLabel,
           actionState: "pending",
           responseSource: insight.source,
+          provider: activeProvider,
           knowledgeGaps: insight.knowledgeGaps,
           followUpSuggestions: insight.followUpSuggestions,
         },
@@ -104,6 +119,7 @@ class InsightService {
     await this.dataStore.appendMessages(activeSessionId, messages, {
       currentTopicKey: topicKey,
       currentTopicLabel: topicLabel,
+      currentProvider: activeProvider,
     });
 
     await this.dataStore.recordInitialExchange({
@@ -117,6 +133,7 @@ class InsightService {
       followUpSuggestions: insight.followUpSuggestions,
       knowledgeGaps: insight.knowledgeGaps,
       source: insight.source,
+      provider: activeProvider,
     });
 
     return this.buildSnapshot({
@@ -147,7 +164,10 @@ class InsightService {
     const session = await this.dataStore.getSession(sessionId);
     const topicKey = resolvedReflection.meta.topicKey;
     const topicLabel = resolvedReflection.meta.topicLabel;
+    const activeProvider =
+      session?.currentProvider || resolvedReflection.meta.provider || this.llmService.resolveProviderSelection();
     const reflection = await this.llmService.generateReflectionInsight({
+      provider: activeProvider,
       topicLabel,
       understandingStatus,
       profile,
@@ -181,6 +201,7 @@ class InsightService {
           topicKey,
           topicLabel,
           responseSource: reflection.source,
+          provider: activeProvider,
         },
       });
     }
@@ -195,6 +216,7 @@ class InsightService {
         topicKey,
         topicLabel,
         responseSource: reflection.source,
+        provider: activeProvider,
         followUpSuggestions: reflection.followUpSuggestions,
         knowledgeGaps: reflection.knowledgeGaps,
         coachMessage: reflection.coachMessage,
@@ -205,6 +227,7 @@ class InsightService {
     await this.dataStore.appendMessages(sessionId, messages, {
       currentTopicKey: topicKey,
       currentTopicLabel: topicLabel,
+      currentProvider: activeProvider,
     });
 
     await this.dataStore.recordReflection({
@@ -217,6 +240,7 @@ class InsightService {
       clarification: reflection.coachMessage,
       followUpSuggestions: reflection.followUpSuggestions,
       source: reflection.source,
+      provider: activeProvider,
     });
 
     return this.buildSnapshot({
@@ -233,6 +257,10 @@ class InsightService {
       sessionId: userProfile.currentSessionId,
       existingProfile: userProfile,
     });
+  }
+
+  async getConfig() {
+    return this.llmService.getConfigSnapshot();
   }
 
   async buildSnapshot({ userId, sessionId, existingProfile = null }) {
@@ -279,6 +307,7 @@ class InsightService {
       userId,
       session: {
         sessionId: session.sessionId,
+        provider: session.currentProvider,
         currentTopicLabel: session.currentTopicLabel,
         messages: session.messages || [],
         interactive: this.buildInteractiveState(session.messages || [], session.currentTopicLabel),

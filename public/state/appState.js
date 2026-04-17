@@ -2,6 +2,8 @@ export class AppState {
   constructor(initialState = {}) {
     this.state = {
       snapshot: null,
+      config: null,
+      selectedProvider: null,
       isLoading: false,
       error: "",
       ...initialState,

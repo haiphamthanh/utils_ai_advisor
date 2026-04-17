@@ -32,12 +32,14 @@ class GeminiApiClient {
             responseJsonSchema: schema,
           },
         }),
-      }
+      },
     );
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(`Gemini API request failed: ${response.status} ${errorText}`);
+      throw new Error(
+        `Gemini API request failed: ${response.status} ${errorText}`,
+      );
     }
 
     const payload = await response.json();

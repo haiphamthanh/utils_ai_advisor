@@ -60,7 +60,29 @@ async function createTestService() {
   const insightService = new InsightService({
     dataStore,
     llmService: new LlmService({
-      modelClient: new FakeModelClient(),
+      modelClients: {
+        gemini: new FakeModelClient(),
+        openai: new FakeModelClient(),
+      },
+      providerCatalog: {
+        defaultProvider: "gemini",
+        providers: {
+          gemini: {
+            id: "gemini",
+            label: "Gemini",
+            model: "gemini-2.5-flash",
+            isConfigured: true,
+            status: "connected",
+          },
+          openai: {
+            id: "openai",
+            label: "OpenAI",
+            model: "gpt-5",
+            isConfigured: true,
+            status: "connected",
+          },
+        },
+      },
     }),
   });
 
@@ -72,17 +94,19 @@ async function createTestService() {
 
 test("askQuestion creates an answer flow and updates profile summary", async () => {
   const { insightService } = await createTestService();
-  const sessionSnapshot = await insightService.createSession("tester");
+  const sessionSnapshot = await insightService.createSession("tester", "openai");
   const sessionId = sessionSnapshot.session.sessionId;
   const result = await insightService.askQuestion({
     userId: "tester",
     sessionId,
     question: "RAG la gi?",
+    provider: "openai",
   });
 
   assert.equal(result.profile.summary.totalQuestions, 1);
   assert.equal(result.session.messages.length, 4);
   assert.equal(result.session.currentTopicLabel, "RAG");
+  assert.equal(result.session.provider, "openai");
   assert.equal(result.session.messages.at(-1).kind, "reflection");
   assert.equal(result.session.interactive.stage, "awaiting_reflection");
   assert.equal(result.session.interactive.question, "RAG la gi?");
@@ -90,13 +114,14 @@ test("askQuestion creates an answer flow and updates profile summary", async () 
 
 test("submitReflection adds clarification when user is still confused", async () => {
   const { insightService } = await createTestService();
-  const sessionSnapshot = await insightService.createSession("tester");
+  const sessionSnapshot = await insightService.createSession("tester", "gemini");
   const sessionId = sessionSnapshot.session.sessionId;
 
   await insightService.askQuestion({
     userId: "tester",
     sessionId,
     question: "Embedding la gi?",
+    provider: "gemini",
   });
 
   const result = await insightService.submitReflection({

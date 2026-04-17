@@ -5,7 +5,10 @@ class InsightController {
 
   createSession = async (request, response, next) => {
     try {
-      const data = await this.insightService.createSession(request.body.userId);
+      const data = await this.insightService.createSession(
+        request.body.userId,
+        request.body.provider
+      );
       response.status(201).json({ data });
     } catch (error) {
       next(error);
@@ -33,6 +36,15 @@ class InsightController {
   getDashboard = async (request, response, next) => {
     try {
       const data = await this.insightService.getDashboard(request.params.userId);
+      response.json({ data });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  getConfig = async (request, response, next) => {
+    try {
+      const data = await this.insightService.getConfig();
       response.json({ data });
     } catch (error) {
       next(error);

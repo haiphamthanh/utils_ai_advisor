@@ -44,7 +44,8 @@ const REFLECTION_RESPONSE_SCHEMA = {
   properties: {
     coachMessage: {
       type: "string",
-      description: "Adaptive coaching response in Vietnamese based on the confirmation.",
+      description:
+        "Adaptive coaching response in Vietnamese based on the confirmation.",
     },
     nextQuestion: {
       type: "string",
@@ -52,7 +53,8 @@ const REFLECTION_RESPONSE_SCHEMA = {
     },
     knowledgeGaps: {
       type: "array",
-      description: "Empty if user understood, otherwise one or two weak concepts.",
+      description:
+        "Empty if user understood, otherwise one or two weak concepts.",
       items: {
         type: "string",
       },
@@ -65,15 +67,22 @@ const REFLECTION_RESPONSE_SCHEMA = {
       },
     },
   },
-  required: ["coachMessage", "nextQuestion", "knowledgeGaps", "followUpSuggestions"],
+  required: [
+    "coachMessage",
+    "nextQuestion",
+    "knowledgeGaps",
+    "followUpSuggestions",
+  ],
 };
 
 class LlmService {
-  constructor({ modelClient }) {
-    this.modelClient = modelClient;
+  constructor({ modelClients, providerCatalog }) {
+    this.modelClients = modelClients;
+    this.providerCatalog = providerCatalog;
   }
 
-  async generateInitialInsight({ question, profile }) {
+  async generateInitialInsight({ question, profile, provider }) {
+    const client = this.getModelClient(provider);
     const systemInstruction = [
       "You are Insight Companion, an AI learning coach.",
       "Always answer in Vietnamese without markdown.",
@@ -88,7 +97,7 @@ class LlmService {
       "Generate a concise answer, one reflection question, one short topic label, one or two likely knowledge gaps, and exactly three next-step suggestions.",
     ].join("\n");
 
-    const result = await this.modelClient.generateStructuredObject({
+    const result = await client.generateStructuredObject({
       systemInstruction,
       userPrompt,
       schema: INITIAL_RESPONSE_SCHEMA,
@@ -98,19 +107,20 @@ class LlmService {
       topicLabel: this.normalizeLine(result.topicLabel, "Learning Topic"),
       shortAnswer: this.normalizeLine(
         result.shortAnswer,
-        "Minh se giai thich ngan gon, sau do xac nhan muc do hieu cua ban."
+        "Minh se giai thich ngan gon, sau do xac nhan muc do hieu cua ban.",
       ),
       reflectionQuestion: this.normalizeLine(
         result.reflectionQuestion,
-        "Ban da nam duoc y chinh cua phan nay chua?"
+        "Ban da nam duoc y chinh cua phan nay chua?",
       ),
       knowledgeGaps: this.normalizeList(result.knowledgeGaps, 2),
       followUpSuggestions: this.normalizeList(result.followUpSuggestions, 3),
-      source: "gemini-api",
+      source: this.getSourceLabel(provider),
     };
   }
 
   async generateReflectionInsight({
+    provider,
     topicLabel,
     understandingStatus,
     profile,
@@ -118,6 +128,7 @@ class LlmService {
     answer,
     knowledgeGaps,
   }) {
+    const client = this.getModelClient(provider);
     const systemInstruction = [
       "You are Insight Companion, an AI learning coach.",
       "Always answer in Vietnamese without markdown.",
@@ -136,7 +147,7 @@ class LlmService {
       "Return one adaptive coaching message, one next guiding question, zero to two knowledge gaps, and exactly three short next suggestions.",
     ].join("\n");
 
-    const result = await this.modelClient.generateStructuredObject({
+    const result = await client.generateStructuredObject({
       systemInstruction,
       userPrompt,
       schema: REFLECTION_RESPONSE_SCHEMA,
@@ -145,19 +156,71 @@ class LlmService {
     return {
       coachMessage: this.normalizeLine(
         result.coachMessage,
-        "Minh se dieu chinh buoc tiep theo dua tren xac nhan cua ban."
+        "Minh se dieu chinh buoc tiep theo dua tren xac nhan cua ban.",
       ),
       nextQuestion: this.normalizeLine(
         result.nextQuestion,
-        "Ban muon hoc tiep phan nao truoc?"
+        "Ban muon hoc tiep phan nao truoc?",
       ),
       knowledgeGaps:
         understandingStatus === "understood"
           ? []
           : this.normalizeList(result.knowledgeGaps, 2),
       followUpSuggestions: this.normalizeList(result.followUpSuggestions, 3),
-      source: "gemini-api",
+      source: this.getSourceLabel(provider),
     };
+  }
+
+  getConfigSnapshot() {
+    const providers = Object.values(this.providerCatalog.providers).map(
+      (provider) => ({
+        ...provider,
+      }),
+    );
+    const selectedDefault = this.resolveProviderSelection(
+      this.providerCatalog.defaultProvider,
+    );
+
+    return {
+      defaultProvider: selectedDefault,
+      providers,
+    };
+  }
+
+  resolveProviderSelection(provider) {
+    if (provider && this.providerCatalog.providers[provider]) {
+      return provider;
+    }
+
+    if (this.providerCatalog.providers[this.providerCatalog.defaultProvider]) {
+      return this.providerCatalog.defaultProvider;
+    }
+
+    return Object.keys(this.providerCatalog.providers)[0] || null;
+  }
+
+  getModelClient(provider) {
+    const resolvedProvider = this.resolveProviderSelection(provider);
+    const providerConfig = this.providerCatalog.providers[resolvedProvider];
+
+    if (!providerConfig) {
+      throw new Error(`Unsupported provider: ${provider}`);
+    }
+
+    if (!providerConfig.isConfigured) {
+      const keyName =
+        resolvedProvider === "gemini" ? "GEMINI_API_KEY" : "OPENAI_API_KEY";
+      throw new Error(`${keyName} is not configured.`);
+    }
+
+    return this.modelClients[resolvedProvider];
+  }
+
+  getSourceLabel(provider) {
+    const resolvedProvider = this.resolveProviderSelection(provider);
+    return resolvedProvider === "gemini"
+      ? "gemini-api"
+      : "openai-responses-api";
   }
 
   buildProfileContext(profile) {
@@ -177,7 +240,7 @@ class LlmService {
       .slice(0, 5)
       .map(
         (topic) =>
-          `${topic.topicLabel}: asked ${topic.questionsAsked}, clarified ${topic.clarificationCount}, understood ${topic.understoodCount}`
+          `${topic.topicLabel}: asked ${topic.questionsAsked}, clarified ${topic.clarificationCount}, understood ${topic.understoodCount}`,
       )
       .join(" | ");
 
@@ -197,7 +260,7 @@ class LlmService {
     const items = uniqueItems(
       Array.isArray(values)
         ? values.map((value) => String(value || "").trim()).filter(Boolean)
-        : []
+        : [],
     );
 
     return items.slice(0, limit);

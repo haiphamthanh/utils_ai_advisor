@@ -20,10 +20,10 @@ export class ApiClient {
     return payload.data;
   }
 
-  createSession(userId) {
+  createSession(userId, provider) {
     return this.request("/session", {
       method: "POST",
-      body: JSON.stringify({ userId }),
+      body: JSON.stringify({ userId, provider }),
     });
   }
 
@@ -39,5 +39,9 @@ export class ApiClient {
       method: "POST",
       body: JSON.stringify(payload),
     });
+  }
+
+  getConfig() {
+    return this.request("/config");
   }
 }

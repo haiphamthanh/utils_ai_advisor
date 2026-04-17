@@ -10,6 +10,7 @@ Insight Companion la mot MVP cho y tuong tro ly hoc tap ca nhan hoa. Ung dung du
 - cap nhat knowledge profile cho lan sau.
 
 UI hien tai duoc thiet ke theo kieu `interactive step view`: khong render toan bo lich su chat lien tuc, ma chi hien buoc hoc hien tai, ket qua confirm va cau hoi de xuat tiep theo.
+Trang cung co `provider selector` de chon noi chuyen voi `Gemini` hoac `OpenAI`, kem badge bao ngay provider nao dang `connected` hoac `missing API key`.
 
 ## 1. Chay du an
 
@@ -51,9 +52,11 @@ Bien moi truong ho tro:
 
 - `PORT`: cong chay web.
 - `HOST`: mac dinh la `127.0.0.1` de chi dung local.
-- `LLM_PROVIDER`: mac dinh la `gemini`.
+- `LLM_PROVIDER`: provider mac dinh, ho tro `gemini` hoac `openai`.
 - `GEMINI_API_KEY`: API key cua Gemini API. Bat buoc neu muon hoi dap.
 - `GEMINI_MODEL`: model Gemini dung de tu van. Mac dinh la `gemini-2.5-flash`.
+- `OPENAI_API_KEY`: API key cua OpenAI API.
+- `OPENAI_MODEL`: model OpenAI dung de tu van. Mac dinh la `gpt-5`.
 
 ## 3. Cau truc thu muc
 
@@ -65,7 +68,7 @@ src/
   models/        Builder cho profile va session
   routes/        API routes
   services/      Orchestration nghiep vu va LLM integration
-    modelClients/  Provider client, hien tai la Gemini API
+    modelClients/  Provider clients, hien tai la Gemini API va OpenAI API
   stores/        Luu/nap JSON local
   utils/         Helper nho
 public/
@@ -83,12 +86,13 @@ tests/
 - `POST /api/insight/session`
 - `POST /api/insight/ask`
 - `POST /api/insight/reflect`
+- `GET /api/insight/config`
 - `GET /api/insight/dashboard/:userId`
 - `GET /api/health`
 
 ## 5. Du lieu local
 
-App tao file `storage/learning-data.json` trong repo de luu session, profile va interaction history. File nay la runtime artifact, da duoc ignore trong git. Noi dung tu van khong con lay tu hardcode, ma duoc sinh truc tiep tu Gemini API.
+App tao file `storage/learning-data.json` trong repo de luu session, profile va interaction history. File nay la runtime artifact, da duoc ignore trong git. Noi dung tu van khong con lay tu hardcode, ma duoc sinh truc tiep tu provider duoc chon tren UI.
 
 ## 6. Kiem thu
 
