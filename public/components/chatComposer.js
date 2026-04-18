@@ -6,31 +6,47 @@ export class ChatComposer {
   }
 
   render(state) {
+    if (state.activeView !== "chat") {
+      this.rootElement.innerHTML = "";
+      this.textarea = null;
+      return;
+    }
+
     const stage = state.snapshot?.session?.interactive?.stage;
+    const hasProvider = state.config?.providers?.some(
+      (provider) =>
+        provider.id === state.selectedProvider && provider.isConfigured
+    );
+    const isDisabled = state.isLoading || !hasProvider;
     const placeholder =
       stage === "guided_next_step"
-        ? "Muon dao sau them? Cu viet theo cach tu nhien nhu dang nhan tin..."
-        : "Thu hoi nhu ban dang noi chuyen voi mot nguoi ban: RAG la gi, tai sao can embedding...";
-    const statusText = state.error
-      ? state.error
-      : state.isLoading
-        ? "Minh dang nghi va sap xep cach giai thich de hop voi ban..."
-        : "Minh dang san sang nghe tiep.";
+        ? "Bạn muốn hỏi sâu hơn ở điểm nào nữa?"
+        : "Nhập câu hỏi của bạn...";
 
     this.rootElement.innerHTML = `
       <form class="composer-form" id="composerForm">
-        <div class="stage-greeting">
-          <h2>Chào Hải, hôm nay mình học gì đây?</h2>
-          <p>${statusText}</p>
-        </div>
-        <textarea
-          id="questionInput"
-          placeholder="${placeholder}"
-          ${state.isLoading ? "disabled" : ""}
-        ></textarea>
-        <div class="composer-footer">
-          <button type="submit" ${state.isLoading ? "disabled" : ""}>
-            Gửi
+        ${
+          stage === "idle"
+            ? `
+              <div class="stage-greeting">
+                <h2>Chào bạn, bạn cần tìm hiểu gì?</h2>
+              </div>
+            `
+            : ""
+        }
+        <div class="composer-input-shell">
+          <textarea
+            id="questionInput"
+            placeholder="${placeholder}"
+            ${isDisabled ? "disabled" : ""}
+          ></textarea>
+          <button
+            type="submit"
+            class="send-icon-button"
+            ${isDisabled ? "disabled" : ""}
+            aria-label="Gửi câu hỏi"
+          >
+            ✈
           </button>
         </div>
       </form>
@@ -43,7 +59,7 @@ export class ChatComposer {
       event.preventDefault();
       const question = this.textarea.value.trim();
 
-      if (!question) {
+      if (!question || isDisabled) {
         return;
       }
 

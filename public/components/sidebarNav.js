@@ -1,3 +1,10 @@
+const NAV_ITEMS = [
+  { id: "chat", label: "Trang chủ", icon: "⌂" },
+  { id: "roadmaps", label: "Đề xuất kiến thức", icon: "✦" },
+  { id: "history", label: "Lịch sử đã học", icon: "◔" },
+  { id: "notes", label: "Ghi chú", icon: "✎" },
+];
+
 function escapeHtml(value = "") {
   return value
     .replaceAll("&", "&amp;")
@@ -7,25 +14,17 @@ function escapeHtml(value = "") {
     .replaceAll("'", "&#39;");
 }
 
-const NAV_ITEMS = [
-  { label: "Trang chủ", icon: "⌂" },
-  { label: "Môn đang học", icon: "▤" },
-  { label: "Lộ trình học", icon: "⌘" },
-  { label: "Ghi chú", icon: "✎" },
-  { label: "Đã lưu", icon: "☆" },
-  { label: "Lịch sử", icon: "◔" },
-  { label: "Quiz nhanh", icon: "◎" },
-];
-
 export class SidebarNav {
-  constructor({ rootElement, onCreateSession, onSelectTopic }) {
+  constructor({ rootElement, onCreateSession, onSelectTopic, onNavigate }) {
     this.rootElement = rootElement;
     this.onCreateSession = onCreateSession;
     this.onSelectTopic = onSelectTopic;
+    this.onNavigate = onNavigate;
 
     this.rootElement.addEventListener("click", async (event) => {
       const newSessionButton = event.target.closest("[data-action='new-session']");
       const topicButton = event.target.closest("[data-topic]");
+      const navButton = event.target.closest("[data-view]");
 
       if (newSessionButton) {
         await this.onCreateSession();
@@ -34,10 +33,15 @@ export class SidebarNav {
       if (topicButton) {
         await this.onSelectTopic(topicButton.dataset.topic);
       }
+
+      if (navButton) {
+        this.onNavigate(navButton.dataset.view);
+      }
     });
   }
 
-  render(snapshot) {
+  render(state) {
+    const snapshot = state.snapshot;
     const recentTopics = snapshot?.profile?.recentTopics || [];
 
     this.rootElement.innerHTML = `
@@ -49,20 +53,23 @@ export class SidebarNav {
         <nav class="sidebar-nav">
           ${NAV_ITEMS.map(
             (item) => `
-              <div class="sidebar-nav-item">
+              <button
+                class="sidebar-nav-item ${state.activeView === item.id ? "active" : ""}"
+                data-view="${item.id}"
+              >
                 <span class="sidebar-icon">${item.icon}</span>
                 <span>${item.label}</span>
-              </div>
+              </button>
             `
           ).join("")}
         </nav>
 
         <section class="sidebar-section">
-          <h3>Hôm nay</h3>
+          <h3>Gần đây</h3>
           ${
             recentTopics.length
               ? recentTopics
-                  .slice(0, 3)
+                  .slice(0, 4)
                   .map(
                     (topic) => `
                       <button class="recent-topic-item" data-topic="${escapeHtml(topic.topicLabel)}">
@@ -73,9 +80,9 @@ export class SidebarNav {
                   .join("")
               : `
                 <div class="sidebar-note">
-                  – Ôn lại chủ đề gần nhất<br />
-                  – Hỏi một ví dụ thực tế<br />
-                  – Làm 3 câu quiz nhỏ
+                  – Giải thích dễ hiểu<br />
+                  – Cho ví dụ thực tế<br />
+                  – Tạo lộ trình học ngắn
                 </div>
               `
           }

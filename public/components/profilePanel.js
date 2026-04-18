@@ -7,91 +7,117 @@ function escapeHtml(value = "") {
     .replaceAll("'", "&#39;");
 }
 
-function summarizeMessage(message = "") {
-  return String(message)
-    .split(/[.!?\n]/)
-    .map((item) => item.trim())
-    .filter(Boolean)
-    .slice(0, 3);
-}
-
-function getUnderstandingLevel(snapshot) {
-  const status = snapshot?.session?.interactive?.confirmation?.status;
-
-  if (status === "understood") {
-    return 4;
-  }
-
-  if (status === "partial") {
-    return 3;
-  }
-
-  if (status === "confused") {
-    return 2;
-  }
-
-  return snapshot?.profile?.summary?.totalQuestions ? 2 : 0;
-}
-
 export class ProfilePanel {
   constructor({ rootElement }) {
     this.rootElement = rootElement;
   }
 
-  render(snapshot) {
+  render(state) {
+    const snapshot = state.snapshot;
     const interactive = snapshot?.session?.interactive;
-    const currentTopic = snapshot?.session?.currentTopicLabel || "Chưa có chủ đề";
-    const summaryItems = summarizeMessage(
-      interactive?.primaryMessage || "Bắt đầu một câu hỏi để mình tóm tắt giúp bạn."
-    );
-    const suggestions =
-      interactive?.suggestions?.slice(0, 3) ||
-      snapshot?.profile?.recentTopics?.map((topic) => topic.topicLabel).slice(0, 3) ||
-      [];
-    const understandingLevel = getUnderstandingLevel(snapshot);
-    const totalQuestions = snapshot?.profile?.summary?.totalQuestions || 0;
-    const totalClarifications = snapshot?.profile?.summary?.clarificationCount || 0;
+    const currentTopic = interactive?.topicLabel || snapshot?.session?.currentTopicLabel;
+    const suggestions = interactive?.suggestions || [];
+    const summaryText =
+      interactive?.primaryMessage ||
+      "Khi bạn bắt đầu chat, mình sẽ tóm tắt ngắn ở đây để bạn nhìn lại nhanh.";
+    const noteCount = snapshot?.notes?.active?.length || 0;
+    const roadmapCount = snapshot?.roadmaps?.length || 0;
+    const totalHistory = snapshot?.history?.length || 0;
+
+    if (state.activeView === "roadmaps") {
+      this.rootElement.innerHTML = `
+        <div class="context-stack">
+          <article class="context-card">
+            <h3>🎓 Đề xuất kiến thức</h3>
+            <ul class="context-list">
+              <li>${roadmapCount} roadmap đang có</li>
+              <li>Mỗi roadmap chia thành các bài học ngắn</li>
+              <li>Nhấn vào bài học để xem popup và hỏi tiếp</li>
+            </ul>
+          </article>
+        </div>
+      `;
+      return;
+    }
+
+    if (state.activeView === "history") {
+      this.rootElement.innerHTML = `
+        <div class="context-stack">
+          <article class="context-card">
+            <h3>📚 Lịch sử đã học</h3>
+            <ul class="context-list">
+              <li>${totalHistory} lượt hỏi đáp đã được lưu</li>
+              <li>Có thể xem lại câu hỏi và câu trả lời cũ</li>
+              <li>Dùng để theo dõi quá trình học tập</li>
+            </ul>
+          </article>
+        </div>
+      `;
+      return;
+    }
+
+    if (state.activeView === "notes") {
+      this.rootElement.innerHTML = `
+        <div class="context-stack">
+          <article class="context-card">
+            <h3>📝 Ghi chú</h3>
+            <ul class="context-list">
+              <li>${noteCount} ghi chú chưa resolve</li>
+              <li>Nhấn vào card để xem chi tiết</li>
+              <li>Resolve xong thì card sẽ không hiện trong bảng</li>
+            </ul>
+          </article>
+        </div>
+      `;
+      return;
+    }
 
     this.rootElement.innerHTML = `
       <div class="context-stack">
         <article class="context-card">
-          <h3>🎓 Chủ đề: ${escapeHtml(currentTopic)}</h3>
+          <h3>🎓 Chủ đề: ${escapeHtml(currentTopic || "Chưa có chủ đề")}</h3>
         </article>
 
         <article class="context-card">
-          <h3>🗂 Tóm tắt nhanh</h3>
-          <ul class="context-list">
-            ${summaryItems.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
-          </ul>
+          <h3>📌 Tóm tắt nhanh</h3>
+          <p>${escapeHtml(summaryText)}</p>
         </article>
 
         <article class="context-card">
-          <h3>🚀 Hỏi tiếp theo</h3>
+          <h3>🚀 Gợi ý tiếp theo</h3>
           <ul class="context-list">
             ${
               suggestions.length
-                ? suggestions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")
-                : "<li>Hỏi một ví dụ thực tế</li><li>So sánh hai khái niệm</li><li>Kiểm tra mình đã hiểu chưa</li>"
+                ? suggestions
+                    .slice(0, 3)
+                    .map((item) => `<li>${escapeHtml(item)}</li>`)
+                    .join("")
+                : `
+                    <li>Giải thích dễ hiểu</li>
+                    <li>Cho ví dụ thực tế</li>
+                    <li>Tạo lộ trình học thêm</li>
+                  `
             }
           </ul>
         </article>
 
         <article class="context-card">
-          <h3>📶 Mức độ hiểu</h3>
+          <h3>📈 Mức độ hiểu</h3>
           <div class="understanding-meter">
-            ${Array.from({ length: 5 }, (_, index) => {
-              const active = index < understandingLevel;
-              return `<span class="meter-dot ${active ? "active" : ""}"></span>`;
-            }).join("")}
+            <span class="meter-dot active"></span>
+            <span class="meter-dot active"></span>
+            <span class="meter-dot ${interactive?.confirmation?.status ? "active" : ""}"></span>
+            <span class="meter-dot"></span>
+            <span class="meter-dot"></span>
           </div>
         </article>
 
         <article class="context-card">
-          <h3>🏆 Nhiệm vụ hôm nay</h3>
+          <h3>✅ Nhiệm vụ hôm nay</h3>
           <ul class="context-list">
-            <li>${totalQuestions >= 1 ? "✓" : "–"} Hoàn thành 1 chủ đề</li>
-            <li>${totalQuestions >= 3 ? "✓" : "–"} Đặt 3 câu hỏi tiếp nối</li>
-            <li>${totalClarifications >= 1 ? "✓" : "–"} Gỡ ít nhất 1 chỗ chưa rõ</li>
+            <li>– Hoàn thành 1 chủ đề</li>
+            <li>– Tạo 1 roadmap</li>
+            <li>– Lưu 1 ghi chú quan trọng</li>
           </ul>
         </article>
       </div>

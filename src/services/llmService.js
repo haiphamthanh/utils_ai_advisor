@@ -75,13 +75,57 @@ const REFLECTION_RESPONSE_SCHEMA = {
   ],
 };
 
+const ROADMAP_RESPONSE_SCHEMA = {
+  type: "object",
+  properties: {
+    title: {
+      type: "string",
+    },
+    overview: {
+      type: "string",
+    },
+    lessons: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          title: { type: "string" },
+          summary: { type: "string" },
+          questionPrompt: { type: "string" },
+        },
+        required: ["title", "summary", "questionPrompt"],
+      },
+    },
+  },
+  required: ["title", "overview", "lessons"],
+};
+
+const KNOWLEDGE_SUMMARY_SCHEMA = {
+  type: "object",
+  properties: {
+    title: {
+      type: "string",
+    },
+    summary: {
+      type: "string",
+    },
+    keyPoints: {
+      type: "array",
+      items: {
+        type: "string",
+      },
+    },
+  },
+  required: ["title", "summary", "keyPoints"],
+};
+
 class LlmService {
   constructor({ modelClients, providerCatalog }) {
     this.modelClients = modelClients;
     this.providerCatalog = providerCatalog;
   }
 
-  async generateInitialInsight({ question, profile, provider }) {
+  async generateInitialInsight({ question, profile, provider, topicHint }) {
     const client = this.getModelClient(provider);
     const systemInstruction = [
       "You are Insight Companion, an AI learning coach.",
@@ -92,6 +136,7 @@ class LlmService {
 
     const userPrompt = [
       `User question: ${question}`,
+      `Topic hint: ${topicHint || "none"}`,
       `Preferred style: ${profile.preferredStyle}`,
       `Known profile summary: ${this.buildProfileContext(profile)}`,
       "Generate a concise answer, one reflection question, one short topic label, one or two likely knowledge gaps, and exactly three next-step suggestions.",
@@ -168,6 +213,81 @@ class LlmService {
           : this.normalizeList(result.knowledgeGaps, 2),
       followUpSuggestions: this.normalizeList(result.followUpSuggestions, 3),
       source: this.getSourceLabel(provider),
+    };
+  }
+
+  async generateRoadmap({ provider, topicLabel, profile }) {
+    const client = this.getModelClient(provider);
+    const systemInstruction = [
+      "You are Insight Companion, an AI learning planner.",
+      "Always answer in Vietnamese without markdown.",
+      "Create a short learning roadmap made of small lessons, not a long curriculum.",
+      "Lessons should be clear, practical, and easy to continue from inside a learning assistant.",
+    ].join("\n");
+
+    const userPrompt = [
+      `Topic label: ${topicLabel}`,
+      `Learner profile summary: ${this.buildProfileContext(profile)}`,
+      "Return one roadmap title, one short overview, and 4 to 6 concise lessons.",
+      "Each lesson needs a title, a short summary, and a questionPrompt to continue learning in chat.",
+    ].join("\n");
+
+    const result = await client.generateStructuredObject({
+      systemInstruction,
+      userPrompt,
+      schema: ROADMAP_RESPONSE_SCHEMA,
+    });
+
+    return {
+      title: this.normalizeLine(result.title, `Lộ trình học ${topicLabel}`),
+      overview: this.normalizeLine(
+        result.overview,
+        "Một lộ trình ngắn để bạn học tiếp từng bước."
+      ),
+      lessons: (Array.isArray(result.lessons) ? result.lessons : [])
+        .map((lesson) => ({
+          title: this.normalizeLine(lesson.title, "Bài học"),
+          summary: this.normalizeLine(
+            lesson.summary,
+            "Một mẩu kiến thức ngắn để bạn mở rộng chủ đề."
+          ),
+          questionPrompt: this.normalizeLine(
+            lesson.questionPrompt,
+            `Giải thích ${lesson.title || topicLabel} cho người mới.`
+          ),
+        }))
+        .slice(0, 6),
+    };
+  }
+
+  async generateKnowledgeSummary({ provider, topicLabel, interactions }) {
+    const client = this.getModelClient(provider);
+    const systemInstruction = [
+      "You are Insight Companion, an AI learning summarizer.",
+      "Always answer in Vietnamese without markdown.",
+      "Summarize learning progress into a short popup-friendly knowledge card.",
+    ].join("\n");
+
+    const userPrompt = [
+      `Topic label: ${topicLabel}`,
+      "Recent learning interactions:",
+      interactions.join("\n"),
+      "Return one short summary title, one compact summary paragraph, and exactly 3 key points.",
+    ].join("\n");
+
+    const result = await client.generateStructuredObject({
+      systemInstruction,
+      userPrompt,
+      schema: KNOWLEDGE_SUMMARY_SCHEMA,
+    });
+
+    return {
+      title: this.normalizeLine(result.title, topicLabel),
+      summary: this.normalizeLine(
+        result.summary,
+        "Tóm tắt ngắn gọn phần kiến thức đã học."
+      ),
+      keyPoints: this.normalizeList(result.keyPoints, 3),
     };
   }
 

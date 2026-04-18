@@ -41,6 +41,27 @@ export class ApiClient {
     });
   }
 
+  createRoadmap(payload) {
+    return this.request("/roadmaps", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+  }
+
+  createNote(payload) {
+    return this.request("/notes", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+  }
+
+  resolveNote(noteId, payload) {
+    return this.request(`/notes/${noteId}/resolve`, {
+      method: "PATCH",
+      body: JSON.stringify(payload),
+    });
+  }
+
   getConfig() {
     return this.request("/config");
   }

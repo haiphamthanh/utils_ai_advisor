@@ -31,13 +31,27 @@ class DataStore {
       users: {},
       sessions: {},
       interactions: [],
+      notes: {},
+      roadmaps: {},
     };
   }
 
   async load() {
     await this.init();
     const rawContent = await fs.readFile(this.filePath, "utf8");
-    return JSON.parse(rawContent);
+    const state = JSON.parse(rawContent);
+
+    state.meta = state.meta || {
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+    state.users = state.users || {};
+    state.sessions = state.sessions || {};
+    state.interactions = state.interactions || [];
+    state.notes = state.notes || {};
+    state.roadmaps = state.roadmaps || {};
+
+    return state;
   }
 
   async persist(state) {
@@ -64,6 +78,8 @@ class DataStore {
         clarificationCount: 0,
         knowledgeGaps: [],
         lastAskedAt: null,
+        summary: null,
+        summaryUpdatedAt: null,
       };
     }
 
@@ -244,6 +260,66 @@ class DataStore {
     await this.persist(state);
   }
 
+  async createNote(note) {
+    const state = await this.load();
+    state.notes[note.noteId] = note;
+    await this.persist(state);
+    return note;
+  }
+
+  async resolveNote(noteId) {
+    const state = await this.load();
+    const note = state.notes[noteId];
+
+    if (!note) {
+      throw new Error("Note not found.");
+    }
+
+    note.resolved = true;
+    note.resolvedAt = new Date().toISOString();
+    await this.persist(state);
+    return note;
+  }
+
+  async createRoadmap(roadmap) {
+    const state = await this.load();
+    state.roadmaps[roadmap.roadmapId] = roadmap;
+    await this.persist(state);
+    return roadmap;
+  }
+
+  async updateTopicSummary(userId, topicKey, summary) {
+    const state = await this.load();
+    const userProfile = this.ensureUser(state, userId);
+    const topic = userProfile.topics[topicKey];
+
+    if (!topic) {
+      throw new Error("Topic not found.");
+    }
+
+    topic.summary = summary;
+    topic.summaryUpdatedAt = new Date().toISOString();
+
+    Object.values(state.roadmaps).forEach((roadmap) => {
+      if (roadmap.userId !== userId) {
+        return;
+      }
+
+      roadmap.lessons = (roadmap.lessons || []).map((lesson) =>
+        lesson.topicKey === topicKey
+          ? {
+              ...lesson,
+              learnedSummary: summary,
+              summaryUpdatedAt: topic.summaryUpdatedAt,
+            }
+          : lesson
+      );
+    });
+
+    await this.persist(state);
+    return topic;
+  }
+
   async getSnapshot(userId, sessionId) {
     const state = await this.load();
     const userProfile = this.ensureUser(state, userId);
@@ -252,6 +328,9 @@ class DataStore {
     return {
       session: activeSessionId ? state.sessions[activeSessionId] || null : null,
       userProfile,
+      interactions: state.interactions,
+      notes: state.notes,
+      roadmaps: state.roadmaps,
     };
   }
 }

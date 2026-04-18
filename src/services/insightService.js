@@ -23,13 +23,13 @@ class InsightService {
       role: "assistant",
       kind: "welcome",
       content:
-        "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+        "Chào bạn, bạn cần tìm hiểu gì? Mình sẽ trả lời ngắn gọn, hỏi lại nếu cần và gợi ý bạn học tiếp từng bước.",
       createdAt: new Date().toISOString(),
       meta: {
         suggestedPrompts: [
-          "RAG la gi?",
-          "Embedding la gi?",
-          "AI agent khac chatbot the nao?",
+          "Giải thích RAG là gì",
+          "Cho ví dụ thực tế về Webhook",
+          "Tạo lộ trình học về Docker cơ bản",
         ],
       },
     };
@@ -43,7 +43,13 @@ class InsightService {
     });
   }
 
-  async askQuestion({ userId = "demo-user", sessionId, question, provider }) {
+  async askQuestion({
+    userId = "demo-user",
+    sessionId,
+    question,
+    provider,
+    topicHint,
+  }) {
     if (!question || !String(question).trim()) {
       throw new Error("Question is required.");
     }
@@ -71,8 +77,9 @@ class InsightService {
       question,
       profile,
       provider: activeProvider,
+      topicHint,
     });
-    const topicLabel = insight.topicLabel;
+    const topicLabel = topicHint || insight.topicLabel;
     const topicKey = this.createTopicKey(topicLabel);
     const timestamp = new Date().toISOString();
 
@@ -133,6 +140,13 @@ class InsightService {
       followUpSuggestions: insight.followUpSuggestions,
       knowledgeGaps: insight.knowledgeGaps,
       source: insight.source,
+      provider: activeProvider,
+    });
+
+    await this.updateTopicSummaryIfNeeded({
+      userId,
+      topicKey,
+      topicLabel,
       provider: activeProvider,
     });
 
@@ -243,6 +257,106 @@ class InsightService {
       provider: activeProvider,
     });
 
+    await this.updateTopicSummaryIfNeeded({
+      userId,
+      topicKey,
+      topicLabel,
+      provider: activeProvider,
+    });
+
+    return this.buildSnapshot({
+      userId,
+      sessionId,
+    });
+  }
+
+  async createRoadmap({ userId = "demo-user", sessionId, topicLabel, provider }) {
+    const profile = await this.dataStore.getOrCreateUserProfile(userId);
+    const snapshot = await this.dataStore.getSnapshot(userId, sessionId);
+    const resolvedTopicLabel =
+      topicLabel ||
+      snapshot.session?.currentTopicLabel ||
+      snapshot.session?.interactive?.topicLabel ||
+      "Kiến thức mới";
+    const activeProvider =
+      provider ||
+      snapshot.session?.currentProvider ||
+      this.llmService.resolveProviderSelection();
+    const roadmapPayload = await this.llmService.generateRoadmap({
+      provider: activeProvider,
+      topicLabel: resolvedTopicLabel,
+      profile,
+    });
+
+    const roadmap = {
+      roadmapId: createId("roadmap"),
+      userId,
+      title: roadmapPayload.title,
+      topicLabel: resolvedTopicLabel,
+      overview: roadmapPayload.overview,
+      createdAt: new Date().toISOString(),
+      lessons: roadmapPayload.lessons.map((lesson) => ({
+        lessonId: createId("lesson"),
+        title: lesson.title,
+        summary: lesson.summary,
+        questionPrompt: lesson.questionPrompt,
+        topicKey: this.createTopicKey(lesson.title),
+        learnedSummary: null,
+        summaryUpdatedAt: null,
+      })),
+    };
+
+    await this.dataStore.createRoadmap(roadmap);
+
+    return this.buildSnapshot({
+      userId,
+      sessionId,
+    });
+  }
+
+  async createNote({ userId = "demo-user", sessionId, content }) {
+    const snapshot = await this.dataStore.getSnapshot(userId, sessionId);
+    const session = snapshot.session;
+    const interactive = this.buildInteractiveState(
+      session?.messages || [],
+      session?.currentTopicLabel
+    );
+
+    if (!interactive.question && !content) {
+      throw new Error("No active learning content to save.");
+    }
+
+    const note = {
+      noteId: createId("note"),
+      userId,
+      topicLabel: interactive.topicLabel || session?.currentTopicLabel || "Ghi chú",
+      title:
+        interactive.question ||
+        session?.currentTopicLabel ||
+        "Ghi chú học tập",
+      question: interactive.question || "",
+      answer: interactive.primaryMessage || "",
+      content:
+        String(content || "").trim() ||
+        interactive.coachMessage ||
+        interactive.primaryMessage ||
+        "",
+      resolved: false,
+      createdAt: new Date().toISOString(),
+      resolvedAt: null,
+    };
+
+    await this.dataStore.createNote(note);
+
+    return this.buildSnapshot({
+      userId,
+      sessionId,
+    });
+  }
+
+  async resolveNote({ userId = "demo-user", sessionId, noteId }) {
+    await this.dataStore.resolveNote(noteId);
+
     return this.buildSnapshot({
       userId,
       sessionId,
@@ -272,6 +386,27 @@ class InsightService {
     };
     const userProfile = existingProfile || snapshot.userProfile;
     const topics = Object.values(userProfile.topics || {});
+    const notes = Object.values(snapshot.notes || {})
+      .filter((note) => note.userId === userId)
+      .sort((left, right) => right.createdAt.localeCompare(left.createdAt));
+    const activeNotes = notes.filter((note) => !note.resolved);
+    const roadmaps = Object.values(snapshot.roadmaps || {})
+      .filter((roadmap) => roadmap.userId === userId)
+      .sort((left, right) => right.createdAt.localeCompare(left.createdAt));
+    const history = (snapshot.interactions || [])
+      .filter(
+        (interaction) =>
+          interaction.userId === userId && interaction.type === "question_cycle"
+      )
+      .sort((left, right) => right.createdAt.localeCompare(left.createdAt))
+      .slice(0, 20)
+      .map((interaction) => ({
+        interactionId: `${interaction.sessionId}_${interaction.createdAt}`,
+        topicLabel: interaction.topicLabel,
+        question: interaction.question,
+        answer: interaction.answer,
+        createdAt: interaction.createdAt,
+      }));
     const focusAreas = topics
       .map((topic) => ({
         topicKey: topic.topicKey,
@@ -301,6 +436,7 @@ class InsightService {
         topicLabel: topic.topicLabel,
         questionsAsked: topic.questionsAsked,
         knowledgeGaps: uniqueItems(topic.knowledgeGaps).slice(0, 3),
+        summary: topic.summary,
       }));
 
     return {
@@ -319,6 +455,12 @@ class InsightService {
         strengths,
         recentTopics,
       },
+      history,
+      notes: {
+        active: activeNotes,
+        all: notes,
+      },
+      roadmaps,
     };
   }
 
@@ -401,6 +543,40 @@ class InsightService {
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-+|-+$/g, "") || "learning-topic";
+  }
+
+  async updateTopicSummaryIfNeeded({ userId, topicKey, topicLabel, provider }) {
+    const snapshot = await this.dataStore.getSnapshot(userId);
+    const topic = snapshot.userProfile?.topics?.[topicKey];
+
+    if (!topic || topic.questionsAsked < 5 || topic.questionsAsked % 5 !== 0) {
+      return;
+    }
+
+    const relevantInteractions = (snapshot.interactions || [])
+      .filter(
+        (interaction) =>
+          interaction.userId === userId &&
+          interaction.topicKey === topicKey &&
+          interaction.type === "question_cycle"
+      )
+      .slice(-5)
+      .map(
+        (interaction) =>
+          `Q: ${interaction.question}\nA: ${interaction.answer}`
+      );
+
+    if (!relevantInteractions.length) {
+      return;
+    }
+
+    const summary = await this.llmService.generateKnowledgeSummary({
+      provider,
+      topicLabel,
+      interactions: relevantInteractions,
+    });
+
+    await this.dataStore.updateTopicSummary(userId, topicKey, summary);
   }
 }
 

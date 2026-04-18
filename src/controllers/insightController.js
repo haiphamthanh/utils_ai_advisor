@@ -33,6 +33,36 @@ class InsightController {
     }
   };
 
+  createRoadmap = async (request, response, next) => {
+    try {
+      const data = await this.insightService.createRoadmap(request.body);
+      response.status(201).json({ data });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  createNote = async (request, response, next) => {
+    try {
+      const data = await this.insightService.createNote(request.body);
+      response.status(201).json({ data });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  resolveNote = async (request, response, next) => {
+    try {
+      const data = await this.insightService.resolveNote({
+        ...request.body,
+        noteId: request.params.noteId,
+      });
+      response.json({ data });
+    } catch (error) {
+      next(error);
+    }
+  };
+
   getDashboard = async (request, response, next) => {
     try {
       const data = await this.insightService.getDashboard(request.params.userId);

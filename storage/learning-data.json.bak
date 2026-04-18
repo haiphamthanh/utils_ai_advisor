@@ -1,0 +1,4541 @@
+{
+  "meta": {
+    "createdAt": "2026-04-12T05:01:49.608Z",
+    "updatedAt": "2026-04-18T04:03:51.077Z"
+  },
+  "users": {
+    "demo-user": {
+      "userId": "demo-user",
+      "preferredStyle": "short_clear_direct",
+      "createdAt": "2026-04-12T05:02:14.146Z",
+      "lastActiveAt": "2026-04-18T04:03:43.455Z",
+      "currentSessionId": "session_7b480d75-1b50-4d79-b42e-7f92053d6b95",
+      "summary": {
+        "totalQuestions": 28,
+        "understoodCount": 2,
+        "clarificationCount": 17
+      },
+      "topics": {
+        "rag": {
+          "topicKey": "rag",
+          "topicLabel": "RAG",
+          "questionsAsked": 9,
+          "understoodCount": 2,
+          "clarificationCount": 6,
+          "knowledgeGaps": [
+            "retrieval",
+            "embedding"
+          ],
+          "lastAskedAt": "2026-04-16T21:01:29.453Z"
+        },
+        "embedding": {
+          "topicKey": "embedding",
+          "topicLabel": "Embedding",
+          "questionsAsked": 7,
+          "understoodCount": 0,
+          "clarificationCount": 4,
+          "knowledgeGaps": [
+            "vector space",
+            "similarity search"
+          ],
+          "lastAskedAt": "2026-04-16T20:15:48.286Z"
+        },
+        "agent": {
+          "topicKey": "agent",
+          "topicLabel": "AI Agent",
+          "questionsAsked": 5,
+          "understoodCount": 0,
+          "clarificationCount": 2,
+          "knowledgeGaps": [
+            "planning",
+            "tool invocation"
+          ],
+          "lastAskedAt": "2026-04-16T20:54:13.088Z"
+        },
+        "generic": {
+          "topicKey": "generic",
+          "topicLabel": "General Learning Topic",
+          "questionsAsked": 4,
+          "understoodCount": 0,
+          "clarificationCount": 4,
+          "knowledgeGaps": [
+            "core concept",
+            "applied example"
+          ],
+          "lastAskedAt": "2026-04-16T20:16:43.615Z"
+        },
+        "h-th-ng-rag": {
+          "topicKey": "h-th-ng-rag",
+          "topicLabel": "Hệ thống RAG",
+          "questionsAsked": 1,
+          "understoodCount": 0,
+          "clarificationCount": 1,
+          "knowledgeGaps": [
+            "Mô hình ngôn ngữ lớn (LLM)",
+            "Cơ chế truy xuất thông tin"
+          ],
+          "lastAskedAt": "2026-04-17T19:22:05.815Z"
+        },
+        "rag-v-llm": {
+          "topicKey": "rag-v-llm",
+          "topicLabel": "RAG và LLM",
+          "questionsAsked": 1,
+          "understoodCount": 0,
+          "clarificationCount": 0,
+          "knowledgeGaps": [
+            "Hạn chế của LLM đơn thuần",
+            "Nguồn dữ liệu bên ngoài trong RAG"
+          ],
+          "lastAskedAt": "2026-04-17T19:22:44.404Z"
+        },
+        "khai-th-c-c-ng-ngh": {
+          "topicKey": "khai-th-c-c-ng-ngh",
+          "topicLabel": "Khai thác công nghệ",
+          "questionsAsked": 1,
+          "understoodCount": 0,
+          "clarificationCount": 0,
+          "knowledgeGaps": [
+            "Cách thức để tận dụng hiệu quả một công nghệ",
+            "Phân biệt giữa 'sử dụng' và 'tận dụng' công nghệ"
+          ],
+          "lastAskedAt": "2026-04-18T02:14:33.425Z"
+        }
+      }
+    }
+  },
+  "sessions": {
+    "session_1b4245ce-b455-4c54-b0f1-f551f6f73d32": {
+      "sessionId": "session_1b4245ce-b455-4c54-b0f1-f551f6f73d32",
+      "userId": "demo-user",
+      "createdAt": "2026-04-12T05:02:14.147Z",
+      "updatedAt": "2026-04-12T05:02:14.147Z",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_1807441a-b4bf-4756-9a8c-bb0b0707928f",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-12T05:02:14.147Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_a4136535-ed85-4274-9eb0-e18bca02cfd5": {
+      "sessionId": "session_a4136535-ed85-4274-9eb0-e18bca02cfd5",
+      "userId": "demo-user",
+      "createdAt": "2026-04-12T05:02:22.738Z",
+      "updatedAt": "2026-04-12T05:02:22.747Z",
+      "currentTopicKey": "rag",
+      "currentTopicLabel": "RAG",
+      "messages": [
+        {
+          "id": "msg_58a6134e-8f5a-4526-9414-16698e2cf766",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-12T05:02:22.738Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_c538e584-6ba2-42f9-ab29-fd860d932cc6",
+          "role": "user",
+          "kind": "question",
+          "content": "RAG la gi?",
+          "createdAt": "2026-04-12T05:02:22.744Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_c1aaf2f9-f006-48e6-bb8c-d90a94e57a75",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+          "createdAt": "2026-04-12T05:02:22.744Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_5ae399b3-2208-478e-a6b1-aeb5585b345e",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu phan retrieval trong RAG chua?",
+          "createdAt": "2026-04-12T05:02:22.744Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "selectedStatus": "partial",
+            "resolvedAt": "2026-04-12T05:02:22.746Z"
+          }
+        },
+        {
+          "id": "msg_122432a2-800f-4b54-a54d-4ff7a8a950c1",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Can don gian hon",
+          "createdAt": "2026-04-12T05:02:22.747Z",
+          "meta": {
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_626cf91b-6bc9-49bc-a2cd-d5fee256f6ce",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+          "createdAt": "2026-04-12T05:02:22.747Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_f21e2cd2-d2ab-401b-b974-ce5796fcc77c",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Ban co the hoc tiep theo tung buoc qua 3 cau hoi nay.",
+          "createdAt": "2026-04-12T05:02:22.747Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ]
+          }
+        }
+      ]
+    },
+    "session_a55ff6f4-0f77-46a7-b5a3-a936122598c8": {
+      "sessionId": "session_a55ff6f4-0f77-46a7-b5a3-a936122598c8",
+      "userId": "demo-user",
+      "createdAt": "2026-04-12T05:18:02.000Z",
+      "updatedAt": "2026-04-12T05:19:08.943Z",
+      "currentTopicKey": "embedding",
+      "currentTopicLabel": "Embedding",
+      "messages": [
+        {
+          "id": "msg_f4ef6a97-977b-4725-b051-4109fe7f463f",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-12T05:18:02.001Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_9a4b2519-8648-4775-b2dc-3e7d25b76fbc",
+          "role": "user",
+          "kind": "question",
+          "content": "RAG la gi?",
+          "createdAt": "2026-04-12T05:18:09.871Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_8ae96149-7815-4758-a404-b2cb2db8261c",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+          "createdAt": "2026-04-12T05:18:09.871Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_e2ce99a6-73d1-4cbc-acb9-a2872449f4a8",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu phan retrieval trong RAG chua?",
+          "createdAt": "2026-04-12T05:18:09.871Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "selectedStatus": "confused",
+            "resolvedAt": "2026-04-12T05:18:23.518Z"
+          }
+        },
+        {
+          "id": "msg_370c5d34-f4f0-475b-9c29-a56db8e987e2",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Van con mo ho",
+          "createdAt": "2026-04-12T05:18:23.520Z",
+          "meta": {
+            "understandingStatus": "confused"
+          }
+        },
+        {
+          "id": "msg_5b353a5c-0ed5-4101-90e1-e27f83d5f79e",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+          "createdAt": "2026-04-12T05:18:23.520Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_ad2d165b-3157-43aa-abe0-3850ba4d588e",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Ban co the hoc tiep theo tung buoc qua 3 cau hoi nay.",
+          "createdAt": "2026-04-12T05:18:23.520Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ]
+          }
+        },
+        {
+          "id": "msg_15836d1d-452f-4e38-b91d-de83162a6e1d",
+          "role": "user",
+          "kind": "question",
+          "content": "RAG khac fine-tuning the nao?",
+          "createdAt": "2026-04-12T05:18:44.416Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_ccee8d06-6215-4fab-ab18-5d253d18322b",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+          "createdAt": "2026-04-12T05:18:44.416Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_80fe7f18-6386-49e4-9348-04022ef2c714",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu phan retrieval trong RAG chua?",
+          "createdAt": "2026-04-12T05:18:44.416Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "selectedStatus": "understood",
+            "resolvedAt": "2026-04-12T05:18:57.105Z"
+          }
+        },
+        {
+          "id": "msg_21f467a6-169e-4959-9d4e-b4b1fb484f0d",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Da hieu",
+          "createdAt": "2026-04-12T05:18:57.106Z",
+          "meta": {
+            "understandingStatus": "understood"
+          }
+        },
+        {
+          "id": "msg_16ae2a3e-f20f-4e3a-b41e-7c5a508c984c",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Tot. Day la 3 huong hoc tiep theo de mo rong chu de.",
+          "createdAt": "2026-04-12T05:18:57.106Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "knowledgeGaps": []
+          }
+        },
+        {
+          "id": "msg_b0a96e48-a014-4ff1-b86b-ef9cf54a5d24",
+          "role": "user",
+          "kind": "question",
+          "content": "Embedding la gi?",
+          "createdAt": "2026-04-12T05:19:08.942Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_0af17d69-93be-45b8-b6ea-dc55b80633b7",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+          "createdAt": "2026-04-12T05:19:08.942Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_342d4de9-ead8-476c-a46c-8b17fed9a00a",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu vi sao can bien text thanh vector chua?",
+          "createdAt": "2026-04-12T05:19:08.942Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "actionState": "pending",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "vector space",
+              "similarity search"
+            ],
+            "followUpSuggestions": [
+              "Similarity search la gi?",
+              "Vector database la gi?",
+              "Embedding dung trong semantic search nhu the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_1627240f-58a3-48a3-b1bc-0964eb0dd948": {
+      "sessionId": "session_1627240f-58a3-48a3-b1bc-0964eb0dd948",
+      "userId": "demo-user",
+      "createdAt": "2026-04-12T05:25:27.378Z",
+      "updatedAt": "2026-04-12T05:25:27.379Z",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_bfe0bc3e-27f1-4fb4-9e2d-29fafab5be96",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-12T05:25:27.378Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_31f08cdd-e682-4f42-9ebb-d93a39c156e3": {
+      "sessionId": "session_31f08cdd-e682-4f42-9ebb-d93a39c156e3",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T16:21:11.381Z",
+      "updatedAt": "2026-04-16T16:21:11.382Z",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_c48f314c-63f0-448f-837a-49cfb91d713b",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T16:21:11.382Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_76d990e5-b32e-431f-a93a-59170e190d1b": {
+      "sessionId": "session_76d990e5-b32e-431f-a93a-59170e190d1b",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T16:21:28.709Z",
+      "updatedAt": "2026-04-16T17:48:37.296Z",
+      "currentTopicKey": "agent",
+      "currentTopicLabel": "AI Agent",
+      "messages": [
+        {
+          "id": "msg_489b6b8a-7458-4183-a27d-4e431a131750",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T16:21:28.709Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_43a99a66-e2d4-4c58-9ee9-d124cdeb3eab",
+          "role": "user",
+          "kind": "question",
+          "content": "AI agent khac chatbot the nao?",
+          "createdAt": "2026-04-16T17:48:37.295Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_25cf66ac-5089-4876-9949-acf72be3e500",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "AI agent la he thong dung mo hinh de lap ke hoach, goi cong cu va thuc hien nhieu buoc thay vi chi tra loi mot lan.",
+          "createdAt": "2026-04-16T17:48:37.295Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_468e347a-343c-4e88-941d-cd885e78f009",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu diem khac nhau giua chatbot va agent chua?",
+          "createdAt": "2026-04-16T17:48:37.295Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "actionState": "pending",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "planning",
+              "tool invocation"
+            ],
+            "followUpSuggestions": [
+              "Agent khac workflow rule-based the nao?",
+              "Tool calling la gi?",
+              "Rui ro khi xay AI agent la gi?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_cc7b15f5-3b8e-4fc9-8705-8ab8160db307": {
+      "sessionId": "session_cc7b15f5-3b8e-4fc9-8705-8ab8160db307",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T19:50:50.868Z",
+      "updatedAt": "2026-04-16T19:51:25.465Z",
+      "currentTopicKey": "agent",
+      "currentTopicLabel": "AI Agent",
+      "messages": [
+        {
+          "id": "msg_cbe1e2fe-c7b7-4c7a-8bf1-a588a3fe0e66",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T19:50:50.869Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_3cf4ccfd-b4a9-48c1-9015-ce728e750383",
+          "role": "user",
+          "kind": "question",
+          "content": "Embedding la gi?",
+          "createdAt": "2026-04-16T19:51:04.431Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_1b8534eb-4698-47b8-9082-75c042b92b84",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+          "createdAt": "2026-04-16T19:51:04.431Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_43146a60-365e-4dc7-9a03-a4673fb787eb",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu vi sao can bien text thanh vector chua?",
+          "createdAt": "2026-04-16T19:51:04.431Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "actionState": "pending",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "vector space",
+              "similarity search"
+            ],
+            "followUpSuggestions": [
+              "Similarity search la gi?",
+              "Vector database la gi?",
+              "Embedding dung trong semantic search nhu the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_43205be9-a02c-4350-a30d-58308eae3880",
+          "role": "user",
+          "kind": "question",
+          "content": "Embedding la gi?",
+          "createdAt": "2026-04-16T19:51:07.923Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_fd1f8807-c402-4214-b82b-a952f3e0c4ed",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+          "createdAt": "2026-04-16T19:51:07.923Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_59ce417b-582d-4b1a-91ec-df1fce76e5a6",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu vi sao can bien text thanh vector chua?",
+          "createdAt": "2026-04-16T19:51:07.923Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "vector space",
+              "similarity search"
+            ],
+            "followUpSuggestions": [
+              "Similarity search la gi?",
+              "Vector database la gi?",
+              "Embedding dung trong semantic search nhu the nao?"
+            ],
+            "selectedStatus": "partial",
+            "resolvedAt": "2026-04-16T19:51:17.493Z"
+          }
+        },
+        {
+          "id": "msg_43909bcc-b9df-4c86-9a0e-e57efde36113",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Can don gian hon",
+          "createdAt": "2026-04-16T19:51:17.494Z",
+          "meta": {
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_2bdaec6b-8e97-458d-84a0-b679e0146dab",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Neu hai cau co y tuong giong nhau, embedding giup dat chung gan nhau trong mot ban do so hoc.",
+          "createdAt": "2026-04-16T19:51:17.494Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_13a6376f-e0d6-4788-9c23-f62fad6f4507",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Ban co the hoc tiep theo tung buoc qua 3 cau hoi nay.",
+          "createdAt": "2026-04-16T19:51:17.494Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Similarity search la gi?",
+              "Vector database la gi?",
+              "Embedding dung trong semantic search nhu the nao?"
+            ],
+            "knowledgeGaps": [
+              "vector space",
+              "similarity search"
+            ]
+          }
+        },
+        {
+          "id": "msg_ebcff00b-6166-4fcf-a96b-9444163d1fc6",
+          "role": "user",
+          "kind": "question",
+          "content": "AI agent khac chatbot the nao?",
+          "createdAt": "2026-04-16T19:51:20.569Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_b2c170e9-8ad1-48bd-8dcd-4dc6b21c914d",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "AI agent la he thong dung mo hinh de lap ke hoach, goi cong cu va thuc hien nhieu buoc thay vi chi tra loi mot lan.",
+          "createdAt": "2026-04-16T19:51:20.569Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_49143e9f-26d8-48b2-8307-e931ad5138a0",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu diem khac nhau giua chatbot va agent chua?",
+          "createdAt": "2026-04-16T19:51:20.569Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "actionState": "pending",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "planning",
+              "tool invocation"
+            ],
+            "followUpSuggestions": [
+              "Agent khac workflow rule-based the nao?",
+              "Tool calling la gi?",
+              "Rui ro khi xay AI agent la gi?"
+            ]
+          }
+        },
+        {
+          "id": "msg_614da8f3-c18b-4344-b916-9eb553b3c77c",
+          "role": "user",
+          "kind": "question",
+          "content": "AI agent khac chatbot the nao?",
+          "createdAt": "2026-04-16T19:51:22.735Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_8503d704-9529-4695-8bd2-140ce02ac327",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "AI agent la he thong dung mo hinh de lap ke hoach, goi cong cu va thuc hien nhieu buoc thay vi chi tra loi mot lan.",
+          "createdAt": "2026-04-16T19:51:22.735Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_4d5a4a48-9a43-4073-875e-4cce70903dca",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu diem khac nhau giua chatbot va agent chua?",
+          "createdAt": "2026-04-16T19:51:22.735Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "planning",
+              "tool invocation"
+            ],
+            "followUpSuggestions": [
+              "Agent khac workflow rule-based the nao?",
+              "Tool calling la gi?",
+              "Rui ro khi xay AI agent la gi?"
+            ],
+            "selectedStatus": "confused",
+            "resolvedAt": "2026-04-16T19:51:25.463Z"
+          }
+        },
+        {
+          "id": "msg_ac49370b-e6d4-4163-8962-8877cbc61248",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Van con mo ho",
+          "createdAt": "2026-04-16T19:51:25.464Z",
+          "meta": {
+            "understandingStatus": "confused"
+          }
+        },
+        {
+          "id": "msg_0c7590ad-9c62-4d0c-a694-24bbef904dc3",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Chatbot thuong tra loi ngay. Agent thi co the nghi theo buoc, lam viec, kiem tra va quay lai ket qua.",
+          "createdAt": "2026-04-16T19:51:25.464Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_f223e5ef-9ff2-435e-ab4d-ee88404bb049",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Ban co the hoc tiep theo tung buoc qua 3 cau hoi nay.",
+          "createdAt": "2026-04-16T19:51:25.464Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Agent khac workflow rule-based the nao?",
+              "Tool calling la gi?",
+              "Rui ro khi xay AI agent la gi?"
+            ],
+            "knowledgeGaps": [
+              "planning",
+              "tool invocation"
+            ]
+          }
+        }
+      ]
+    },
+    "session_275a5809-def8-4fe6-8112-316d9cb76a41": {
+      "sessionId": "session_275a5809-def8-4fe6-8112-316d9cb76a41",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T19:51:51.064Z",
+      "updatedAt": "2026-04-16T19:51:57.363Z",
+      "currentTopicKey": "agent",
+      "currentTopicLabel": "AI Agent",
+      "messages": [
+        {
+          "id": "msg_1b385fdd-affc-4637-b27c-19323f5e0dc6",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T19:51:51.065Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_8acaef1c-8d23-4978-9783-5f8791676d1b",
+          "role": "user",
+          "kind": "question",
+          "content": "AI agent khac chatbot the nao?",
+          "createdAt": "2026-04-16T19:51:53.437Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_cd909006-a6e2-4221-840f-3b47a7ac228f",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "AI agent la he thong dung mo hinh de lap ke hoach, goi cong cu va thuc hien nhieu buoc thay vi chi tra loi mot lan.",
+          "createdAt": "2026-04-16T19:51:53.437Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_a35a5245-395e-4132-bf13-6e18f00922ba",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu diem khac nhau giua chatbot va agent chua?",
+          "createdAt": "2026-04-16T19:51:53.437Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "planning",
+              "tool invocation"
+            ],
+            "followUpSuggestions": [
+              "Agent khac workflow rule-based the nao?",
+              "Tool calling la gi?",
+              "Rui ro khi xay AI agent la gi?"
+            ],
+            "selectedStatus": "confused",
+            "resolvedAt": "2026-04-16T19:51:57.362Z"
+          }
+        },
+        {
+          "id": "msg_cbef1e18-ea81-4ea2-bcac-b222681bd9e4",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Van con mo ho",
+          "createdAt": "2026-04-16T19:51:57.363Z",
+          "meta": {
+            "understandingStatus": "confused"
+          }
+        },
+        {
+          "id": "msg_92f6d9ae-bb62-4be3-beac-0eced1fb98ad",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Chatbot thuong tra loi ngay. Agent thi co the nghi theo buoc, lam viec, kiem tra va quay lai ket qua.",
+          "createdAt": "2026-04-16T19:51:57.363Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_418bec8d-8f48-4712-9ed7-60a6c69bbc51",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Ban co the hoc tiep theo tung buoc qua 3 cau hoi nay.",
+          "createdAt": "2026-04-16T19:51:57.363Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Agent khac workflow rule-based the nao?",
+              "Tool calling la gi?",
+              "Rui ro khi xay AI agent la gi?"
+            ],
+            "knowledgeGaps": [
+              "planning",
+              "tool invocation"
+            ]
+          }
+        }
+      ]
+    },
+    "session_f8665552-db62-4e57-9fa1-d9d148d3dc3d": {
+      "sessionId": "session_f8665552-db62-4e57-9fa1-d9d148d3dc3d",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T19:53:37.426Z",
+      "updatedAt": "2026-04-16T19:53:49.794Z",
+      "currentTopicKey": "embedding",
+      "currentTopicLabel": "Embedding",
+      "messages": [
+        {
+          "id": "msg_daf2d1b2-d89b-465e-bf2f-fecee58516bb",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T19:53:37.426Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_987d3a62-cbb1-4a41-b710-7175c866031c",
+          "role": "user",
+          "kind": "question",
+          "content": "Embedding la gi?",
+          "createdAt": "2026-04-16T19:53:49.793Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_bcd31e59-e30e-4af1-92c1-30301733c01d",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+          "createdAt": "2026-04-16T19:53:49.793Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_826e589f-2f8d-4191-9ed0-8f89efd9b8ab",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu vi sao can bien text thanh vector chua?",
+          "createdAt": "2026-04-16T19:53:49.793Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "actionState": "pending",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "vector space",
+              "similarity search"
+            ],
+            "followUpSuggestions": [
+              "Similarity search la gi?",
+              "Vector database la gi?",
+              "Embedding dung trong semantic search nhu the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_8207425a-6558-48ba-a510-12276ea5ed31": {
+      "sessionId": "session_8207425a-6558-48ba-a510-12276ea5ed31",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T19:59:24.533Z",
+      "updatedAt": "2026-04-16T19:59:24.543Z",
+      "currentTopicKey": "rag",
+      "currentTopicLabel": "RAG",
+      "messages": [
+        {
+          "id": "msg_30fcd686-9ea5-41d5-89d5-b757dc11aba6",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T19:59:24.533Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_439fa07c-9771-4344-859f-ba46bb4c2865",
+          "role": "user",
+          "kind": "question",
+          "content": "RAG la gi?",
+          "createdAt": "2026-04-16T19:59:24.540Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_2234dcc4-6671-4ca4-b269-b69b7861f0b2",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+          "createdAt": "2026-04-16T19:59:24.540Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_ef27ef9e-ef0b-463a-af68-73bdb09ec852",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu phan retrieval trong RAG chua?",
+          "createdAt": "2026-04-16T19:59:24.540Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "selectedStatus": "partial",
+            "resolvedAt": "2026-04-16T19:59:24.542Z"
+          }
+        },
+        {
+          "id": "msg_19a88e61-3652-4751-a802-908a9d23079b",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Can don gian hon",
+          "createdAt": "2026-04-16T19:59:24.543Z",
+          "meta": {
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_009a2a38-f18b-4fee-9507-b71bd3ca6318",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+          "createdAt": "2026-04-16T19:59:24.543Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_c91cc48c-1419-4712-8443-fc19383bb1f7",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Ban co the hoc tiep theo tung buoc qua 3 cau hoi nay.",
+          "createdAt": "2026-04-16T19:59:24.543Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ]
+          }
+        }
+      ]
+    },
+    "session_6f9a3cf5-baa1-466e-b0a1-c38353f417b5": {
+      "sessionId": "session_6f9a3cf5-baa1-466e-b0a1-c38353f417b5",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T19:59:35.901Z",
+      "updatedAt": "2026-04-16T19:59:35.902Z",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_9ffe14a9-fb4c-41c9-9cb5-ffe0bebbce18",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T19:59:35.902Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_90d92e1e-bf2a-4b86-8ffa-c081701afb88": {
+      "sessionId": "session_90d92e1e-bf2a-4b86-8ffa-c081701afb88",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T19:59:48.601Z",
+      "updatedAt": "2026-04-16T19:59:48.601Z",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_8ae79bf9-8a04-4292-973f-5f4548399539",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T19:59:48.601Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_b00d47a1-77f4-4b7e-9f47-d42f722cccf2": {
+      "sessionId": "session_b00d47a1-77f4-4b7e-9f47-d42f722cccf2",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T20:00:17.250Z",
+      "updatedAt": "2026-04-16T20:00:17.251Z",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_0cd42ae1-06e0-4a0e-9a95-3d0fc72af411",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T20:00:17.250Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_c54cc05e-636f-49f1-aa1c-286da7f334f2": {
+      "sessionId": "session_c54cc05e-636f-49f1-aa1c-286da7f334f2",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T20:00:17.263Z",
+      "updatedAt": "2026-04-16T20:00:17.276Z",
+      "currentTopicKey": "rag",
+      "currentTopicLabel": "RAG",
+      "messages": [
+        {
+          "id": "msg_6424814e-8e4f-4307-8bbc-8e4c8f9a1f93",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T20:00:17.263Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_d43dfe69-56db-423a-9997-b95050d04a53",
+          "role": "user",
+          "kind": "question",
+          "content": "RAG la gi?",
+          "createdAt": "2026-04-16T20:00:17.270Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_a2fffb15-89ee-4e1b-85fe-0cd3326cf1bb",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+          "createdAt": "2026-04-16T20:00:17.270Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_2507f4b3-11f3-4daa-a513-218d205a3a7f",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu phan retrieval trong RAG chua?",
+          "createdAt": "2026-04-16T20:00:17.270Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "selectedStatus": "partial",
+            "resolvedAt": "2026-04-16T20:00:17.275Z"
+          }
+        },
+        {
+          "id": "msg_357731b8-0489-426e-b051-950ad35d2f96",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Can don gian hon",
+          "createdAt": "2026-04-16T20:00:17.276Z",
+          "meta": {
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_cfc57ef6-6fa2-4469-948a-e550d8912857",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+          "createdAt": "2026-04-16T20:00:17.276Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_1f4bd3b1-b5e2-4392-a2a8-41f532feba3f",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Trong 3 huong nay, ban muon go ro phan nao truoc?",
+          "createdAt": "2026-04-16T20:00:17.276Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "coachMessage": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+            "understandingStatus": "partial"
+          }
+        }
+      ]
+    },
+    "session_10407e4b-da18-49ae-b5ef-3d8277fd8106": {
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T20:14:44.808Z",
+      "updatedAt": "2026-04-16T20:16:44.775Z",
+      "currentTopicKey": "generic",
+      "currentTopicLabel": "General Learning Topic",
+      "messages": [
+        {
+          "id": "msg_95a31b59-8bb3-4a83-914e-93999851c39f",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T20:14:44.809Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_50dd6486-24e0-4bd5-909c-717ce563b318",
+          "role": "user",
+          "kind": "question",
+          "content": "RAG la gi?",
+          "createdAt": "2026-04-16T20:14:49.578Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_9a445da9-7747-4c1b-8a2e-5fd6aa8930a5",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+          "createdAt": "2026-04-16T20:14:49.578Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_ed468a4f-0d7a-44d5-8343-043e043364f2",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu phan retrieval trong RAG chua?",
+          "createdAt": "2026-04-16T20:14:49.578Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "selectedStatus": "partial",
+            "resolvedAt": "2026-04-16T20:14:55.682Z"
+          }
+        },
+        {
+          "id": "msg_f88d7a27-7bca-471a-92e8-e9ff0ae10379",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Can don gian hon",
+          "createdAt": "2026-04-16T20:14:55.686Z",
+          "meta": {
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_7e868278-58ee-4d27-9687-2dedc74ff1bc",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+          "createdAt": "2026-04-16T20:14:55.686Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_c5e2a063-37eb-479d-b82f-5f04be550ea1",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Trong 3 huong nay, ban muon go ro phan nao truoc?",
+          "createdAt": "2026-04-16T20:14:55.686Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "coachMessage": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_d1486660-353b-477d-b5fd-f5a2c3e5f1bb",
+          "role": "user",
+          "kind": "question",
+          "content": "RAG khac fine-tuning the nao?",
+          "createdAt": "2026-04-16T20:15:10.383Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_ce614165-a575-4da4-afff-ee1cef9b85e4",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+          "createdAt": "2026-04-16T20:15:10.383Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_f7c7654c-41c8-4168-989d-cc38844da82a",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu phan retrieval trong RAG chua?",
+          "createdAt": "2026-04-16T20:15:10.383Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "selectedStatus": "partial",
+            "resolvedAt": "2026-04-16T20:15:16.382Z"
+          }
+        },
+        {
+          "id": "msg_35d281b0-32ed-4597-91f9-b9d39a177389",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Can don gian hon",
+          "createdAt": "2026-04-16T20:15:16.385Z",
+          "meta": {
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_ae5ffa0c-02fb-455b-bee1-2c25955f9d9b",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+          "createdAt": "2026-04-16T20:15:16.385Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_c5fb8c24-3873-4f45-a3ab-5e0ea9a81327",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Trong 3 huong nay, ban muon go ro phan nao truoc?",
+          "createdAt": "2026-04-16T20:15:16.385Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "coachMessage": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_f4eb1cd2-ce4e-4fd4-8368-266970c6ca16",
+          "role": "user",
+          "kind": "question",
+          "content": "RAG khac fine-tuning the nao?",
+          "createdAt": "2026-04-16T20:15:20.208Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_086a02da-1fa0-49d1-9f0c-7967212586f2",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+          "createdAt": "2026-04-16T20:15:20.208Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_71a7dd9a-0168-43bb-9084-a2d4b731f2eb",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu phan retrieval trong RAG chua?",
+          "createdAt": "2026-04-16T20:15:20.208Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "selectedStatus": "understood",
+            "resolvedAt": "2026-04-16T20:15:23.102Z"
+          }
+        },
+        {
+          "id": "msg_ff227270-593f-4a66-b211-0eb91aaeea51",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Da hieu",
+          "createdAt": "2026-04-16T20:15:23.104Z",
+          "meta": {
+            "understandingStatus": "understood"
+          }
+        },
+        {
+          "id": "msg_1601b539-30cc-41a0-aa25-4bac766afba5",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Ban muon dao sau tiep phan nao cua RAG?",
+          "createdAt": "2026-04-16T20:15:23.104Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ],
+            "knowledgeGaps": [],
+            "coachMessage": "Tot. Minh se day nhanh hon sang phan lien quan de mo rong chu de nay.",
+            "understandingStatus": "understood"
+          }
+        },
+        {
+          "id": "msg_2ece1a39-6719-4f13-9e67-5f28038dc721",
+          "role": "user",
+          "kind": "question",
+          "content": "Embedding la gi?",
+          "createdAt": "2026-04-16T20:15:26.732Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_7646ce81-47e8-4a97-bc91-863df4786022",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+          "createdAt": "2026-04-16T20:15:26.732Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_3382ee11-2634-4181-8ac2-4be57bb103e2",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu vi sao can bien text thanh vector chua?",
+          "createdAt": "2026-04-16T20:15:26.732Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "vector space",
+              "similarity search"
+            ],
+            "followUpSuggestions": [
+              "Similarity search la gi?",
+              "Vector database la gi?",
+              "Embedding dung trong semantic search nhu the nao?"
+            ],
+            "selectedStatus": "confused",
+            "resolvedAt": "2026-04-16T20:15:34.081Z"
+          }
+        },
+        {
+          "id": "msg_494ddfa5-8e96-40d8-bed3-66999435a277",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Van con mo ho",
+          "createdAt": "2026-04-16T20:15:34.084Z",
+          "meta": {
+            "understandingStatus": "confused"
+          }
+        },
+        {
+          "id": "msg_062cd265-605d-4e6d-b11b-6887412074e6",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Neu hai cau co y tuong giong nhau, embedding giup dat chung gan nhau trong mot ban do so hoc.",
+          "createdAt": "2026-04-16T20:15:34.084Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_4331b321-268a-4023-92a8-0ccfb3358b1e",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Trong 3 huong nay, ban muon go ro phan nao truoc?",
+          "createdAt": "2026-04-16T20:15:34.084Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Similarity search la gi?",
+              "Vector database la gi?",
+              "Embedding dung trong semantic search nhu the nao?"
+            ],
+            "knowledgeGaps": [
+              "vector space",
+              "similarity search"
+            ],
+            "coachMessage": "Neu hai cau co y tuong giong nhau, embedding giup dat chung gan nhau trong mot ban do so hoc.",
+            "understandingStatus": "confused"
+          }
+        },
+        {
+          "id": "msg_bc1fc9d1-2b3e-477b-9c95-319c31560b12",
+          "role": "user",
+          "kind": "question",
+          "content": "Embedding dung trong semantic search nhu the nao?",
+          "createdAt": "2026-04-16T20:15:37.443Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_c1d2fc7e-af49-4c6a-a9bf-df683a48be31",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+          "createdAt": "2026-04-16T20:15:37.443Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_ed79857f-08fe-4ba1-8aab-6239cb7ac8d4",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu vi sao can bien text thanh vector chua?",
+          "createdAt": "2026-04-16T20:15:37.443Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "vector space",
+              "similarity search"
+            ],
+            "followUpSuggestions": [
+              "Similarity search la gi?",
+              "Vector database la gi?",
+              "Embedding dung trong semantic search nhu the nao?"
+            ],
+            "selectedStatus": "partial",
+            "resolvedAt": "2026-04-16T20:15:44.117Z"
+          }
+        },
+        {
+          "id": "msg_da8ac0b5-9b78-4973-b720-6af7531ee3f8",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Can don gian hon",
+          "createdAt": "2026-04-16T20:15:44.120Z",
+          "meta": {
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_898d6e63-28d0-47e2-ba51-f40f493e50dc",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Neu hai cau co y tuong giong nhau, embedding giup dat chung gan nhau trong mot ban do so hoc.",
+          "createdAt": "2026-04-16T20:15:44.120Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_ef6571b1-c322-4091-bdd5-d8b0fae52cbf",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Trong 3 huong nay, ban muon go ro phan nao truoc?",
+          "createdAt": "2026-04-16T20:15:44.120Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Similarity search la gi?",
+              "Vector database la gi?",
+              "Embedding dung trong semantic search nhu the nao?"
+            ],
+            "knowledgeGaps": [
+              "vector space",
+              "similarity search"
+            ],
+            "coachMessage": "Neu hai cau co y tuong giong nhau, embedding giup dat chung gan nhau trong mot ban do so hoc.",
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_1b287202-97be-4cf5-b635-e21b1f29b18d",
+          "role": "user",
+          "kind": "question",
+          "content": "Embedding dung trong semantic search nhu the nao?",
+          "createdAt": "2026-04-16T20:15:48.285Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_87f2081c-c54f-4d55-bec2-ca884a67347e",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+          "createdAt": "2026-04-16T20:15:48.285Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_d817cdfd-1f55-4d7d-897b-e5d744dc53df",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu vi sao can bien text thanh vector chua?",
+          "createdAt": "2026-04-16T20:15:48.285Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "vector space",
+              "similarity search"
+            ],
+            "followUpSuggestions": [
+              "Similarity search la gi?",
+              "Vector database la gi?",
+              "Embedding dung trong semantic search nhu the nao?"
+            ],
+            "selectedStatus": "partial",
+            "resolvedAt": "2026-04-16T20:15:58.006Z"
+          }
+        },
+        {
+          "id": "msg_c0194ed1-04b8-45ed-b350-adcb401edf06",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Can don gian hon",
+          "createdAt": "2026-04-16T20:15:58.009Z",
+          "meta": {
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_8164d1eb-3ed5-482a-a013-d6c002c15c46",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Neu hai cau co y tuong giong nhau, embedding giup dat chung gan nhau trong mot ban do so hoc.",
+          "createdAt": "2026-04-16T20:15:58.009Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_b0316490-d3cd-4692-9f03-2fb9d0dc3bd1",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Trong 3 huong nay, ban muon go ro phan nao truoc?",
+          "createdAt": "2026-04-16T20:15:58.009Z",
+          "meta": {
+            "topicKey": "embedding",
+            "topicLabel": "Embedding",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Similarity search la gi?",
+              "Vector database la gi?",
+              "Embedding dung trong semantic search nhu the nao?"
+            ],
+            "knowledgeGaps": [
+              "vector space",
+              "similarity search"
+            ],
+            "coachMessage": "Neu hai cau co y tuong giong nhau, embedding giup dat chung gan nhau trong mot ban do so hoc.",
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_d0093fc1-d5d2-4b32-8143-ce3a6b0b1bc9",
+          "role": "user",
+          "kind": "question",
+          "content": "phương pháp search",
+          "createdAt": "2026-04-16T20:16:14.748Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_02529980-2e3d-45c4-b7b7-146c209214ba",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Minh se tom tat y chinh cua cau hoi truoc, sau do kiem tra xem ban da nam duoc phan cot loi chua.",
+          "createdAt": "2026-04-16T20:16:14.748Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_2e863c4c-c57c-470d-8e00-3cb77553a98c",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da nam duoc y chinh cua chu de nay chua?",
+          "createdAt": "2026-04-16T20:16:14.748Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "core concept",
+              "applied example"
+            ],
+            "followUpSuggestions": [
+              "Cho minh mot vi du de hieu hon",
+              "Chu de nay ung dung o dau?",
+              "Co khai niem nen hoc truoc khong?"
+            ],
+            "selectedStatus": "partial",
+            "resolvedAt": "2026-04-16T20:16:25.236Z"
+          }
+        },
+        {
+          "id": "msg_1d2d9b7d-ca24-4e73-91b2-fa0628464f18",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Can don gian hon",
+          "createdAt": "2026-04-16T20:16:25.239Z",
+          "meta": {
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_870a8d14-3d68-4f91-aff6-1d3158ce2729",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+          "createdAt": "2026-04-16T20:16:25.239Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_3d5f9310-366d-4a0f-ab5f-45aabfdacabf",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Trong 3 huong nay, ban muon go ro phan nao truoc?",
+          "createdAt": "2026-04-16T20:16:25.239Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Cho minh mot vi du de hieu hon",
+              "Chu de nay ung dung o dau?",
+              "Co khai niem nen hoc truoc khong?"
+            ],
+            "knowledgeGaps": [
+              "core concept",
+              "applied example"
+            ],
+            "coachMessage": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_d39de565-2742-4a7c-b996-12e637a8fd28",
+          "role": "user",
+          "kind": "question",
+          "content": "Co khai niem nen hoc truoc khong?",
+          "createdAt": "2026-04-16T20:16:33.949Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_47368b34-ff8c-4bbf-b2c6-04bfa44af28c",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Minh se tom tat y chinh cua cau hoi truoc, sau do kiem tra xem ban da nam duoc phan cot loi chua.",
+          "createdAt": "2026-04-16T20:16:33.949Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_e0252eab-418d-44eb-b348-8c201943d75e",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da nam duoc y chinh cua chu de nay chua?",
+          "createdAt": "2026-04-16T20:16:33.949Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "core concept",
+              "applied example"
+            ],
+            "followUpSuggestions": [
+              "Cho minh mot vi du de hieu hon",
+              "Chu de nay ung dung o dau?",
+              "Co khai niem nen hoc truoc khong?"
+            ],
+            "selectedStatus": "partial",
+            "resolvedAt": "2026-04-16T20:16:36.002Z"
+          }
+        },
+        {
+          "id": "msg_b2debbf3-edb1-4ceb-866f-84cfae6493e4",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Can don gian hon",
+          "createdAt": "2026-04-16T20:16:36.008Z",
+          "meta": {
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_bdcbe7de-ce66-4eb1-9490-48ef8e9a96fe",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+          "createdAt": "2026-04-16T20:16:36.008Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_06f39ef2-6e64-468e-af90-94f11efc2aae",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Trong 3 huong nay, ban muon go ro phan nao truoc?",
+          "createdAt": "2026-04-16T20:16:36.008Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Cho minh mot vi du de hieu hon",
+              "Chu de nay ung dung o dau?",
+              "Co khai niem nen hoc truoc khong?"
+            ],
+            "knowledgeGaps": [
+              "core concept",
+              "applied example"
+            ],
+            "coachMessage": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+            "understandingStatus": "partial"
+          }
+        },
+        {
+          "id": "msg_fa733916-9666-44af-bf0b-5ea142bb29b5",
+          "role": "user",
+          "kind": "question",
+          "content": "Cho minh mot vi du de hieu hon",
+          "createdAt": "2026-04-16T20:16:37.911Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_d2e9da64-39c3-4a98-8975-7302d5bdfb3f",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Minh se tom tat y chinh cua cau hoi truoc, sau do kiem tra xem ban da nam duoc phan cot loi chua.",
+          "createdAt": "2026-04-16T20:16:37.911Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_b5276ec9-89f3-4c42-a2f2-7e2db9aa7bcd",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da nam duoc y chinh cua chu de nay chua?",
+          "createdAt": "2026-04-16T20:16:37.911Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "core concept",
+              "applied example"
+            ],
+            "followUpSuggestions": [
+              "Cho minh mot vi du de hieu hon",
+              "Chu de nay ung dung o dau?",
+              "Co khai niem nen hoc truoc khong?"
+            ],
+            "selectedStatus": "confused",
+            "resolvedAt": "2026-04-16T20:16:39.166Z"
+          }
+        },
+        {
+          "id": "msg_61df09ee-6933-428c-a785-e462a16d71c0",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Van con mo ho",
+          "createdAt": "2026-04-16T20:16:39.168Z",
+          "meta": {
+            "understandingStatus": "confused"
+          }
+        },
+        {
+          "id": "msg_2b76be55-05d3-47e2-af88-5b19657ce311",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+          "createdAt": "2026-04-16T20:16:39.168Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_1e9f689b-640e-4765-9fbb-d7bf29f85bf2",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Trong 3 huong nay, ban muon go ro phan nao truoc?",
+          "createdAt": "2026-04-16T20:16:39.168Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Cho minh mot vi du de hieu hon",
+              "Chu de nay ung dung o dau?",
+              "Co khai niem nen hoc truoc khong?"
+            ],
+            "knowledgeGaps": [
+              "core concept",
+              "applied example"
+            ],
+            "coachMessage": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+            "understandingStatus": "confused"
+          }
+        },
+        {
+          "id": "msg_18947bff-fc86-40bc-9e85-29b7a58c0c63",
+          "role": "user",
+          "kind": "question",
+          "content": "Chu de nay ung dung o dau?",
+          "createdAt": "2026-04-16T20:16:43.612Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_51dd3a87-539f-42c2-90f4-b447f3ebf588",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Minh se tom tat y chinh cua cau hoi truoc, sau do kiem tra xem ban da nam duoc phan cot loi chua.",
+          "createdAt": "2026-04-16T20:16:43.612Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_7a95c0fe-8af5-4cd9-a289-8fb78f52fcb8",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da nam duoc y chinh cua chu de nay chua?",
+          "createdAt": "2026-04-16T20:16:43.612Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "actionState": "resolved",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "core concept",
+              "applied example"
+            ],
+            "followUpSuggestions": [
+              "Cho minh mot vi du de hieu hon",
+              "Chu de nay ung dung o dau?",
+              "Co khai niem nen hoc truoc khong?"
+            ],
+            "selectedStatus": "confused",
+            "resolvedAt": "2026-04-16T20:16:44.770Z"
+          }
+        },
+        {
+          "id": "msg_e4ed7cb7-1237-4d52-b870-6521e50f8b18",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Van con mo ho",
+          "createdAt": "2026-04-16T20:16:44.775Z",
+          "meta": {
+            "understandingStatus": "confused"
+          }
+        },
+        {
+          "id": "msg_6e004fe6-5e1e-4f83-8a63-f43315f8c5a9",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+          "createdAt": "2026-04-16T20:16:44.775Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_2e7f53a6-f737-4ee9-9e42-0b45968ffe70",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Trong 3 huong nay, ban muon go ro phan nao truoc?",
+          "createdAt": "2026-04-16T20:16:44.775Z",
+          "meta": {
+            "topicKey": "generic",
+            "topicLabel": "General Learning Topic",
+            "responseSource": "local-knowledge-base",
+            "followUpSuggestions": [
+              "Cho minh mot vi du de hieu hon",
+              "Chu de nay ung dung o dau?",
+              "Co khai niem nen hoc truoc khong?"
+            ],
+            "knowledgeGaps": [
+              "core concept",
+              "applied example"
+            ],
+            "coachMessage": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+            "understandingStatus": "confused"
+          }
+        }
+      ]
+    },
+    "session_a2d542b7-bb05-42da-89ef-c0115c616a72": {
+      "sessionId": "session_a2d542b7-bb05-42da-89ef-c0115c616a72",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T20:53:33.840Z",
+      "updatedAt": "2026-04-16T20:53:33.842Z",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_d1f84f24-f02d-4d53-8864-4a47ed29d9e2",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T20:53:33.841Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_55629150-d632-4ff4-af58-da346c932ba5": {
+      "sessionId": "session_55629150-d632-4ff4-af58-da346c932ba5",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T20:54:08.376Z",
+      "updatedAt": "2026-04-16T20:54:13.086Z",
+      "currentTopicKey": "agent",
+      "currentTopicLabel": "AI Agent",
+      "messages": [
+        {
+          "id": "msg_009c433b-f44b-46bf-ab01-55e09f820401",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T20:54:08.377Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_d1d2a809-aa3a-4686-bff7-90a652ed12ae",
+          "role": "user",
+          "kind": "question",
+          "content": "AI agent khac chatbot the nao?",
+          "createdAt": "2026-04-16T20:54:13.085Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_9a00c034-ab1b-4046-9d2a-cdb35351004f",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "AI agent la he thong dung mo hinh de lap ke hoach, goi cong cu va thuc hien nhieu buoc thay vi chi tra loi mot lan.",
+          "createdAt": "2026-04-16T20:54:13.085Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_451e5a39-5c7b-4b6e-aae2-59a6d9b91c27",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu diem khac nhau giua chatbot va agent chua?",
+          "createdAt": "2026-04-16T20:54:13.085Z",
+          "meta": {
+            "topicKey": "agent",
+            "topicLabel": "AI Agent",
+            "actionState": "pending",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "planning",
+              "tool invocation"
+            ],
+            "followUpSuggestions": [
+              "Agent khac workflow rule-based the nao?",
+              "Tool calling la gi?",
+              "Rui ro khi xay AI agent la gi?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_90196045-1122-4d1f-886b-e7015d942fa5": {
+      "sessionId": "session_90196045-1122-4d1f-886b-e7015d942fa5",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T21:01:23.259Z",
+      "updatedAt": "2026-04-16T21:01:23.261Z",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_3384c68b-70ff-427f-9659-7b912b9b4482",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T21:01:23.260Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_0c45bb3e-ce7c-4ae6-aba8-6c01931dc9c4": {
+      "sessionId": "session_0c45bb3e-ce7c-4ae6-aba8-6c01931dc9c4",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T21:01:29.444Z",
+      "updatedAt": "2026-04-16T21:01:29.452Z",
+      "currentTopicKey": "rag",
+      "currentTopicLabel": "RAG",
+      "messages": [
+        {
+          "id": "msg_d9d9efdd-203f-468b-94db-fdcbf8372a53",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T21:01:29.444Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_d9e328ac-02c7-467d-a2f9-a31c91840ccb",
+          "role": "user",
+          "kind": "question",
+          "content": "RAG la gi?",
+          "createdAt": "2026-04-16T21:01:29.451Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_54fa3078-fc4b-4283-bc13-291198f2b0f0",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+          "createdAt": "2026-04-16T21:01:29.451Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "responseSource": "local-knowledge-base"
+          }
+        },
+        {
+          "id": "msg_4d0d5c38-e608-4402-b043-c16e5786d713",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Ban da hieu phan retrieval trong RAG chua?",
+          "createdAt": "2026-04-16T21:01:29.451Z",
+          "meta": {
+            "topicKey": "rag",
+            "topicLabel": "RAG",
+            "actionState": "pending",
+            "responseSource": "local-knowledge-base",
+            "knowledgeGaps": [
+              "retrieval",
+              "embedding"
+            ],
+            "followUpSuggestions": [
+              "Retrieval la gi?",
+              "Embedding la gi?",
+              "RAG khac fine-tuning the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_206dc136-115f-4209-b31e-208a5aa0df43": {
+      "sessionId": "session_206dc136-115f-4209-b31e-208a5aa0df43",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T21:01:47.621Z",
+      "updatedAt": "2026-04-16T21:01:47.623Z",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_19591b7e-fb48-41dd-8702-cc2f2e9f7cb0",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T21:01:47.622Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_3525cc63-36d2-42d1-9b43-055563bed5fa": {
+      "sessionId": "session_3525cc63-36d2-42d1-9b43-055563bed5fa",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T21:01:47.622Z",
+      "updatedAt": "2026-04-16T21:01:47.624Z",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_c965cd46-e8a4-4a61-ba2e-a378a0fd8e33",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T21:01:47.623Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_523de734-6a03-4a71-8c46-33a8def77d82": {
+      "sessionId": "session_523de734-6a03-4a71-8c46-33a8def77d82",
+      "userId": "demo-user",
+      "createdAt": "2026-04-16T21:08:24.309Z",
+      "updatedAt": "2026-04-16T21:08:24.310Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_e1ecc0b5-e329-4d02-b4f8-da3d7ef9fe56",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-16T21:08:24.310Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_fcb5cc6e-afdf-4aaf-8713-7120e303dda6": {
+      "sessionId": "session_fcb5cc6e-afdf-4aaf-8713-7120e303dda6",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:13:17.126Z",
+      "updatedAt": "2026-04-17T19:13:17.127Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_83550045-793c-495c-ba22-67b6b0e6006e",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:13:17.127Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_2cd7731d-1196-4511-bb18-50dc7b032766": {
+      "sessionId": "session_2cd7731d-1196-4511-bb18-50dc7b032766",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:16:45.404Z",
+      "updatedAt": "2026-04-17T19:16:45.406Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_afcb4e92-2d9d-4508-a2c5-4c79f84b4307",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:16:45.405Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_915ff707-80ac-493e-92d1-15aa92b8b211": {
+      "sessionId": "session_915ff707-80ac-493e-92d1-15aa92b8b211",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:16:56.850Z",
+      "updatedAt": "2026-04-17T19:16:56.850Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_8a6277b3-9f65-4459-afa3-a6357ae19d79",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:16:56.850Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_18740670-8dd1-443e-8a6f-eb8a357bc7cb": {
+      "sessionId": "session_18740670-8dd1-443e-8a6f-eb8a357bc7cb",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:18:22.461Z",
+      "updatedAt": "2026-04-17T19:18:22.463Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_4f0cb3b7-605f-4caf-b00d-2e269433552a",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:18:22.462Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_fd9e0940-f6cf-489f-9ab9-1c1fdcd0e3ac": {
+      "sessionId": "session_fd9e0940-f6cf-489f-9ab9-1c1fdcd0e3ac",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:18:28.733Z",
+      "updatedAt": "2026-04-17T19:18:28.734Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_fefa5e14-0afa-4137-90c0-3c5615053d99",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:18:28.733Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_33763116-342b-4f40-8d5b-b60772e7eab5": {
+      "sessionId": "session_33763116-342b-4f40-8d5b-b60772e7eab5",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:18:29.920Z",
+      "updatedAt": "2026-04-17T19:18:29.922Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_89908ecd-d98d-4d1a-8ba8-cfac723273a0",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:18:29.922Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_1ab814bb-876d-442e-8c3b-351acab74a1c": {
+      "sessionId": "session_1ab814bb-876d-442e-8c3b-351acab74a1c",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:18:30.720Z",
+      "updatedAt": "2026-04-17T19:18:30.722Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_36b91a70-4251-4471-ab14-dd78f8ddd65e",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:18:30.721Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_6b114808-1534-4b86-8001-4cfae60ac24e": {
+      "sessionId": "session_6b114808-1534-4b86-8001-4cfae60ac24e",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:18:32.939Z",
+      "updatedAt": "2026-04-17T19:18:32.940Z",
+      "currentProvider": "openai",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_8aa16e27-63e8-4dfd-b2ab-b74768e04b37",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:18:32.940Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_f28e1ece-13e7-4ea4-b3b8-6e0b88f0c5ed": {
+      "sessionId": "session_f28e1ece-13e7-4ea4-b3b8-6e0b88f0c5ed",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:18:34.291Z",
+      "updatedAt": "2026-04-17T19:18:34.293Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_5cd920d3-2ba7-4fba-bec3-c82a629e7eb1",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:18:34.292Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_2ab648fd-45a9-4158-963c-df1ff0ba8670": {
+      "sessionId": "session_2ab648fd-45a9-4158-963c-df1ff0ba8670",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:19:35.036Z",
+      "updatedAt": "2026-04-17T19:19:35.039Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_2862953b-1273-4834-b7fa-a9fa194ddfd5",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:19:35.038Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_fbcbf991-48e8-459f-97db-126f3be10bbe": {
+      "sessionId": "session_fbcbf991-48e8-459f-97db-126f3be10bbe",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:19:36.382Z",
+      "updatedAt": "2026-04-17T19:19:36.387Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_59dde700-2005-43b4-9262-f88aea82ad80",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:19:36.386Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_e1fd5782-593f-4b3e-aa04-1fd3559cfbf4": {
+      "sessionId": "session_e1fd5782-593f-4b3e-aa04-1fd3559cfbf4",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:19:36.555Z",
+      "updatedAt": "2026-04-17T19:19:36.557Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_f4a0a219-91ce-4e00-bfc2-5e3b30283fb9",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:19:36.557Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_5e287af9-ef01-4062-b2c4-03a55c60b0e6": {
+      "sessionId": "session_5e287af9-ef01-4062-b2c4-03a55c60b0e6",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:20:04.495Z",
+      "updatedAt": "2026-04-17T19:20:04.497Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_1d8281bf-9471-4c71-88c7-b123794d68cf",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:20:04.496Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_94e5c0cd-bbcc-4aff-8cf4-427bcb98a7f2": {
+      "sessionId": "session_94e5c0cd-bbcc-4aff-8cf4-427bcb98a7f2",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:20:14.124Z",
+      "updatedAt": "2026-04-17T19:20:14.125Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_20f12261-56ec-4aff-858e-90924c160d0e",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:20:14.124Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_667e560c-d31d-4965-823b-acc9ff1a642f": {
+      "sessionId": "session_667e560c-d31d-4965-823b-acc9ff1a642f",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:21:33.188Z",
+      "updatedAt": "2026-04-17T19:21:33.191Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_e8d0654a-7fb0-4cf4-85c8-47b5238f2047",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:21:33.190Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_2b499e41-dc91-4d89-bf4e-bfa2889e3a3b": {
+      "sessionId": "session_2b499e41-dc91-4d89-bf4e-bfa2889e3a3b",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:21:42.344Z",
+      "updatedAt": "2026-04-17T19:22:44.401Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": "rag-v-llm",
+      "currentTopicLabel": "RAG và LLM",
+      "messages": [
+        {
+          "id": "msg_019168c8-0799-4129-adcc-0971695d1a9c",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:21:42.345Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_c4eb6e00-666d-4eeb-9c57-80cc0fac8206",
+          "role": "user",
+          "kind": "question",
+          "content": "RAG là gì",
+          "createdAt": "2026-04-17T19:22:05.813Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_0c6eea00-0596-4765-bb24-232bc03da24c",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "RAG (Retrieval Augmented Generation) là một kỹ thuật giúp các mô hình ngôn ngữ lớn (LLM) trả lời chính xác hơn bằng cách tìm kiếm thông tin liên quan từ một kho dữ liệu bên ngoài trước khi tạo ra câu trả lời. Điều này giúp LLM có thêm ngữ cảnh và giảm việc đưa ra thông tin sai lệch.",
+          "createdAt": "2026-04-17T19:22:05.813Z",
+          "meta": {
+            "topicKey": "h-th-ng-rag",
+            "topicLabel": "Hệ thống RAG",
+            "responseSource": "gemini-api",
+            "provider": "gemini"
+          }
+        },
+        {
+          "id": "msg_cf3ec344-1da7-4fcb-8c35-7ef7b81c30bc",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Làm thế nào RAG giúp giảm “ảo giác” của các mô hình AI?",
+          "createdAt": "2026-04-17T19:22:05.813Z",
+          "meta": {
+            "topicKey": "h-th-ng-rag",
+            "topicLabel": "Hệ thống RAG",
+            "actionState": "resolved",
+            "responseSource": "gemini-api",
+            "provider": "gemini",
+            "knowledgeGaps": [
+              "Mô hình ngôn ngữ lớn (LLM)",
+              "Cơ chế truy xuất thông tin"
+            ],
+            "followUpSuggestions": [
+              "Các thành phần chính của hệ thống RAG là gì?",
+              "Điểm khác biệt giữa RAG và fine-tuning (tinh chỉnh) LLM là gì?",
+              "Embedding được sử dụng trong RAG như thế nào?"
+            ],
+            "selectedStatus": "confused",
+            "resolvedAt": "2026-04-17T19:22:14.256Z"
+          }
+        },
+        {
+          "id": "msg_b2e4ecd1-e877-4935-9d55-666c4c50a810",
+          "role": "user",
+          "kind": "reflection-feedback",
+          "content": "Van con mo ho",
+          "createdAt": "2026-04-17T19:22:18.230Z",
+          "meta": {
+            "understandingStatus": "confused"
+          }
+        },
+        {
+          "id": "msg_6dc0a81f-e239-4f45-89c9-4d730a434c68",
+          "role": "assistant",
+          "kind": "clarification",
+          "content": "Chào bạn, có vẻ bạn vẫn còn băn khoăn về RAG, đặc biệt là về 'Mô hình ngôn ngữ lớn' và 'Cơ chế truy xuất thông tin'. Hãy thử hình dung thế này nhé: một 'Mô hình ngôn ngữ lớn' (LLM) giống như một học sinh rất thông minh, nhưng đôi khi vẫn có thể quên hoặc nhầm lẫn thông tin. Còn 'Cơ chế truy xuất thông tin' thì giống như việc học sinh đó biết cách tìm kiếm đúng cuốn sách trong thư viện (kho dữ liệu bên ngoài) để kiểm tra hoặc bổ sung kiến thức trước khi trả lời câu hỏi. RAG chính là sự kết hợp đó: học sinh thông minh dùng thư viện để đưa ra câu trả lời chính xác và đầy đủ nhất.",
+          "createdAt": "2026-04-17T19:22:18.230Z",
+          "meta": {
+            "topicKey": "h-th-ng-rag",
+            "topicLabel": "Hệ thống RAG",
+            "responseSource": "gemini-api",
+            "provider": "gemini"
+          }
+        },
+        {
+          "id": "msg_3dbf395b-c454-48eb-b5e5-0549a586d453",
+          "role": "assistant",
+          "kind": "recommendations",
+          "content": "Bạn thấy ví dụ này có giúp dễ hiểu hơn về RAG không?",
+          "createdAt": "2026-04-17T19:22:18.230Z",
+          "meta": {
+            "topicKey": "h-th-ng-rag",
+            "topicLabel": "Hệ thống RAG",
+            "responseSource": "gemini-api",
+            "provider": "gemini",
+            "followUpSuggestions": [
+              "RAG khác gì so với việc chỉ dùng LLM đơn thuần?",
+              "Lợi ích chính của RAG là gì?",
+              "Khi nào thì nên sử dụng hệ thống RAG?"
+            ],
+            "knowledgeGaps": [
+              "Mô hình ngôn ngữ lớn (LLM)",
+              "Cơ chế truy xuất thông tin"
+            ],
+            "coachMessage": "Chào bạn, có vẻ bạn vẫn còn băn khoăn về RAG, đặc biệt là về 'Mô hình ngôn ngữ lớn' và 'Cơ chế truy xuất thông tin'. Hãy thử hình dung thế này nhé: một 'Mô hình ngôn ngữ lớn' (LLM) giống như một học sinh rất thông minh, nhưng đôi khi vẫn có thể quên hoặc nhầm lẫn thông tin. Còn 'Cơ chế truy xuất thông tin' thì giống như việc học sinh đó biết cách tìm kiếm đúng cuốn sách trong thư viện (kho dữ liệu bên ngoài) để kiểm tra hoặc bổ sung kiến thức trước khi trả lời câu hỏi. RAG chính là sự kết hợp đó: học sinh thông minh dùng thư viện để đưa ra câu trả lời chính xác và đầy đủ nhất.",
+            "understandingStatus": "confused"
+          }
+        },
+        {
+          "id": "msg_7a290239-a42d-4212-98e7-d12080034d6d",
+          "role": "user",
+          "kind": "question",
+          "content": "RAG khác gì so với việc chỉ dùng LLM đơn thuần?",
+          "createdAt": "2026-04-17T19:22:44.400Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_531efe66-17db-4b79-b843-ae9513f76516",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "RAG (Retrieval Augmented Generation) bổ sung thông tin từ các nguồn dữ liệu bên ngoài vào câu hỏi trước khi đưa cho LLM xử lý, giúp LLM trả lời chính xác, cập nhật và giảm 'ảo giác'. LLM đơn thuần chỉ dựa vào dữ liệu đã được huấn luyện.",
+          "createdAt": "2026-04-17T19:22:44.400Z",
+          "meta": {
+            "topicKey": "rag-v-llm",
+            "topicLabel": "RAG và LLM",
+            "responseSource": "gemini-api",
+            "provider": "gemini"
+          }
+        },
+        {
+          "id": "msg_8c7cc5bf-8258-4df9-a76a-f58841e824ec",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Theo bạn, lợi ích lớn nhất của việc RAG cung cấp thêm thông tin là gì?",
+          "createdAt": "2026-04-17T19:22:44.400Z",
+          "meta": {
+            "topicKey": "rag-v-llm",
+            "topicLabel": "RAG và LLM",
+            "actionState": "pending",
+            "responseSource": "gemini-api",
+            "provider": "gemini",
+            "knowledgeGaps": [
+              "Hạn chế của LLM đơn thuần",
+              "Nguồn dữ liệu bên ngoài trong RAG"
+            ],
+            "followUpSuggestions": [
+              "RAG giúp LLM giảm 'ảo giác' như thế nào?",
+              "Các thành phần chính của một hệ thống RAG là gì?",
+              "Làm thế nào để chọn tài liệu phù hợp cho RAG?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_0a9894c6-f5a9-4121-afc2-b152dbf82c66": {
+      "sessionId": "session_0a9894c6-f5a9-4121-afc2-b152dbf82c66",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:24:10.766Z",
+      "updatedAt": "2026-04-17T19:24:10.768Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_e602e81f-9716-4cb7-843d-4d44237696f9",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:24:10.767Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_616ea571-a462-4a84-8887-a6124eed94d1": {
+      "sessionId": "session_616ea571-a462-4a84-8887-a6124eed94d1",
+      "userId": "demo-user",
+      "createdAt": "2026-04-17T19:25:17.302Z",
+      "updatedAt": "2026-04-17T19:25:17.303Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_3fa5a42a-fd79-43c5-b90f-ff99faaf75e0",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-17T19:25:17.303Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_6be809d1-581a-42aa-9864-8b9153db5013": {
+      "sessionId": "session_6be809d1-581a-42aa-9864-8b9153db5013",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T00:02:56.527Z",
+      "updatedAt": "2026-04-18T00:02:56.529Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_a358601c-67a0-49d7-aac9-bd93be6a121b",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-18T00:02:56.528Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_eb4691da-9ec1-46d0-ae07-96343b1d5b09": {
+      "sessionId": "session_eb4691da-9ec1-46d0-ae07-96343b1d5b09",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T00:38:28.483Z",
+      "updatedAt": "2026-04-18T00:38:28.485Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_dbf8310d-1c53-4ae2-a2b3-46bccf6fb36e",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-18T00:38:28.485Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_48b52fe9-e8b3-45fd-82ca-109d6280d0df": {
+      "sessionId": "session_48b52fe9-e8b3-45fd-82ca-109d6280d0df",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T00:38:53.282Z",
+      "updatedAt": "2026-04-18T00:38:53.284Z",
+      "currentProvider": "openai",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_c9f95560-db5b-46f1-a071-b8c91a7b4530",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-18T00:38:53.283Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_b21919e6-b9a2-433a-bf70-b9f15aebde35": {
+      "sessionId": "session_b21919e6-b9a2-433a-bf70-b9f15aebde35",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T00:38:55.069Z",
+      "updatedAt": "2026-04-18T00:38:55.073Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_bd2dceab-ccf7-48af-ae1b-4b45f78f5b8d",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-18T00:38:55.071Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_6375c369-0021-4b70-8da2-461f08560d88": {
+      "sessionId": "session_6375c369-0021-4b70-8da2-461f08560d88",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T00:46:52.802Z",
+      "updatedAt": "2026-04-18T00:46:52.804Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_44047993-0210-4777-b3cc-82b4d0a1dc03",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-18T00:46:52.803Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_87640617-c716-4f57-8c13-d7efa113e8fd": {
+      "sessionId": "session_87640617-c716-4f57-8c13-d7efa113e8fd",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T00:46:54.561Z",
+      "updatedAt": "2026-04-18T00:46:54.563Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_bd920c17-9062-44a1-a61a-60d75577dfe4",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-18T00:46:54.562Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_4bfccb46-fc93-4afa-8e91-c31dc2aaffd3": {
+      "sessionId": "session_4bfccb46-fc93-4afa-8e91-c31dc2aaffd3",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T02:11:46.756Z",
+      "updatedAt": "2026-04-18T02:14:33.424Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": "khai-th-c-c-ng-ngh",
+      "currentTopicLabel": "Khai thác công nghệ",
+      "messages": [
+        {
+          "id": "msg_4208c71b-3c7a-4498-9d69-1128782c8436",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-18T02:11:46.757Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        },
+        {
+          "id": "msg_f37ddaa6-6574-45ca-8454-a378fc9f7cee",
+          "role": "user",
+          "kind": "question",
+          "content": "Bạn biết gì về harness",
+          "createdAt": "2026-04-18T02:14:33.423Z",
+          "meta": {}
+        },
+        {
+          "id": "msg_9aeae436-a623-45c3-8c1b-88453400b750",
+          "role": "assistant",
+          "kind": "answer",
+          "content": "Trong ngữ cảnh công nghệ, \"harness\" có nghĩa là tận dụng, kiểm soát và sử dụng một cách hiệu quả một công nghệ, hệ thống hoặc nguồn lực để đạt được mục tiêu cụ thể.",
+          "createdAt": "2026-04-18T02:14:33.423Z",
+          "meta": {
+            "topicKey": "khai-th-c-c-ng-ngh",
+            "topicLabel": "Khai thác công nghệ",
+            "responseSource": "gemini-api",
+            "provider": "gemini"
+          }
+        },
+        {
+          "id": "msg_9f98dde6-1858-4ec2-befe-ceddeed0a53b",
+          "role": "assistant",
+          "kind": "reflection",
+          "content": "Bạn có thể đưa ra một ví dụ về việc 'harness' một công nghệ bạn đang học không?",
+          "createdAt": "2026-04-18T02:14:33.423Z",
+          "meta": {
+            "topicKey": "khai-th-c-c-ng-ngh",
+            "topicLabel": "Khai thác công nghệ",
+            "actionState": "pending",
+            "responseSource": "gemini-api",
+            "provider": "gemini",
+            "knowledgeGaps": [
+              "Cách thức để tận dụng hiệu quả một công nghệ",
+              "Phân biệt giữa 'sử dụng' và 'tận dụng' công nghệ"
+            ],
+            "followUpSuggestions": [
+              "Làm thế nào để khai thác hiệu quả Hệ thống RAG?",
+              "Làm sao để tận dụng Embedding trong tìm kiếm thông tin?",
+              "Các bước để 'harness' một AI Agent vào công việc của tôi là gì?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_9553c9b8-205e-4ece-a13a-e9421362da34": {
+      "sessionId": "session_9553c9b8-205e-4ece-a13a-e9421362da34",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T03:59:50.923Z",
+      "updatedAt": "2026-04-18T03:59:50.924Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_359d7c52-18b7-441d-9f46-5f93d4e9ee2c",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-18T03:59:50.923Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_bedaddde-06c8-4bdc-a267-8ae05f6e3987": {
+      "sessionId": "session_bedaddde-06c8-4bdc-a267-8ae05f6e3987",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T04:00:03.798Z",
+      "updatedAt": "2026-04-18T04:00:03.799Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_626fe2ce-cd1d-435d-aa1f-f865781897f5",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Hoi minh mot khai niem ban dang hoc. Minh se tra loi ngan gon, kiem tra muc do hieu, roi goi y ban hoc tiep.",
+          "createdAt": "2026-04-18T04:00:03.799Z",
+          "meta": {
+            "suggestedPrompts": [
+              "RAG la gi?",
+              "Embedding la gi?",
+              "AI agent khac chatbot the nao?"
+            ]
+          }
+        }
+      ]
+    },
+    "session_890f42a3-8418-43c7-8fa8-70dd56b40e47": {
+      "sessionId": "session_890f42a3-8418-43c7-8fa8-70dd56b40e47",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T04:00:22.833Z",
+      "updatedAt": "2026-04-18T04:00:22.834Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_2cd3e75a-d650-4395-98bc-d51e3f209844",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Chào bạn, bạn cần tìm hiểu gì? Mình sẽ trả lời ngắn gọn, hỏi lại nếu cần và gợi ý bạn học tiếp từng bước.",
+          "createdAt": "2026-04-18T04:00:22.834Z",
+          "meta": {
+            "suggestedPrompts": [
+              "Giải thích RAG là gì",
+              "Cho ví dụ thực tế về Webhook",
+              "Tạo lộ trình học về Docker cơ bản"
+            ]
+          }
+        }
+      ]
+    },
+    "session_5ea50ce9-f1cc-46d0-92f9-5bd277f462ee": {
+      "sessionId": "session_5ea50ce9-f1cc-46d0-92f9-5bd277f462ee",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T04:00:38.876Z",
+      "updatedAt": "2026-04-18T04:00:38.883Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_065ba596-2ee7-418c-ad3c-2aaf5da2c9b8",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Chào bạn, bạn cần tìm hiểu gì? Mình sẽ trả lời ngắn gọn, hỏi lại nếu cần và gợi ý bạn học tiếp từng bước.",
+          "createdAt": "2026-04-18T04:00:38.881Z",
+          "meta": {
+            "suggestedPrompts": [
+              "Giải thích RAG là gì",
+              "Cho ví dụ thực tế về Webhook",
+              "Tạo lộ trình học về Docker cơ bản"
+            ]
+          }
+        }
+      ]
+    },
+    "session_c7c42e09-cfdb-4051-89f2-16bd5b775172": {
+      "sessionId": "session_c7c42e09-cfdb-4051-89f2-16bd5b775172",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T04:00:55.371Z",
+      "updatedAt": "2026-04-18T04:00:55.373Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_3e52a784-fd2d-4c24-9dd9-6f19f7fbf9f5",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Chào bạn, bạn cần tìm hiểu gì? Mình sẽ trả lời ngắn gọn, hỏi lại nếu cần và gợi ý bạn học tiếp từng bước.",
+          "createdAt": "2026-04-18T04:00:55.372Z",
+          "meta": {
+            "suggestedPrompts": [
+              "Giải thích RAG là gì",
+              "Cho ví dụ thực tế về Webhook",
+              "Tạo lộ trình học về Docker cơ bản"
+            ]
+          }
+        }
+      ]
+    },
+    "session_7b480d75-1b50-4d79-b42e-7f92053d6b95": {
+      "sessionId": "session_7b480d75-1b50-4d79-b42e-7f92053d6b95",
+      "userId": "demo-user",
+      "createdAt": "2026-04-18T04:02:55.689Z",
+      "updatedAt": "2026-04-18T04:02:55.690Z",
+      "currentProvider": "gemini",
+      "currentTopicKey": null,
+      "currentTopicLabel": null,
+      "messages": [
+        {
+          "id": "msg_f11539f8-d9d2-4959-9df1-25ed67e03134",
+          "role": "assistant",
+          "kind": "welcome",
+          "content": "Chào bạn, bạn cần tìm hiểu gì? Mình sẽ trả lời ngắn gọn, hỏi lại nếu cần và gợi ý bạn học tiếp từng bước.",
+          "createdAt": "2026-04-18T04:02:55.690Z",
+          "meta": {
+            "suggestedPrompts": [
+              "Giải thích RAG là gì",
+              "Cho ví dụ thực tế về Webhook",
+              "Tạo lộ trình học về Docker cơ bản"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "interactions": [
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_a4136535-ed85-4274-9eb0-e18bca02cfd5",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "question": "RAG la gi?",
+      "answer": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+      "reflectionQuestion": "Ban da hieu phan retrieval trong RAG chua?",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-12T05:02:22.744Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_a4136535-ed85-4274-9eb0-e18bca02cfd5",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "understandingStatus": "partial",
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "clarification": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-12T05:02:22.748Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_a55ff6f4-0f77-46a7-b5a3-a936122598c8",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "question": "RAG la gi?",
+      "answer": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+      "reflectionQuestion": "Ban da hieu phan retrieval trong RAG chua?",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-12T05:18:09.872Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_a55ff6f4-0f77-46a7-b5a3-a936122598c8",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "understandingStatus": "confused",
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "clarification": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-12T05:18:23.520Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_a55ff6f4-0f77-46a7-b5a3-a936122598c8",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "question": "RAG khac fine-tuning the nao?",
+      "answer": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+      "reflectionQuestion": "Ban da hieu phan retrieval trong RAG chua?",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-12T05:18:44.416Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_a55ff6f4-0f77-46a7-b5a3-a936122598c8",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "understandingStatus": "understood",
+      "knowledgeGaps": [],
+      "clarification": "Tot. Minh se goi y mot vai huong tiep theo de ban dao sau chu de nay.",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-12T05:18:57.106Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_a55ff6f4-0f77-46a7-b5a3-a936122598c8",
+      "topicKey": "embedding",
+      "topicLabel": "Embedding",
+      "question": "Embedding la gi?",
+      "answer": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+      "reflectionQuestion": "Ban da hieu vi sao can bien text thanh vector chua?",
+      "followUpSuggestions": [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung trong semantic search nhu the nao?"
+      ],
+      "knowledgeGaps": [
+        "vector space",
+        "similarity search"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-12T05:19:08.943Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_76d990e5-b32e-431f-a93a-59170e190d1b",
+      "topicKey": "agent",
+      "topicLabel": "AI Agent",
+      "question": "AI agent khac chatbot the nao?",
+      "answer": "AI agent la he thong dung mo hinh de lap ke hoach, goi cong cu va thuc hien nhieu buoc thay vi chi tra loi mot lan.",
+      "reflectionQuestion": "Ban da hieu diem khac nhau giua chatbot va agent chua?",
+      "followUpSuggestions": [
+        "Agent khac workflow rule-based the nao?",
+        "Tool calling la gi?",
+        "Rui ro khi xay AI agent la gi?"
+      ],
+      "knowledgeGaps": [
+        "planning",
+        "tool invocation"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T17:48:37.297Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_cc7b15f5-3b8e-4fc9-8705-8ab8160db307",
+      "topicKey": "embedding",
+      "topicLabel": "Embedding",
+      "question": "Embedding la gi?",
+      "answer": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+      "reflectionQuestion": "Ban da hieu vi sao can bien text thanh vector chua?",
+      "followUpSuggestions": [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung trong semantic search nhu the nao?"
+      ],
+      "knowledgeGaps": [
+        "vector space",
+        "similarity search"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T19:51:04.433Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_cc7b15f5-3b8e-4fc9-8705-8ab8160db307",
+      "topicKey": "embedding",
+      "topicLabel": "Embedding",
+      "question": "Embedding la gi?",
+      "answer": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+      "reflectionQuestion": "Ban da hieu vi sao can bien text thanh vector chua?",
+      "followUpSuggestions": [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung trong semantic search nhu the nao?"
+      ],
+      "knowledgeGaps": [
+        "vector space",
+        "similarity search"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T19:51:07.925Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_cc7b15f5-3b8e-4fc9-8705-8ab8160db307",
+      "topicKey": "embedding",
+      "topicLabel": "Embedding",
+      "understandingStatus": "partial",
+      "knowledgeGaps": [
+        "vector space",
+        "similarity search"
+      ],
+      "clarification": "Neu hai cau co y tuong giong nhau, embedding giup dat chung gan nhau trong mot ban do so hoc.",
+      "followUpSuggestions": [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung trong semantic search nhu the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T19:51:17.496Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_cc7b15f5-3b8e-4fc9-8705-8ab8160db307",
+      "topicKey": "agent",
+      "topicLabel": "AI Agent",
+      "question": "AI agent khac chatbot the nao?",
+      "answer": "AI agent la he thong dung mo hinh de lap ke hoach, goi cong cu va thuc hien nhieu buoc thay vi chi tra loi mot lan.",
+      "reflectionQuestion": "Ban da hieu diem khac nhau giua chatbot va agent chua?",
+      "followUpSuggestions": [
+        "Agent khac workflow rule-based the nao?",
+        "Tool calling la gi?",
+        "Rui ro khi xay AI agent la gi?"
+      ],
+      "knowledgeGaps": [
+        "planning",
+        "tool invocation"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T19:51:20.569Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_cc7b15f5-3b8e-4fc9-8705-8ab8160db307",
+      "topicKey": "agent",
+      "topicLabel": "AI Agent",
+      "question": "AI agent khac chatbot the nao?",
+      "answer": "AI agent la he thong dung mo hinh de lap ke hoach, goi cong cu va thuc hien nhieu buoc thay vi chi tra loi mot lan.",
+      "reflectionQuestion": "Ban da hieu diem khac nhau giua chatbot va agent chua?",
+      "followUpSuggestions": [
+        "Agent khac workflow rule-based the nao?",
+        "Tool calling la gi?",
+        "Rui ro khi xay AI agent la gi?"
+      ],
+      "knowledgeGaps": [
+        "planning",
+        "tool invocation"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T19:51:22.737Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_cc7b15f5-3b8e-4fc9-8705-8ab8160db307",
+      "topicKey": "agent",
+      "topicLabel": "AI Agent",
+      "understandingStatus": "confused",
+      "knowledgeGaps": [
+        "planning",
+        "tool invocation"
+      ],
+      "clarification": "Chatbot thuong tra loi ngay. Agent thi co the nghi theo buoc, lam viec, kiem tra va quay lai ket qua.",
+      "followUpSuggestions": [
+        "Agent khac workflow rule-based the nao?",
+        "Tool calling la gi?",
+        "Rui ro khi xay AI agent la gi?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T19:51:25.466Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_275a5809-def8-4fe6-8112-316d9cb76a41",
+      "topicKey": "agent",
+      "topicLabel": "AI Agent",
+      "question": "AI agent khac chatbot the nao?",
+      "answer": "AI agent la he thong dung mo hinh de lap ke hoach, goi cong cu va thuc hien nhieu buoc thay vi chi tra loi mot lan.",
+      "reflectionQuestion": "Ban da hieu diem khac nhau giua chatbot va agent chua?",
+      "followUpSuggestions": [
+        "Agent khac workflow rule-based the nao?",
+        "Tool calling la gi?",
+        "Rui ro khi xay AI agent la gi?"
+      ],
+      "knowledgeGaps": [
+        "planning",
+        "tool invocation"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T19:51:53.439Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_275a5809-def8-4fe6-8112-316d9cb76a41",
+      "topicKey": "agent",
+      "topicLabel": "AI Agent",
+      "understandingStatus": "confused",
+      "knowledgeGaps": [
+        "planning",
+        "tool invocation"
+      ],
+      "clarification": "Chatbot thuong tra loi ngay. Agent thi co the nghi theo buoc, lam viec, kiem tra va quay lai ket qua.",
+      "followUpSuggestions": [
+        "Agent khac workflow rule-based the nao?",
+        "Tool calling la gi?",
+        "Rui ro khi xay AI agent la gi?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T19:51:57.364Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_f8665552-db62-4e57-9fa1-d9d148d3dc3d",
+      "topicKey": "embedding",
+      "topicLabel": "Embedding",
+      "question": "Embedding la gi?",
+      "answer": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+      "reflectionQuestion": "Ban da hieu vi sao can bien text thanh vector chua?",
+      "followUpSuggestions": [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung trong semantic search nhu the nao?"
+      ],
+      "knowledgeGaps": [
+        "vector space",
+        "similarity search"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T19:53:49.794Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_8207425a-6558-48ba-a510-12276ea5ed31",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "question": "RAG la gi?",
+      "answer": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+      "reflectionQuestion": "Ban da hieu phan retrieval trong RAG chua?",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T19:59:24.540Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_8207425a-6558-48ba-a510-12276ea5ed31",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "understandingStatus": "partial",
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "clarification": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T19:59:24.544Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_c54cc05e-636f-49f1-aa1c-286da7f334f2",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "question": "RAG la gi?",
+      "answer": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+      "reflectionQuestion": "Ban da hieu phan retrieval trong RAG chua?",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:00:17.271Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_c54cc05e-636f-49f1-aa1c-286da7f334f2",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "understandingStatus": "partial",
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "clarification": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:00:17.277Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "question": "RAG la gi?",
+      "answer": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+      "reflectionQuestion": "Ban da hieu phan retrieval trong RAG chua?",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:14:49.580Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "understandingStatus": "partial",
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "clarification": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:14:55.688Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "question": "RAG khac fine-tuning the nao?",
+      "answer": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+      "reflectionQuestion": "Ban da hieu phan retrieval trong RAG chua?",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:15:10.386Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "understandingStatus": "partial",
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "clarification": "Hay hinh dung AI duoc mo sach tham khao truoc khi tra loi. No tim dung trang can doc roi moi tra loi, thay vi nho moi thu trong dau.",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:15:16.386Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "question": "RAG khac fine-tuning the nao?",
+      "answer": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+      "reflectionQuestion": "Ban da hieu phan retrieval trong RAG chua?",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:15:20.210Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "understandingStatus": "understood",
+      "knowledgeGaps": [],
+      "clarification": "Tot. Minh se day nhanh hon sang phan lien quan de mo rong chu de nay.",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:15:23.104Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "embedding",
+      "topicLabel": "Embedding",
+      "question": "Embedding la gi?",
+      "answer": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+      "reflectionQuestion": "Ban da hieu vi sao can bien text thanh vector chua?",
+      "followUpSuggestions": [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung trong semantic search nhu the nao?"
+      ],
+      "knowledgeGaps": [
+        "vector space",
+        "similarity search"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:15:26.733Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "embedding",
+      "topicLabel": "Embedding",
+      "understandingStatus": "confused",
+      "knowledgeGaps": [
+        "vector space",
+        "similarity search"
+      ],
+      "clarification": "Neu hai cau co y tuong giong nhau, embedding giup dat chung gan nhau trong mot ban do so hoc.",
+      "followUpSuggestions": [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung trong semantic search nhu the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:15:34.086Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "embedding",
+      "topicLabel": "Embedding",
+      "question": "Embedding dung trong semantic search nhu the nao?",
+      "answer": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+      "reflectionQuestion": "Ban da hieu vi sao can bien text thanh vector chua?",
+      "followUpSuggestions": [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung trong semantic search nhu the nao?"
+      ],
+      "knowledgeGaps": [
+        "vector space",
+        "similarity search"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:15:37.447Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "embedding",
+      "topicLabel": "Embedding",
+      "understandingStatus": "partial",
+      "knowledgeGaps": [
+        "vector space",
+        "similarity search"
+      ],
+      "clarification": "Neu hai cau co y tuong giong nhau, embedding giup dat chung gan nhau trong mot ban do so hoc.",
+      "followUpSuggestions": [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung trong semantic search nhu the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:15:44.123Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "embedding",
+      "topicLabel": "Embedding",
+      "question": "Embedding dung trong semantic search nhu the nao?",
+      "answer": "Embedding la cach bien text thanh day so de may tinh do duoc muc do gan nhau ve y nghia.",
+      "reflectionQuestion": "Ban da hieu vi sao can bien text thanh vector chua?",
+      "followUpSuggestions": [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung trong semantic search nhu the nao?"
+      ],
+      "knowledgeGaps": [
+        "vector space",
+        "similarity search"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:15:48.286Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "embedding",
+      "topicLabel": "Embedding",
+      "understandingStatus": "partial",
+      "knowledgeGaps": [
+        "vector space",
+        "similarity search"
+      ],
+      "clarification": "Neu hai cau co y tuong giong nhau, embedding giup dat chung gan nhau trong mot ban do so hoc.",
+      "followUpSuggestions": [
+        "Similarity search la gi?",
+        "Vector database la gi?",
+        "Embedding dung trong semantic search nhu the nao?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:15:58.011Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "generic",
+      "topicLabel": "General Learning Topic",
+      "question": "phương pháp search",
+      "answer": "Minh se tom tat y chinh cua cau hoi truoc, sau do kiem tra xem ban da nam duoc phan cot loi chua.",
+      "reflectionQuestion": "Ban da nam duoc y chinh cua chu de nay chua?",
+      "followUpSuggestions": [
+        "Cho minh mot vi du de hieu hon",
+        "Chu de nay ung dung o dau?",
+        "Co khai niem nen hoc truoc khong?"
+      ],
+      "knowledgeGaps": [
+        "core concept",
+        "applied example"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:16:14.750Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "generic",
+      "topicLabel": "General Learning Topic",
+      "understandingStatus": "partial",
+      "knowledgeGaps": [
+        "core concept",
+        "applied example"
+      ],
+      "clarification": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+      "followUpSuggestions": [
+        "Cho minh mot vi du de hieu hon",
+        "Chu de nay ung dung o dau?",
+        "Co khai niem nen hoc truoc khong?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:16:25.242Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "generic",
+      "topicLabel": "General Learning Topic",
+      "question": "Co khai niem nen hoc truoc khong?",
+      "answer": "Minh se tom tat y chinh cua cau hoi truoc, sau do kiem tra xem ban da nam duoc phan cot loi chua.",
+      "reflectionQuestion": "Ban da nam duoc y chinh cua chu de nay chua?",
+      "followUpSuggestions": [
+        "Cho minh mot vi du de hieu hon",
+        "Chu de nay ung dung o dau?",
+        "Co khai niem nen hoc truoc khong?"
+      ],
+      "knowledgeGaps": [
+        "core concept",
+        "applied example"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:16:33.951Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "generic",
+      "topicLabel": "General Learning Topic",
+      "understandingStatus": "partial",
+      "knowledgeGaps": [
+        "core concept",
+        "applied example"
+      ],
+      "clarification": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+      "followUpSuggestions": [
+        "Cho minh mot vi du de hieu hon",
+        "Chu de nay ung dung o dau?",
+        "Co khai niem nen hoc truoc khong?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:16:36.010Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "generic",
+      "topicLabel": "General Learning Topic",
+      "question": "Cho minh mot vi du de hieu hon",
+      "answer": "Minh se tom tat y chinh cua cau hoi truoc, sau do kiem tra xem ban da nam duoc phan cot loi chua.",
+      "reflectionQuestion": "Ban da nam duoc y chinh cua chu de nay chua?",
+      "followUpSuggestions": [
+        "Cho minh mot vi du de hieu hon",
+        "Chu de nay ung dung o dau?",
+        "Co khai niem nen hoc truoc khong?"
+      ],
+      "knowledgeGaps": [
+        "core concept",
+        "applied example"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:16:37.914Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "generic",
+      "topicLabel": "General Learning Topic",
+      "understandingStatus": "confused",
+      "knowledgeGaps": [
+        "core concept",
+        "applied example"
+      ],
+      "clarification": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+      "followUpSuggestions": [
+        "Cho minh mot vi du de hieu hon",
+        "Chu de nay ung dung o dau?",
+        "Co khai niem nen hoc truoc khong?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:16:39.169Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "generic",
+      "topicLabel": "General Learning Topic",
+      "question": "Chu de nay ung dung o dau?",
+      "answer": "Minh se tom tat y chinh cua cau hoi truoc, sau do kiem tra xem ban da nam duoc phan cot loi chua.",
+      "reflectionQuestion": "Ban da nam duoc y chinh cua chu de nay chua?",
+      "followUpSuggestions": [
+        "Cho minh mot vi du de hieu hon",
+        "Chu de nay ung dung o dau?",
+        "Co khai niem nen hoc truoc khong?"
+      ],
+      "knowledgeGaps": [
+        "core concept",
+        "applied example"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:16:43.615Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_10407e4b-da18-49ae-b5ef-3d8277fd8106",
+      "topicKey": "generic",
+      "topicLabel": "General Learning Topic",
+      "understandingStatus": "confused",
+      "knowledgeGaps": [
+        "core concept",
+        "applied example"
+      ],
+      "clarification": "Muc tieu la tach chu de thanh cac y nho, de hieu hon va de hoc tiep tung buoc.",
+      "followUpSuggestions": [
+        "Cho minh mot vi du de hieu hon",
+        "Chu de nay ung dung o dau?",
+        "Co khai niem nen hoc truoc khong?"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:16:44.777Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_55629150-d632-4ff4-af58-da346c932ba5",
+      "topicKey": "agent",
+      "topicLabel": "AI Agent",
+      "question": "AI agent khac chatbot the nao?",
+      "answer": "AI agent la he thong dung mo hinh de lap ke hoach, goi cong cu va thuc hien nhieu buoc thay vi chi tra loi mot lan.",
+      "reflectionQuestion": "Ban da hieu diem khac nhau giua chatbot va agent chua?",
+      "followUpSuggestions": [
+        "Agent khac workflow rule-based the nao?",
+        "Tool calling la gi?",
+        "Rui ro khi xay AI agent la gi?"
+      ],
+      "knowledgeGaps": [
+        "planning",
+        "tool invocation"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T20:54:13.088Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_0c45bb3e-ce7c-4ae6-aba8-6c01931dc9c4",
+      "topicKey": "rag",
+      "topicLabel": "RAG",
+      "question": "RAG la gi?",
+      "answer": "RAG la cach ket hop tim tai lieu lien quan truoc, sau do dua noi dung do vao mo hinh de cau tra loi co boi canh hon.",
+      "reflectionQuestion": "Ban da hieu phan retrieval trong RAG chua?",
+      "followUpSuggestions": [
+        "Retrieval la gi?",
+        "Embedding la gi?",
+        "RAG khac fine-tuning the nao?"
+      ],
+      "knowledgeGaps": [
+        "retrieval",
+        "embedding"
+      ],
+      "source": "local-knowledge-base",
+      "createdAt": "2026-04-16T21:01:29.453Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_2b499e41-dc91-4d89-bf4e-bfa2889e3a3b",
+      "topicKey": "h-th-ng-rag",
+      "topicLabel": "Hệ thống RAG",
+      "question": "RAG là gì",
+      "answer": "RAG (Retrieval Augmented Generation) là một kỹ thuật giúp các mô hình ngôn ngữ lớn (LLM) trả lời chính xác hơn bằng cách tìm kiếm thông tin liên quan từ một kho dữ liệu bên ngoài trước khi tạo ra câu trả lời. Điều này giúp LLM có thêm ngữ cảnh và giảm việc đưa ra thông tin sai lệch.",
+      "reflectionQuestion": "Làm thế nào RAG giúp giảm “ảo giác” của các mô hình AI?",
+      "followUpSuggestions": [
+        "Các thành phần chính của hệ thống RAG là gì?",
+        "Điểm khác biệt giữa RAG và fine-tuning (tinh chỉnh) LLM là gì?",
+        "Embedding được sử dụng trong RAG như thế nào?"
+      ],
+      "knowledgeGaps": [
+        "Mô hình ngôn ngữ lớn (LLM)",
+        "Cơ chế truy xuất thông tin"
+      ],
+      "source": "gemini-api",
+      "provider": "gemini",
+      "createdAt": "2026-04-17T19:22:05.815Z"
+    },
+    {
+      "type": "reflection",
+      "userId": "demo-user",
+      "sessionId": "session_2b499e41-dc91-4d89-bf4e-bfa2889e3a3b",
+      "topicKey": "h-th-ng-rag",
+      "topicLabel": "Hệ thống RAG",
+      "understandingStatus": "confused",
+      "knowledgeGaps": [
+        "Mô hình ngôn ngữ lớn (LLM)",
+        "Cơ chế truy xuất thông tin"
+      ],
+      "clarification": "Chào bạn, có vẻ bạn vẫn còn băn khoăn về RAG, đặc biệt là về 'Mô hình ngôn ngữ lớn' và 'Cơ chế truy xuất thông tin'. Hãy thử hình dung thế này nhé: một 'Mô hình ngôn ngữ lớn' (LLM) giống như một học sinh rất thông minh, nhưng đôi khi vẫn có thể quên hoặc nhầm lẫn thông tin. Còn 'Cơ chế truy xuất thông tin' thì giống như việc học sinh đó biết cách tìm kiếm đúng cuốn sách trong thư viện (kho dữ liệu bên ngoài) để kiểm tra hoặc bổ sung kiến thức trước khi trả lời câu hỏi. RAG chính là sự kết hợp đó: học sinh thông minh dùng thư viện để đưa ra câu trả lời chính xác và đầy đủ nhất.",
+      "followUpSuggestions": [
+        "RAG khác gì so với việc chỉ dùng LLM đơn thuần?",
+        "Lợi ích chính của RAG là gì?",
+        "Khi nào thì nên sử dụng hệ thống RAG?"
+      ],
+      "source": "gemini-api",
+      "provider": "gemini",
+      "createdAt": "2026-04-17T19:22:18.234Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_2b499e41-dc91-4d89-bf4e-bfa2889e3a3b",
+      "topicKey": "rag-v-llm",
+      "topicLabel": "RAG và LLM",
+      "question": "RAG khác gì so với việc chỉ dùng LLM đơn thuần?",
+      "answer": "RAG (Retrieval Augmented Generation) bổ sung thông tin từ các nguồn dữ liệu bên ngoài vào câu hỏi trước khi đưa cho LLM xử lý, giúp LLM trả lời chính xác, cập nhật và giảm 'ảo giác'. LLM đơn thuần chỉ dựa vào dữ liệu đã được huấn luyện.",
+      "reflectionQuestion": "Theo bạn, lợi ích lớn nhất của việc RAG cung cấp thêm thông tin là gì?",
+      "followUpSuggestions": [
+        "RAG giúp LLM giảm 'ảo giác' như thế nào?",
+        "Các thành phần chính của một hệ thống RAG là gì?",
+        "Làm thế nào để chọn tài liệu phù hợp cho RAG?"
+      ],
+      "knowledgeGaps": [
+        "Hạn chế của LLM đơn thuần",
+        "Nguồn dữ liệu bên ngoài trong RAG"
+      ],
+      "source": "gemini-api",
+      "provider": "gemini",
+      "createdAt": "2026-04-17T19:22:44.404Z"
+    },
+    {
+      "type": "question_cycle",
+      "userId": "demo-user",
+      "sessionId": "session_4bfccb46-fc93-4afa-8e91-c31dc2aaffd3",
+      "topicKey": "khai-th-c-c-ng-ngh",
+      "topicLabel": "Khai thác công nghệ",
+      "question": "Bạn biết gì về harness",
+      "answer": "Trong ngữ cảnh công nghệ, \"harness\" có nghĩa là tận dụng, kiểm soát và sử dụng một cách hiệu quả một công nghệ, hệ thống hoặc nguồn lực để đạt được mục tiêu cụ thể.",
+      "reflectionQuestion": "Bạn có thể đưa ra một ví dụ về việc 'harness' một công nghệ bạn đang học không?",
+      "followUpSuggestions": [
+        "Làm thế nào để khai thác hiệu quả Hệ thống RAG?",
+        "Làm sao để tận dụng Embedding trong tìm kiếm thông tin?",
+        "Các bước để 'harness' một AI Agent vào công việc của tôi là gì?"
+      ],
+      "knowledgeGaps": [
+        "Cách thức để tận dụng hiệu quả một công nghệ",
+        "Phân biệt giữa 'sử dụng' và 'tận dụng' công nghệ"
+      ],
+      "source": "gemini-api",
+      "provider": "gemini",
+      "createdAt": "2026-04-18T02:14:33.425Z"
+    }
+  ],
+  "notes": {
+    "note_6e322bf0-f8fc-4a60-b08c-2ab2265b2c4c": {
+      "noteId": "note_6e322bf0-f8fc-4a60-b08c-2ab2265b2c4c",
+      "userId": "demo-user",
+      "topicLabel": "Ghi chú",
+      "title": "Ghi chú học tập",
+      "question": "",
+      "answer": "",
+      "content": "test note",
+      "resolved": false,
+      "createdAt": "2026-04-18T04:00:55.387Z",
+      "resolvedAt": null
+    }
+  },
+  "roadmaps": {
+    "roadmap_4548690f-7b4c-414d-9aa4-4e5aa6358583": {
+      "roadmapId": "roadmap_4548690f-7b4c-414d-9aa4-4e5aa6358583",
+      "userId": "demo-user",
+      "title": "Phương Pháp Tiếp Cận Kiến Thức Mới Hiệu Quả",
+      "topicLabel": "Kiến thức mới",
+      "overview": "Hành trình khám phá kiến thức mới có thể đầy thử thách, đặc biệt khi bạn gặp phải những khái niệm phức tạp. Lộ trình này sẽ giúp bạn trang bị các chiến lược và công cụ cần thiết để tiếp thu, hiểu sâu và áp dụng những kiến thức mới một cách hiệu quả nhất.",
+      "createdAt": "2026-04-18T04:03:49.477Z",
+      "lessons": [
+        {
+          "lessonId": "lesson_d0841f65-c99b-43a8-bcb4-f95daf64dd58",
+          "title": "Xác Định Mục Tiêu Học Tập Rõ Ràng",
+          "summary": "Đặt ra mục tiêu cụ thể giúp định hướng quá trình học, tăng động lực và cho phép bạn đo lường tiến độ của mình. Hiểu rõ 'Tại sao' bạn muốn học điều này là bước đầu tiên quan trọng.",
+          "questionPrompt": "Làm thế nào để đặt ra mục tiêu học tập cụ thể, khả thi và có thể đo lường được cho một chủ đề mới?",
+          "topicKey": "x-c-nh-m-c-ti-u-h-c-t-p-r-r-ng",
+          "learnedSummary": null,
+          "summaryUpdatedAt": null
+        },
+        {
+          "lessonId": "lesson_5b1d053f-c06d-45a8-88a1-eb14223438ce",
+          "title": "Phân Tích và Cấu Trúc Kiến Thức",
+          "summary": "Khi đối mặt với kiến thức mới, việc phân nhỏ thông tin thành các phần nhỏ hơn và tìm kiếm mối liên hệ giữa chúng sẽ giúp bạn dễ dàng nắm bắt hơn. Tạo sơ đồ tư duy hoặc dàn ý là những kỹ thuật hữu ích.",
+          "questionPrompt": "Bạn có thể hướng dẫn tôi cách phân tích và cấu trúc một chủ đề phức tạp như 'Hệ thống RAG' thành các phần dễ hiểu hơn không?",
+          "topicKey": "ph-n-t-ch-v-c-u-tr-c-ki-n-th-c",
+          "learnedSummary": null,
+          "summaryUpdatedAt": null
+        },
+        {
+          "lessonId": "lesson_7b19fe69-31b1-4c1d-b3d3-bb313e420680",
+          "title": "Kỹ Thuật Ghi Nhớ và Ôn Tập Chủ Động",
+          "summary": "Để kiến thức mới bám rễ sâu vào trí nhớ dài hạn, hãy áp dụng các kỹ thuật như ôn tập ngắt quãng (spaced repetition), gợi nhớ chủ động (active recall) và giải thích cho người khác. Tránh học vẹt.",
+          "questionPrompt": "Tôi nên bắt đầu áp dụng kỹ thuật gợi nhớ chủ động vào việc học một khái niệm mới như thế nào?",
+          "topicKey": "k-thu-t-ghi-nh-v-n-t-p-ch-ng",
+          "learnedSummary": null,
+          "summaryUpdatedAt": null
+        },
+        {
+          "lessonId": "lesson_67ad663a-8223-4446-b06b-830b544bba40",
+          "title": "Tìm Kiếm và Đánh Giá Nguồn Thông Tin",
+          "summary": "Trong thời đại thông tin bùng nổ, việc lựa chọn các nguồn đáng tin cậy là rất quan trọng. Học cách phân biệt nguồn chất lượng cao, đa dạng hóa nguồn tham khảo và kiểm tra chéo thông tin để có cái nhìn toàn diện.",
+          "questionPrompt": "Khi tôi muốn tìm hiểu về một chủ đề công nghệ mới, những loại nguồn thông tin nào là đáng tin cậy nhất và làm sao để tìm chúng?",
+          "topicKey": "t-m-ki-m-v-nh-gi-ngu-n-th-ng-tin",
+          "learnedSummary": null,
+          "summaryUpdatedAt": null
+        },
+        {
+          "lessonId": "lesson_e88f3486-4712-4cbc-8778-47ea2285b0c2",
+          "title": "Áp Dụng Kiến Thức vào Thực Tế",
+          "summary": "Cách tốt nhất để củng cố kiến thức mới là áp dụng chúng. Thực hành thông qua các dự án nhỏ, giải bài tập hoặc thảo luận với người khác sẽ giúp bạn hiểu sâu hơn và phát hiện những lỗ hổng kiến thức cần bổ sung.",
+          "questionPrompt": "Làm thế nào để tôi có thể áp dụng kiến thức về 'Embedding' vào một dự án thực tế, ngay cả khi tôi mới bắt đầu?",
+          "topicKey": "p-d-ng-ki-n-th-c-v-o-th-c-t",
+          "learnedSummary": null,
+          "summaryUpdatedAt": null
+        }
+      ]
+    },
+    "roadmap_002af994-12eb-47e4-a1b8-93479078020d": {
+      "roadmapId": "roadmap_002af994-12eb-47e4-a1b8-93479078020d",
+      "userId": "demo-user",
+      "title": "Hành trình Khám phá và Nắm bắt Kiến thức mới",
+      "topicLabel": "Kiến thức mới",
+      "overview": "Lộ trình này sẽ giúp bạn hiểu rõ hơn về cách tiếp cận, thu nhận, tích hợp và áp dụng những kiến thức mới một cách hiệu quả, đặc biệt trong bối cảnh thông tin thay đổi nhanh chóng.",
+      "createdAt": "2026-04-18T04:03:51.075Z",
+      "lessons": [
+        {
+          "lessonId": "lesson_b5a57d69-06fd-42aa-9bb0-adb24434a5d2",
+          "title": "Kiến thức mới là gì và tại sao lại quan trọng?",
+          "summary": "Chúng ta sẽ định nghĩa 'kiến thức mới', phân biệt nó với thông tin đơn thuần và tìm hiểu tầm quan trọng của việc liên tục cập nhật và học hỏi trong thế giới hiện đại.",
+          "questionPrompt": "Bạn có thể chia sẻ một ví dụ về 'kiến thức mới' mà bạn đã tiếp thu gần đây và nó đã thay đổi cách bạn nhìn nhận điều gì không?",
+          "topicKey": "ki-n-th-c-m-i-l-g-v-t-i-sao-l-i-quan-tr-ng",
+          "learnedSummary": null,
+          "summaryUpdatedAt": null
+        },
+        {
+          "lessonId": "lesson_910f666a-a0a2-40b9-9385-34fc40fc16fc",
+          "title": "Các phương pháp tiếp thu kiến thức hiệu quả",
+          "summary": "Tìm hiểu các kỹ thuật học tập chủ động như đọc có chọn lọc, ghi chú, đặt câu hỏi phản biện và tận dụng các nguồn tài nguyên đa dạng để tối ưu hóa quá trình tiếp thu.",
+          "questionPrompt": "Trong các phương pháp tiếp thu, bạn muốn tìm hiểu sâu hơn về kỹ thuật nào để bắt đầu áp dụng ngay hôm nay?",
+          "topicKey": "c-c-ph-ng-ph-p-ti-p-thu-ki-n-th-c-hi-u-qu",
+          "learnedSummary": null,
+          "summaryUpdatedAt": null
+        },
+        {
+          "lessonId": "lesson_d40ee875-6ade-40f1-91ae-34b16c386d76",
+          "title": "Tích hợp kiến thức mới vào khung hiểu biết hiện có",
+          "summary": "Học cách kết nối thông tin mới với những gì bạn đã biết để xây dựng một mạng lưới kiến thức vững chắc, giúp bạn hiểu sâu hơn và ghi nhớ lâu hơn.",
+          "questionPrompt": "Bạn có thể hình dung làm thế nào một kiến thức mới về AI có thể kết nối với những gì bạn đã biết về lập trình không?",
+          "topicKey": "t-ch-h-p-ki-n-th-c-m-i-v-o-khung-hi-u-bi-t-hi-n-c",
+          "learnedSummary": null,
+          "summaryUpdatedAt": null
+        },
+        {
+          "lessonId": "lesson_5659d613-a0a3-4907-8d6e-4dda4bacb8d4",
+          "title": "Biến kiến thức mới thành hành động và kỹ năng",
+          "summary": "Khám phá cách chuyển hóa lý thuyết thành thực hành thông qua các bài tập, dự án nhỏ, thảo luận và thử nghiệm, biến kiến thức thành kỹ năng thực tế.",
+          "questionPrompt": "Bạn có một ý tưởng về dự án hoặc thử nghiệm nhỏ nào để áp dụng một kiến thức mới mà bạn đang quan tâm không?",
+          "topicKey": "bi-n-ki-n-th-c-m-i-th-nh-h-nh-ng-v-k-n-ng",
+          "learnedSummary": null,
+          "summaryUpdatedAt": null
+        },
+        {
+          "lessonId": "lesson_356c8a78-a1ad-4c1f-8df7-49c4ef3ce13b",
+          "title": "Duy trì động lực và tinh thần học hỏi liên tục",
+          "summary": "Tìm hiểu cách duy trì sự tò mò, vượt qua những thách thức khi đối mặt với thông tin phức tạp và xây dựng thói quen học tập suốt đời để không ngừng phát triển.",
+          "questionPrompt": "Làm thế nào bạn thường vượt qua cảm giác choáng ngợp khi đối mặt với một lượng lớn kiến thức mới trong một lĩnh vực xa lạ?",
+          "topicKey": "duy-tr-ng-l-c-v-tinh-th-n-h-c-h-i-li-n-t-c",
+          "learnedSummary": null,
+          "summaryUpdatedAt": null
+        }
+      ]
+    }
+  }
+}}
+  }
+}

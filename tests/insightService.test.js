@@ -38,6 +38,37 @@ class FakeModelClient {
       };
     }
 
+    if (schema.required.includes("overview")) {
+      return {
+        title: "Lộ trình học RAG",
+        overview: "Đi từng bước từ khái niệm đến ứng dụng.",
+        lessons: [
+          {
+            title: "Retrieval cơ bản",
+            summary: "Hiểu cách truy xuất tài liệu liên quan.",
+            questionPrompt: "Giải thích retrieval trong RAG cho người mới.",
+          },
+          {
+            title: "Embedding nhập môn",
+            summary: "Hiểu text được biểu diễn như thế nào.",
+            questionPrompt: "Embedding là gì trong hệ thống tìm kiếm ngữ nghĩa?",
+          },
+        ],
+      };
+    }
+
+    if (schema.required.includes("keyPoints")) {
+      return {
+        title: "Tóm tắt RAG",
+        summary: "RAG kết hợp truy xuất tài liệu và mô hình để trả lời tốt hơn.",
+        keyPoints: [
+          "Cần truy xuất đúng tài liệu",
+          "Embedding hỗ trợ tìm kiếm ngữ nghĩa",
+          "RAG phù hợp khi kiến thức thay đổi",
+        ],
+      };
+    }
+
     return {
       coachMessage:
         "Hay hinh dung embedding la cach dat cac cau co y nghia giong nhau gan nhau tren mot ban do.",
@@ -136,4 +167,35 @@ test("submitReflection adds clarification when user is still confused", async ()
   assert.equal(result.session.interactive.stage, "guided_next_step");
   assert.equal(result.session.interactive.confirmation.status, "partial");
   assert.equal(result.session.interactive.suggestions.length, 3);
+});
+
+test("createNote and createRoadmap add workspace data to snapshot", async () => {
+  const { insightService } = await createTestService();
+  const sessionSnapshot = await insightService.createSession("tester", "gemini");
+  const sessionId = sessionSnapshot.session.sessionId;
+
+  const asked = await insightService.askQuestion({
+    userId: "tester",
+    sessionId,
+    question: "RAG la gi?",
+    provider: "gemini",
+  });
+
+  const noteSnapshot = await insightService.createNote({
+    userId: "tester",
+    sessionId,
+    content: "Can nho phan retrieval.",
+  });
+
+  const roadmapSnapshot = await insightService.createRoadmap({
+    userId: "tester",
+    sessionId,
+    topicLabel: asked.session.currentTopicLabel,
+    provider: "gemini",
+  });
+
+  assert.equal(noteSnapshot.notes.active.length, 1);
+  assert.equal(noteSnapshot.notes.active[0].content, "Can nho phan retrieval.");
+  assert.equal(roadmapSnapshot.roadmaps.length, 1);
+  assert.equal(roadmapSnapshot.roadmaps[0].lessons.length, 2);
 });
