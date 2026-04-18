@@ -9,12 +9,17 @@ export class ChatComposer {
     const stage = state.snapshot?.session?.interactive?.stage;
     const placeholder =
       stage === "guided_next_step"
-        ? "Nhap cau hoi moi hoac chon mot de xuat de hoc tiep..."
-        : "Vi du: RAG la gi? Hoac hoi ve prompt engineering, embedding, vector database...";
+        ? "Muon dao sau them? Cu viet theo cach tu nhien nhu dang nhan tin..."
+        : "Thu hoi nhu ban dang noi chuyen voi mot nguoi ban: RAG la gi, tai sao can embedding...";
+    const statusText = state.error
+      ? state.error
+      : state.isLoading
+        ? "Minh dang nghi va sap xep cach giai thich de hop voi ban..."
+        : "Minh dang san sang nghe tiep.";
 
     this.rootElement.innerHTML = `
       <div class="status-bar ${state.error ? "error" : ""}">
-        ${state.error || (state.isLoading ? "Dang xu ly..." : "")}
+        ${statusText}
       </div>
       <form class="composer-form" id="composerForm">
         <textarea
@@ -24,10 +29,10 @@ export class ChatComposer {
         ></textarea>
         <div class="composer-footer">
           <p class="composer-note">
-            Confirm cua ban se duoc luu de AI dieu chinh buoc hoc tiep theo.
+            Moi lan ban xac nhan da hieu hay chua, minh se dieu chinh cach noi chuyen cho gan hon voi ban.
           </p>
           <button type="submit" ${state.isLoading ? "disabled" : ""}>
-            Gui cau hoi
+            Gui cho minh
           </button>
         </div>
       </form>

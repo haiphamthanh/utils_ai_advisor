@@ -9,21 +9,31 @@
   <body>
     <div class="page-shell">
       <header class="hero">
-        <div>
-          <p class="eyebrow">Hackday MVP</p>
+        <div class="hero-copy-block">
+          <p class="eyebrow">Your Study Buddy</p>
           <h1>Insight Companion</h1>
           <p class="hero-copy">
-            Tro ly hoc tap ca nhan hoa giup tra loi ngan gon, kiem tra muc do
-            hieu va goi y cau hoi tiep theo ngay trong mot flow lien mach.
+            Mot nguoi ban hoc thong minh, nho duoc ban dang vuong o dau, hoi lai
+            vua du va dan ban tiep tuc theo cach nhe nhang hon.
           </p>
+          <div class="hero-notes">
+            <span class="hero-note">Hoi nhanh</span>
+            <span class="hero-note">Phan hoi than thien</span>
+            <span class="hero-note">Goi y buoc tiep theo</span>
+          </div>
         </div>
         <div class="hero-card">
-          <p class="hero-card-label">MVP focus</p>
-          <ul>
-            <li>Answer + reflection</li>
-            <li>Knowledge gap capture</li>
-            <li>Personal learning profile</li>
-          </ul>
+          <div class="friend-intro">
+            <div class="friend-avatar">IC</div>
+            <div>
+              <p class="hero-card-label">Buddy Mode</p>
+              <h2 class="friend-title">Hoc nhu dang noi chuyen voi mot nguoi ban</h2>
+            </div>
+          </div>
+          <p class="friend-copy">
+            Minh se khong nem ra mot dong lich su dai nua. Moi luc chi giu mot
+            buoc hoc hien tai, mot phan giai thich de nhat, va mot huong di tiep.
+          </p>
           <div id="providerStatusRoot" class="provider-status-root"></div>
         </div>
       </header>
@@ -32,8 +42,8 @@
         <section class="panel conversation-panel">
           <div class="panel-header">
             <div>
-              <p class="panel-label">Learning Loop</p>
-              <h2>Hoi dap va dao sau</h2>
+              <p class="panel-label">Buddy Chat</p>
+              <h2>Minh dang hoc cung ban</h2>
             </div>
             <div id="sessionBadge" class="session-badge">Dang tao session...</div>
           </div>
@@ -41,6 +51,10 @@
           <div id="conversationRoot" class="conversation-root"></div>
 
           <div class="composer-shell">
+            <div class="quick-prompt-header">
+              <p class="quick-prompt-title">Khong biet bat dau tu dau?</p>
+              <p class="quick-prompt-copy">Thu chon mot cau hoi nhe de mo nhung.</p>
+            </div>
             <div id="quickPrompts" class="quick-prompts"></div>
             <div id="composerRoot"></div>
           </div>
@@ -49,8 +63,8 @@
         <aside class="panel profile-panel">
           <div class="panel-header">
             <div>
-              <p class="panel-label">Personalization</p>
-              <h2>Knowledge profile</h2>
+              <p class="panel-label">About You</p>
+              <h2>Minh dang hieu ban the nao</h2>
             </div>
           </div>
 

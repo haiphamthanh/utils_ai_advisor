@@ -7,19 +7,19 @@ function renderTopicCards(items, emptyText, variant = "focus") {
     .map((item) => {
       if (variant === "strength") {
         return `
-          <article class="topic-card">
+          <article class="topic-card friend-card">
             <h3>${item.topicLabel}</h3>
-            <p>Da xac nhan hieu ${item.understoodCount} lan.</p>
+            <p>Ban da tu tin o chu de nay ${item.understoodCount} lan roi.</p>
           </article>
         `;
       }
 
       return `
-        <article class="topic-card">
+        <article class="topic-card friend-card">
           <h3>${item.topicLabel}</h3>
           <p>
-            Can giai thich them ${item.clarificationCount} lan.
-            ${item.knowledgeGaps?.length ? `Gaps: ${item.knowledgeGaps.join(", ")}.` : ""}
+            Minh da phai noi lai ${item.clarificationCount} lan.
+            ${item.knowledgeGaps?.length ? `Nen de y: ${item.knowledgeGaps.join(", ")}.` : ""}
           </p>
         </article>
       `;
@@ -46,59 +46,70 @@ export class ProfilePanel {
 
     this.rootElement.innerHTML = `
       <div class="profile-stack">
+        <section class="profile-welcome">
+          <p class="section-title">Small Memory</p>
+          <div class="topic-card buddy-memory-card">
+            <h3>Minh dang ghi nho cach ban hoc</h3>
+            <p>
+              Ban thich kieu giai thich ngan, ro, di thang vao y chinh. Moi lan confirm,
+              minh se tinh lai buoc hoc tiep theo cho hop hon.
+            </p>
+          </div>
+        </section>
+
         <section>
-          <p class="section-title">Summary</p>
+          <p class="section-title">Nhip hoc hien tai</p>
           <div class="metrics-grid">
-            <article class="metric-card">
-              <p class="meta-text">Questions</p>
+            <article class="metric-card soft-metric">
+              <p class="meta-text">Lan hoi</p>
               <div class="metric-value">${profile.summary.totalQuestions}</div>
             </article>
-            <article class="metric-card">
-              <p class="meta-text">Understood</p>
+            <article class="metric-card soft-metric">
+              <p class="meta-text">Da ro</p>
               <div class="metric-value">${profile.summary.understoodCount}</div>
             </article>
-            <article class="metric-card">
-              <p class="meta-text">Clarified</p>
+            <article class="metric-card soft-metric">
+              <p class="meta-text">Can noi lai</p>
               <div class="metric-value">${profile.summary.clarificationCount}</div>
             </article>
           </div>
         </section>
 
         <section>
-          <p class="section-title">Focus Areas</p>
+          <p class="section-title">Cho nao minh nen de y them</p>
           ${renderTopicCards(
             profile.focusAreas || [],
-            "Chua co focus area. Khi ban gap cho mo ho, he thong se bat dau luu knowledge gaps."
+            "Chua co diem nao can de y dac biet. Cu hoi tiep, minh se tu dan ghi nho."
           )}
         </section>
 
         <section>
-          <p class="section-title">Strengths</p>
+          <p class="section-title">Cho nao ban dang kha vung</p>
           ${renderTopicCards(
             profile.strengths || [],
-            "Chua co du lieu de xac dinh diem manh.",
+            "Minh chua du du lieu de ket luan phan nao la diem manh cua ban.",
             "strength"
           )}
         </section>
 
         <section>
-          <p class="section-title">Recent Topics</p>
+          <p class="section-title">Nhẫng chu de gan day</p>
           ${
             (profile.recentTopics || []).length
               ? (profile.recentTopics || [])
                   .map(
                     (item) => `
-                      <article class="topic-card">
+                      <article class="topic-card friend-card">
                         <h3>${item.topicLabel}</h3>
                         <p>
-                          Da hoi ${item.questionsAsked} lan.
-                          ${item.knowledgeGaps?.length ? `Can theo doi: ${item.knowledgeGaps.join(", ")}.` : ""}
+                          Ban da quay lai chu de nay ${item.questionsAsked} lan.
+                          ${item.knowledgeGaps?.length ? `Van nen de y: ${item.knowledgeGaps.join(", ")}.` : ""}
                         </p>
                       </article>
                     `
                   )
                   .join("")
-              : `<div class="empty-state">Chua co recent topic.</div>`
+              : `<div class="empty-state">Chua co chu de nao gan day.</div>`
           }
         </section>
       </div>

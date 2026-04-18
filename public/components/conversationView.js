@@ -22,6 +22,14 @@ function formatProviderLabel(provider) {
   }[provider] || provider || "";
 }
 
+function companionTone(status) {
+  return {
+    understood: "Ngon roi, minh day ban them mot chut nua nhe.",
+    partial: "Ok, de minh noi lai theo cach mem hon.",
+    confused: "Khong sao, minh tach nho hon cho de theo.",
+  }[status] || "Minh dang di cung ban tung buoc.";
+}
+
 function renderChips(items = [], className = "") {
   return items
     .map(
@@ -60,8 +68,8 @@ export class ConversationView {
     const quickPrompts = interactive?.quickPrompts || [];
 
     this.sessionBadgeElement.textContent = sessionId
-      ? `${providerLabel ? `${providerLabel} / ` : ""}${currentTopicLabel || "Learning session"}`
-      : "Chua co session";
+      ? `${providerLabel ? `${providerLabel} dang dong hanh` : "Dang ket noi"}`
+      : "Dang chuan bi";
 
     this.quickPromptsElement.innerHTML =
       interactive?.stage === "idle"
@@ -72,17 +80,25 @@ export class ConversationView {
       this.rootElement.innerHTML = `
         <section class="stage-shell">
           <article class="spotlight-card intro-card">
-            <p class="spotlight-label">Interactive Mode</p>
-            <h3>Hoi mot khai niem, roi xac nhan muc do hieu cua ban.</h3>
+            <div class="buddy-row">
+              <div class="bubble-avatar">IC</div>
+              <div>
+                <p class="spotlight-label">Bat dau nhe</p>
+                <h3>Hom nay ban muon go ro dieu gi?</h3>
+              </div>
+            </div>
             <p class="spotlight-copy">
               ${escapeHtml(
                 interactive?.introMessage ||
                   "Minh se tra loi ngan, hoi lai de xac nhan, sau do tu dong de xuat buoc tiep theo."
               )}
             </p>
+            <p class="buddy-subcopy">
+              Ban cu hoi tu nhien. Neu can, minh se tu doi cach giai thich cho de hieu hon.
+            </p>
           </article>
           <div class="empty-state">
-            Chon mot prompt goi y o duoi hoac nhap cau hoi moi de bat dau.
+            Chon mot goi y o duoi hoac viet dieu ban dang mac de bat dau.
           </div>
         </section>
       `;
@@ -101,13 +117,16 @@ export class ConversationView {
     return `
       <section class="stage-shell">
         <article class="spotlight-card question-card">
-          <p class="spotlight-label">Cau hoi hien tai</p>
+          <p class="spotlight-label">Dieu ban vua hoi</p>
           <h3>${escapeHtml(interactive.question)}</h3>
         </article>
 
         <article class="spotlight-card answer-card">
           <div class="spotlight-header">
-            <p class="spotlight-label">Giai thich hien tai</p>
+            <div class="buddy-row compact">
+              <div class="bubble-avatar">IC</div>
+              <p class="spotlight-label">Cach minh dang giai thich</p>
+            </div>
             ${
               interactive.primarySource
                 ? `<span class="message-source">${escapeHtml(interactive.primarySource)}</span>`
@@ -129,8 +148,11 @@ export class ConversationView {
         </article>
 
         <article class="spotlight-card reflection-card">
-          <p class="spotlight-label">Xac nhan muc do hieu</p>
+          <p class="spotlight-label">Noi cho minh biet ban dang o dau</p>
           <h3>${escapeHtml(interactive.reflectionPrompt)}</h3>
+          <p class="buddy-subcopy">
+            Ban khong can chon "dung". Cu chon muc gan nhat voi cam giac cua ban.
+          </p>
           <div class="actions-row action-grid">
             <button class="action-button" data-reflect="understood">Da hieu</button>
             <button class="action-button secondary" data-reflect="partial">Can don gian hon</button>
@@ -147,7 +169,7 @@ export class ConversationView {
         <article class="spotlight-card compact-card">
           <div class="spotlight-header">
             <div>
-              <p class="spotlight-label">Ban vua xac nhan</p>
+              <p class="spotlight-label">Minh nghe ban noi</p>
               <h3>${escapeHtml(formatStatusLabel(interactive.confirmation?.status))}</h3>
             </div>
             ${
@@ -156,12 +178,15 @@ export class ConversationView {
                 : ""
             }
           </div>
-          <p class="spotlight-copy">${escapeHtml(interactive.question)}</p>
+          <p class="spotlight-copy">${escapeHtml(companionTone(interactive.confirmation?.status))}</p>
         </article>
 
         <article class="spotlight-card answer-card">
           <div class="spotlight-header">
-            <p class="spotlight-label">Dieu chinh theo confirm</p>
+            <div class="buddy-row compact">
+              <div class="bubble-avatar">IC</div>
+              <p class="spotlight-label">Minh vua dieu chinh cach noi</p>
+            </div>
             ${
               interactive.primarySource
                 ? `<span class="message-source">${escapeHtml(interactive.primarySource)}</span>`
@@ -178,8 +203,11 @@ export class ConversationView {
         </article>
 
         <article class="spotlight-card next-step-card">
-          <p class="spotlight-label">Cau hoi AI de xuat tiep</p>
+          <p class="spotlight-label">Neu hoc tiep, minh goi y the nay</p>
           <h3>${escapeHtml(interactive.nextQuestion)}</h3>
+          <p class="buddy-subcopy">
+            Chon mot y ben duoi hoac viet cach hoi rieng cua ban. Minh se noi chuyen tiep tu diem nay.
+          </p>
           ${
             interactive.knowledgeGaps?.length
               ? `

@@ -1,5 +1,5 @@
 function formatStatus(status) {
-  return status === "connected" ? "Connected" : "Missing API key";
+  return status === "connected" ? "San sang" : "Thieu API key";
 }
 
 export class ProviderStatus {
@@ -24,7 +24,7 @@ export class ProviderStatus {
     if (!config) {
       this.rootElement.innerHTML = `
         <div class="provider-panel">
-          <p class="provider-helper">Dang kiem tra ket noi provider...</p>
+          <p class="provider-helper">Dang kiem tra provider kha dung...</p>
         </div>
       `;
       return;
@@ -34,7 +34,7 @@ export class ProviderStatus {
 
     this.rootElement.innerHTML = `
       <div class="provider-panel">
-        <label class="provider-label" for="providerSelect">Chat Provider</label>
+        <label class="provider-label" for="providerSelect">Chon nguoi dong hanh AI</label>
         <select id="providerSelect" class="provider-select" ${state.isLoading ? "disabled" : ""}>
           ${config.providers
             .map(
@@ -56,7 +56,10 @@ export class ProviderStatus {
                 <div class="provider-badge ${provider.status} ${
                   provider.id === selectedProvider ? "selected" : ""
                 }">
-                  <strong>${provider.label}</strong>
+                  <div>
+                    <strong>${provider.label}</strong>
+                    <p>${provider.model}</p>
+                  </div>
                   <span>${formatStatus(provider.status)}</span>
                 </div>
               `
@@ -64,7 +67,7 @@ export class ProviderStatus {
             .join("")}
         </div>
         <p class="provider-helper">
-          Provider connected / missing API key duoc cap nhat ngay khi mo trang.
+          Minh bao trang thai ket noi ngay luc mo trang de ban khong phai doan xem provider da san sang hay chua.
         </p>
       </div>
     `;
