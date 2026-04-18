@@ -47,13 +47,11 @@ export class ConversationView {
     rootElement,
     onReflect,
     onSuggestionSelect,
-    sessionBadgeElement,
     quickPromptsElement,
   }) {
     this.rootElement = rootElement;
     this.onReflect = onReflect;
     this.onSuggestionSelect = onSuggestionSelect;
-    this.sessionBadgeElement = sessionBadgeElement;
     this.quickPromptsElement = quickPromptsElement;
 
     this.rootElement.addEventListener("click", (event) => this.handleClick(event));
@@ -62,14 +60,7 @@ export class ConversationView {
 
   render(snapshot) {
     const interactive = snapshot?.session?.interactive;
-    const sessionId = snapshot?.session?.sessionId;
-    const currentTopicLabel = interactive?.topicLabel || snapshot?.session?.currentTopicLabel;
-    const providerLabel = formatProviderLabel(snapshot?.session?.provider);
     const quickPrompts = interactive?.quickPrompts || [];
-
-    this.sessionBadgeElement.textContent = sessionId
-      ? `${providerLabel ? `${providerLabel} dang dong hanh` : "Dang ket noi"}`
-      : "Dang chuan bi";
 
     this.quickPromptsElement.innerHTML =
       interactive?.stage === "idle"
@@ -116,47 +107,49 @@ export class ConversationView {
   renderReflectionStage(interactive) {
     return `
       <section class="stage-shell">
-        <article class="spotlight-card question-card">
-          <p class="spotlight-label">Dieu ban vua hoi</p>
-          <h3>${escapeHtml(interactive.question)}</h3>
-        </article>
+        <div class="question-bubble-row">
+          <div class="bubble-avatar user-avatar">H</div>
+          <article class="question-bubble">
+            ${escapeHtml(interactive.question)}
+          </article>
+        </div>
 
-        <article class="spotlight-card answer-card">
-          <div class="spotlight-header">
-            <div class="buddy-row compact">
-              <div class="bubble-avatar">IC</div>
-              <p class="spotlight-label">Cach minh dang giai thich</p>
+        <article class="assistant-card">
+          <div class="assistant-card-header">
+            <div class="assistant-title-row">
+              <div class="bubble-avatar">SB</div>
+              <div>
+                <p class="assistant-name">Study Buddy</p>
+                <p class="assistant-source">${escapeHtml(
+                  formatProviderLabel(interactive.primarySource?.includes("openai") ? "openai" : "gemini")
+                )}</p>
+              </div>
             </div>
+            <div class="assistant-dots"><span></span><span></span><span></span></div>
+          </div>
+
+          <div class="assistant-content">
+            <p>${escapeHtml(interactive.primaryMessage)}</p>
             ${
-              interactive.primarySource
-                ? `<span class="message-source">${escapeHtml(interactive.primarySource)}</span>`
+              interactive.knowledgeGaps?.length
+                ? `
+                  <div class="chips-row">
+                    ${interactive.knowledgeGaps
+                      .map((gap) => `<span class="chip muted-chip">${escapeHtml(gap)}</span>`)
+                      .join("")}
+                  </div>
+                `
                 : ""
             }
           </div>
-          <p class="spotlight-copy">${escapeHtml(interactive.primaryMessage)}</p>
-          ${
-            interactive.knowledgeGaps?.length
-              ? `
-                <div class="chips-row">
-                  ${interactive.knowledgeGaps
-                    .map((gap) => `<span class="chip muted-chip">${escapeHtml(gap)}</span>`)
-                    .join("")}
-                </div>
-              `
-              : ""
-          }
-        </article>
 
-        <article class="spotlight-card reflection-card">
-          <p class="spotlight-label">Noi cho minh biet ban dang o dau</p>
-          <h3>${escapeHtml(interactive.reflectionPrompt)}</h3>
-          <p class="buddy-subcopy">
-            Ban khong can chon "dung". Cu chon muc gan nhat voi cam giac cua ban.
-          </p>
-          <div class="actions-row action-grid">
-            <button class="action-button" data-reflect="understood">Da hieu</button>
-            <button class="action-button secondary" data-reflect="partial">Can don gian hon</button>
-            <button class="action-button secondary" data-reflect="confused">Van con mo ho</button>
+          <div class="assistant-reflection">
+            <p class="assistant-prompt">${escapeHtml(interactive.reflectionPrompt)}</p>
+            <div class="actions-row action-grid">
+              <button class="action-button" data-reflect="understood">Đã hiểu</button>
+              <button class="action-button secondary" data-reflect="partial">Giải thích dễ hơn</button>
+              <button class="action-button secondary" data-reflect="confused">Kiểm tra tôi đã hiểu chưa</button>
+            </div>
           </div>
         </article>
       </section>
@@ -166,52 +159,43 @@ export class ConversationView {
   renderNextStepStage(interactive) {
     return `
       <section class="stage-shell">
-        <article class="spotlight-card compact-card">
-          <div class="spotlight-header">
-            <div>
-              <p class="spotlight-label">Minh nghe ban noi</p>
-              <h3>${escapeHtml(formatStatusLabel(interactive.confirmation?.status))}</h3>
+        <div class="question-bubble-row">
+          <div class="bubble-avatar user-avatar">H</div>
+          <article class="question-bubble subtle">
+            ${escapeHtml(companionTone(interactive.confirmation?.status))}
+          </article>
+        </div>
+
+        <article class="assistant-card">
+          <div class="assistant-card-header">
+            <div class="assistant-title-row">
+              <div class="bubble-avatar">SB</div>
+              <div>
+                <p class="assistant-name">Study Buddy</p>
+                <p class="assistant-source">${escapeHtml(
+                  formatStatusLabel(interactive.confirmation?.status)
+                )}</p>
+              </div>
             </div>
+            <div class="assistant-dots"><span></span><span></span><span></span></div>
+          </div>
+
+          <div class="assistant-content">
+            <p>${escapeHtml(interactive.primaryMessage)}</p>
             ${
-              interactive.confirmation?.label
-                ? `<span class="status-pill">${escapeHtml(interactive.confirmation.label)}</span>`
+              interactive.coachMessage &&
+              interactive.coachMessage !== interactive.primaryMessage
+                ? `<p class="followup-copy">${escapeHtml(interactive.coachMessage)}</p>`
                 : ""
             }
+            <div class="assistant-divider"></div>
+            <p class="assistant-prompt">${escapeHtml(interactive.nextQuestion)}</p>
           </div>
-          <p class="spotlight-copy">${escapeHtml(companionTone(interactive.confirmation?.status))}</p>
-        </article>
 
-        <article class="spotlight-card answer-card">
-          <div class="spotlight-header">
-            <div class="buddy-row compact">
-              <div class="bubble-avatar">IC</div>
-              <p class="spotlight-label">Minh vua dieu chinh cach noi</p>
-            </div>
-            ${
-              interactive.primarySource
-                ? `<span class="message-source">${escapeHtml(interactive.primarySource)}</span>`
-                : ""
-            }
-          </div>
-          <p class="spotlight-copy">${escapeHtml(interactive.primaryMessage)}</p>
-          ${
-            interactive.coachMessage &&
-            interactive.coachMessage !== interactive.primaryMessage
-              ? `<p class="followup-copy">${escapeHtml(interactive.coachMessage)}</p>`
-              : ""
-          }
-        </article>
-
-        <article class="spotlight-card next-step-card">
-          <p class="spotlight-label">Neu hoc tiep, minh goi y the nay</p>
-          <h3>${escapeHtml(interactive.nextQuestion)}</h3>
-          <p class="buddy-subcopy">
-            Chon mot y ben duoi hoac viet cach hoi rieng cua ban. Minh se noi chuyen tiep tu diem nay.
-          </p>
           ${
             interactive.knowledgeGaps?.length
               ? `
-                <div class="chips-row">
+                <div class="chips-row compact-gap-row">
                   ${interactive.knowledgeGaps
                     .map((gap) => `<span class="chip muted-chip">${escapeHtml(gap)}</span>`)
                     .join("")}
@@ -219,7 +203,8 @@ export class ConversationView {
               `
               : ""
           }
-          <div class="chips-row">
+
+          <div class="assistant-actions-row">
             ${renderChips(interactive.suggestions || [])}
           </div>
         </article>

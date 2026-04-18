@@ -18,21 +18,19 @@ export class ChatComposer {
         : "Minh dang san sang nghe tiep.";
 
     this.rootElement.innerHTML = `
-      <div class="status-bar ${state.error ? "error" : ""}">
-        ${statusText}
-      </div>
       <form class="composer-form" id="composerForm">
+        <div class="stage-greeting">
+          <h2>Chào Hải, hôm nay mình học gì đây?</h2>
+          <p>${statusText}</p>
+        </div>
         <textarea
           id="questionInput"
           placeholder="${placeholder}"
           ${state.isLoading ? "disabled" : ""}
         ></textarea>
         <div class="composer-footer">
-          <p class="composer-note">
-            Moi lan ban xac nhan da hieu hay chua, minh se dieu chinh cach noi chuyen cho gan hon voi ban.
-          </p>
           <button type="submit" ${state.isLoading ? "disabled" : ""}>
-            Gui cho minh
+            Gửi
           </button>
         </div>
       </form>

@@ -1,7 +1,9 @@
 import { ChatComposer } from "./components/chatComposer.js";
 import { ConversationView } from "./components/conversationView.js";
+import { HeaderSearch } from "./components/headerSearch.js";
 import { ProfilePanel } from "./components/profilePanel.js";
 import { ProviderStatus } from "./components/providerStatus.js";
+import { SidebarNav } from "./components/sidebarNav.js";
 import { ApiClient } from "./services/apiClient.js";
 import { AppState } from "./state/appState.js";
 
@@ -17,10 +19,14 @@ const composer = new ChatComposer({
 
 const conversationView = new ConversationView({
   rootElement: document.querySelector("#conversationRoot"),
-  sessionBadgeElement: document.querySelector("#sessionBadge"),
   quickPromptsElement: document.querySelector("#quickPrompts"),
   onReflect: handleReflect,
   onSuggestionSelect: handleSuggestionSelect,
+});
+
+const headerSearch = new HeaderSearch({
+  rootElement: document.querySelector("#headerSearchRoot"),
+  onSubmit: handleQuestionSubmit,
 });
 
 const profilePanel = new ProfilePanel({
@@ -32,11 +38,20 @@ const providerStatus = new ProviderStatus({
   onProviderChange: handleProviderChange,
 });
 
+const sidebarNav = new SidebarNav({
+  rootElement: document.querySelector("#sidebarRoot"),
+  onCreateSession: handleNewSession,
+  onSelectTopic: handleQuestionSubmit,
+});
+
 appState.subscribe((state) => {
+  headerSearch.render(state);
   composer.render(state);
   conversationView.render(state.snapshot);
   profilePanel.render(state.snapshot);
   providerStatus.render(state);
+  sidebarNav.render(state.snapshot);
+  renderStreak(state);
 });
 
 async function bootstrap() {
@@ -145,6 +160,30 @@ async function handleProviderChange(provider) {
   }
 }
 
+async function handleNewSession() {
+  const state = appState.get();
+  const provider = state.selectedProvider;
+
+  appState.set({
+    isLoading: true,
+    error: "",
+  });
+
+  try {
+    const snapshot = await apiClient.createSession(USER_ID, provider);
+    appState.set({
+      snapshot,
+      isLoading: false,
+      error: "",
+    });
+  } catch (error) {
+    appState.set({
+      isLoading: false,
+      error: error.message,
+    });
+  }
+}
+
 function pickInitialProvider(config) {
   return (
     config.providers.find((provider) => provider.id === config.defaultProvider && provider.isConfigured)
@@ -152,6 +191,13 @@ function pickInitialProvider(config) {
     config.providers.find((provider) => provider.isConfigured)?.id ||
     config.defaultProvider
   );
+}
+
+function renderStreak(state) {
+  const root = document.querySelector("#streakRoot");
+  const totalQuestions = state.snapshot?.profile?.summary?.totalQuestions || 0;
+  const streakDays = totalQuestions >= 6 ? 4 : totalQuestions >= 3 ? 2 : 1;
+  root.textContent = `Chuỗi ${streakDays} ngày`;
 }
 
 bootstrap();

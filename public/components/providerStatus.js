@@ -1,5 +1,5 @@
 function formatStatus(status) {
-  return status === "connected" ? "San sang" : "Thieu API key";
+  return status === "connected" ? "Connected" : "Missing key";
 }
 
 export class ProviderStatus {
@@ -23,8 +23,9 @@ export class ProviderStatus {
 
     if (!config) {
       this.rootElement.innerHTML = `
-        <div class="provider-panel">
-          <p class="provider-helper">Dang kiem tra provider kha dung...</p>
+        <div class="provider-mini">
+          <span class="provider-mini-status pending"></span>
+          <span>Đang kiểm tra</span>
         </div>
       `;
       return;
@@ -33,9 +34,8 @@ export class ProviderStatus {
     const selectedProvider = state.selectedProvider || config.defaultProvider;
 
     this.rootElement.innerHTML = `
-      <div class="provider-panel">
-        <label class="provider-label" for="providerSelect">Chon nguoi dong hanh AI</label>
-        <select id="providerSelect" class="provider-select" ${state.isLoading ? "disabled" : ""}>
+      <div class="provider-mini-shell">
+        <select id="providerSelect" class="provider-mini-select" ${state.isLoading ? "disabled" : ""}>
           ${config.providers
             .map(
               (provider) => `
@@ -49,26 +49,20 @@ export class ProviderStatus {
             )
             .join("")}
         </select>
-        <div class="provider-badges">
+        <div class="provider-mini-list">
           ${config.providers
-            .map(
-              (provider) => `
-                <div class="provider-badge ${provider.status} ${
-                  provider.id === selectedProvider ? "selected" : ""
-                }">
-                  <div>
-                    <strong>${provider.label}</strong>
-                    <p>${provider.model}</p>
-                  </div>
-                  <span>${formatStatus(provider.status)}</span>
+            .map((provider) => {
+              const isActive = provider.id === selectedProvider;
+              return `
+                <div class="provider-mini ${isActive ? "selected" : ""}">
+                  <span class="provider-mini-status ${provider.status}"></span>
+                  <span>${provider.label}</span>
+                  <small>${formatStatus(provider.status)}</small>
                 </div>
-              `
-            )
+              `;
+            })
             .join("")}
         </div>
-        <p class="provider-helper">
-          Minh bao trang thai ket noi ngay luc mo trang de ban khong phai doan xem provider da san sang hay chua.
-        </p>
       </div>
     `;
   }

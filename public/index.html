@@ -7,68 +7,46 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <header class="hero">
-        <div class="hero-copy-block">
-          <p class="eyebrow">Your Study Buddy</p>
-          <h1>Insight Companion</h1>
-          <p class="hero-copy">
-            Mot nguoi ban hoc thong minh, nho duoc ban dang vuong o dau, hoi lai
-            vua du va dan ban tiep tuc theo cach nhe nhang hon.
-          </p>
-          <div class="hero-notes">
-            <span class="hero-note">Hoi nhanh</span>
-            <span class="hero-note">Phan hoi than thien</span>
-            <span class="hero-note">Goi y buoc tiep theo</span>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark">SB</div>
+          <div class="brand-copy">
+            <h1>Study Buddy</h1>
           </div>
         </div>
-        <div class="hero-card">
-          <div class="friend-intro">
-            <div class="friend-avatar">IC</div>
-            <div>
-              <p class="hero-card-label">Buddy Mode</p>
-              <h2 class="friend-title">Hoc nhu dang noi chuyen voi mot nguoi ban</h2>
-            </div>
-          </div>
-          <p class="friend-copy">
-            Minh se khong nem ra mot dong lich su dai nua. Moi luc chi giu mot
-            buoc hoc hien tai, mot phan giai thich de nhat, va mot huong di tiep.
-          </p>
+
+        <div id="headerSearchRoot" class="header-search-root"></div>
+
+        <div class="topbar-actions">
+          <div class="streak-chip" id="streakRoot">Chuỗi 4 ngày</div>
+          <button class="icon-button" type="button" aria-label="Thông báo">
+            <span class="icon-dot"></span>
+            🔔
+          </button>
           <div id="providerStatusRoot" class="provider-status-root"></div>
+          <div class="user-pill" aria-label="Người dùng">H</div>
         </div>
       </header>
 
-      <main class="main-grid">
-        <section class="panel conversation-panel">
-          <div class="panel-header">
-            <div>
-              <p class="panel-label">Buddy Chat</p>
-              <h2>Minh dang hoc cung ban</h2>
-            </div>
-            <div id="sessionBadge" class="session-badge">Dang tao session...</div>
-          </div>
+      <main class="workspace">
+        <aside class="sidebar-column">
+          <div id="sidebarRoot" class="sidebar-shell"></div>
+        </aside>
 
-          <div id="conversationRoot" class="conversation-root"></div>
+        <section class="center-column">
+          <div class="center-shell">
+            <div id="conversationRoot" class="conversation-root"></div>
 
-          <div class="composer-shell">
-            <div class="quick-prompt-header">
-              <p class="quick-prompt-title">Khong biet bat dau tu dau?</p>
-              <p class="quick-prompt-copy">Thu chon mot cau hoi nhe de mo nhung.</p>
+            <div class="composer-shell">
+              <div id="composerRoot"></div>
+              <div id="quickPrompts" class="quick-prompts"></div>
             </div>
-            <div id="quickPrompts" class="quick-prompts"></div>
-            <div id="composerRoot"></div>
           </div>
         </section>
 
-        <aside class="panel profile-panel">
-          <div class="panel-header">
-            <div>
-              <p class="panel-label">About You</p>
-              <h2>Minh dang hieu ban the nao</h2>
-            </div>
-          </div>
-
-          <div id="profileRoot"></div>
+        <aside class="context-column">
+          <div id="profileRoot" class="context-shell"></div>
         </aside>
       </main>
     </div>
